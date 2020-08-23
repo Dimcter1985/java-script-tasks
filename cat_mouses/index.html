@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img class="cat" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/cat-512.png" alt="cat">
+  <style>
+
+    body, html {
+      width: 100%;
+      height: 100%;
+    }
+
+     body {
+      cursor: url('iconfinder_icon_animal_rato_3316549.png'), pointer;
+    } 
+
+    .cat {
+      width: 50px;
+      height: 50px;
+      
+      opacity: 0;
+      transition: .4s;
+      transition-timing-function: cubic-bezier(0.22, 0.82, 0.38, 1.15);
+      position: absolute;
+    }
+  </style>
+
+  <script>
+    let cat = document.querySelector('.cat');
+
+    document.onmousemove = (event) => {
+      cat.style.opacity = 1;
+      cat.style.left = event.clientX + 45 + 'px';
+      cat.style.top = event.clientY + 45 + 'px';
+      
+    }
+  </script>
+</body>
+</html>

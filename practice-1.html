@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1Дана строка. Сделайте заглавным первый символ этой строки не используя цикл
+      let str = "заглавным первый символ";
+      let res = str[0].toUpperCase() + str.substring(1);
+      console.log(res);
+
+      //2 Дана строка, например, '123456'. Переверните эту строку (сделайте из нее '654321') не используя цикл.
+      let str2 = "123456";
+      let res2 = str2.split("").reverse().join("");
+      console.log(res2);
+
+      //3 Проверьте, что строка начинается на http://
+      let str3 =
+        "http://old.code.mu/tasks/javascript/base/praktika-na-kombinacii-standartnyh-funkcij-javascript.html";
+      if (str3.substring(0, 7) == "http://") {
+        console.log("true");
+      } else {
+        console.log("false");
+      }
+
+      //4 Проверьте, что строка заканчивается на .html
+      let str4 =
+        "http://old.code.mu/tasks/javascript/base/praktika-na-kombinacii-standartnyh-funkcij-javascript.html";
+      if (str4.substring(str4.length - 5) == ".html") {
+        console.log("true");
+      } else {
+        console.log("false");
+      }
+    </script>
+  </body>
+</html>

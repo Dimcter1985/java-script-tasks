@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Даны два массива: ['a', 'b', 'c'] и [1, 2, 3]. Объедините их вместе.
+      let arr = ["a", "b", "c"];
+      let arr1 = [1, 2, 3];
+      console.log(arr.concat(arr1));
+
+      //2 Дан массив ['a', 'b', 'c']. Добавьте ему в конец элементы 1, 2, 3.
+      let arr2 = ["a", "b", "c"];
+      arr2.push(1, 2, 3);
+      console.log(arr2);
+
+      //3 Даны два массива: [1, 2, 3] и [4, 5, 6]. Объедините их вместе.
+      let arr3 = [1, 2, 3];
+      let arr4 = [4, 5, 6];
+      console.log(arr3.concat(arr4));
+
+      //4 Дан массив [1, 2, 3]. Сделайте из него массив [3, 2, 1].
+      let arr5 = [1, 2, 3];
+      console.log(arr5.reverse());
+
+      //5 Дан массив [1, 2, 3]. Добавьте ему в конец элементы 4, 5, 6.
+      let arr6 = [1, 2, 3];
+      arr6.push(4, 5, 6);
+      console.log(arr6);
+
+      //7 Дан массив [1, 2, 3]. Добавьте ему в начало элементы 4, 5, 6.
+      let arr7 = [1, 2, 3];
+      arr7.unshift(4, 5, 6);
+      console.log(arr7);
+
+      //8 Дан массив ['js', 'css', 'jq']. Выведите на экран первый элемент.
+      let arr8 = ["js", "css", "jq"];
+      console.log(arr8.shift());
+
+      //9 Дан массив ['js', 'css', 'jq']. Выведите на экран последний элемент.
+      let arr9 = ["js", "css", "jq"];
+      console.log(arr9.pop());
+
+      //10 Дан массив [1, 2, 3, 4, 5]. С помощью метода slice запишите в новый элементы [1, 2, 3].
+      let arr10 = [1, 2, 3, 4, 5];
+      let newArr = arr10.slice(0, 3);
+      console.log(newArr);
+
+      //11 Дан массив [1, 2, 3, 4, 5]. С помощью метода slice запишите в новый элементы [4, 5].
+      let arr11 = [1, 2, 3, 4, 5];
+      let newArr2 = arr11.slice(3, 5);
+      console.log(newArr2);
+
+      //12 Дан массив [1, 2, 3, 4, 5]. С помощью метода splice преобразуйте массив в [1, 4, 5].
+      let arr12 = [1, 2, 3, 4, 5];
+      arr12.splice(1, 2);
+      console.log(arr12);
+
+      //13 Дан массив [1, 2, 3, 4, 5]. С помощью метода splice запишите в новый массив элементы [2, 3, 4].
+      let arr13 = [1, 2, 3, 4, 5];
+      let newArr3 = arr13.splice(1, 3);
+      console.log(newArr3);
+
+      //14 Дан массив [1, 2, 3, 4, 5]. С помощью метода splice сделайте из него массив [1, 2, 3, 'a', 'b', 'c', 4, 5].
+      let arr14 = [1, 2, 3, 4, 5];
+      arr14.splice(2, 0, "a", "b", "c");
+      console.log(arr14);
+
+      //15 Дан массив [1, 2, 3, 4, 5]. С помощью метода splice сделайте из него массив [1, 'a', 'b', 2, 3, 4, 'c', 5, 'e'].
+      let arr15 = [1, 2, 3, 4, 5];
+      arr15.splice(1, 0, "a", "b");
+      arr15.splice(5, 0, "c");
+      arr15.push("e");
+      console.log(arr15);
+
+      //16 Дан массив [3, 4, 1, 2, 7]. Отсортируйте его.
+      let arr16 = [3, 4, 1, 2, 7];
+      console.log(arr16.sort());
+
+      //17 Дан объект {js:'test', jq: 'hello', css: 'world'}. Получите массив его ключей.
+      let obj = { js: "test", jq: "hello", css: "world" };
+      console.log(Object.keys(obj));
+    </script>
+  </body>
+</html>

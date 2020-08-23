@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+
+    .inner {
+      width: 100px;
+      height: 100px;
+      border: 1px solid blue;
+    }
+
+    a {
+      display: block;
+      width: 30px;
+      height: 39px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    //задача1
+    let elem = document.createElement('div');//внутри переменной elem создаем новый элемент div
+    document.body.appendChild(elem);//вставляем div внутрь body
+    elem.textContent = 'Этот элемент создан при помощи DOM API';//добавляем текст внутрь div
+
+    //задача2
+    let elem2 = document.createElement('div');//внутри переменной elem2 создаем новый элемент div
+    elem2.classList.add('inner');//добавляем класс inner к div
+    elem2.textContent = 'Этот элемент тоже создан при помощи DOM API';//добавляем текст внутрь div
+    elem.appendChild(elem2);//добавляем div внутрь другого div
+
+    //задача3
+    elem2.style.color = 'red';//изменяем свойство color у элемента div
+
+    //задача4
+    elem.addEventListener('click', function(e) {
+      console.log('Этот текст говорит о том, что я всё сделал правильно');
+    });//навешиваем обработчик события на div, по клику на div в консоль будет выводиться текст
+
+    //задача5
+    let elem3 = document.createElement('a');//внутри переменной elem3 создаем новый элемент a
+    elem3.setAttribute('href', 'https://loftschool.com');//элементу а задаем атрибут href со значением https://loftschool.com
+    document.body.appendChild(elem3);//вставляем а внутрь body
+    elem3.addEventListener('click', function(e) {
+      e.preventDefault();//запрещаем действия по умолчанию для браузера
+      console.log('Я кликнул на ссылку https://loftschool.com');//навешиваем обработчик события на div, по клику на div в консоль будет выводиться текст
+    });
+
+    //задача6
+    let elem4 = document.createElement('div');//создаем новый элемент div и сохраняем его внутри переменной elem4  
+    elem4.innerHTML = `<input type="text" id="input"> <button id="button">кнопка</button>`;//внутрь div вставляем кнопку и инпут
+    document.body.appendChild(elem4);//добавляем div в body
+
+    let btn = document.querySelector('#button');//выбираем нужный элемент по селектору и сохраняем его внутри переменной
+    let text = document.querySelector('#input');//выбираем нужный элемент по селектору и сохраняем его внутри переменной
+    btn.addEventListener('click', function(e) {
+      console.log(text.value);//навешиваем обработчик события на кнопку, по клику на нее выводим в консоль значение текстового поля
+    });
+  </script>
+</body>
+</html>

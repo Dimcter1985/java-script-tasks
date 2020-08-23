@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Выведите с помощью цикла столбец чисел от 1 до 100.
+      function outputNumbers() {
+        for (let i = 1; i <= 100; i++) {
+          console.log(i);
+        }
+      }
+      outputNumbers();
+      console.log("*****************");
+
+      //2 Выведите с помощью цикла столбец чисел от 100 до 1
+      function reverseNumbers() {
+        for (let i = 100; i >= 1; i--) {
+          console.log(i);
+        }
+      }
+      reverseNumbers();
+      console.log("*****************");
+
+      //3 Выведите с помощью цикла столбец четных чисел от 1 до 100.
+      function outputEvenNumbers() {
+        for (let i = 1; i <= 100; i++) {
+          if (i % 2 == 0) {
+            console.log(i);
+          }
+        }
+      }
+      outputEvenNumbers();
+      console.log("*****************");
+
+      //4 Заполните массив 10-ю иксами с помощью цикла.
+      function fillArray() {
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+          arr.push("x");
+        }
+        console.log(arr);
+      }
+      fillArray();
+
+      //5 Заполните массив числами от 1 до 10 с помощью цикла
+      function fillArray2() {
+        let arr = [];
+        for (let i = 1; i <= 10; i++) {
+          arr.push(i);
+        }
+        console.log(arr);
+      }
+      fillArray2();
+
+      //6 Заполните массив 10-ю случайными числами (дробями) от 0 до 1 с помощью цикла. Дроби округляйте до двух знаков в дробной части
+      function fillArray3() {
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+          arr.push(parseFloat(Math.random().toFixed(2)));
+        }
+        console.log(arr);
+      }
+      fillArray3();
+
+      //7 Заполните массив 10-ю случайными числами от 1 до 10 с помощью цикла
+      function fillArray4() {
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+          arr.push(Math.round(Math.random() * 10));
+        }
+        console.log(arr);
+      }
+      fillArray4();
+
+      //8 Дан массив с числами. С помощью цикла выведите только те элементы массива, которые больше нуля и меньше 10-ти
+      let arr = [-1, 5, 10, 0, 200, 75, 6];
+      function fillArray5() {
+        arr.forEach((el) => {
+          if (el > 0 && el < 10) {
+            console.log(el);
+          }
+        });
+      }
+      fillArray5(arr);
+      console.log("=================");
+
+      //9 Дан массив с числами. С помощью цикла проверьте, что в нем есть элемент со значением 5. Как только будет найден первый такой элемент - выведите 'Есть' и оборвите цикл. Если такого элемента нет - ничего не выводите
+      function fillArray6() {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] == 5) {
+            console.log(arr[i]);
+            break;
+          }
+        }
+      }
+      fillArray6(arr);
+
+      //10 Дан массив с числами. С найдите сумму элементов этого массива
+      function sumElements() {
+        console.log(arr.reduce((sum, el) => (reult = sum + el)));
+      }
+      sumElements(arr);
+
+      //11 Дан массив с числами. С найдите сумму квадратов элементов этого массива.
+      function sumSqr() {
+        console.log(arr.reduce((sum, el) => sum + Math.pow(el, 2), 0));
+      }
+      sumSqr(arr);
+
+      //12 Дан массив с числами. Найдите среднее арифметическое его элементов (сумма элементов, делить на количество)
+      function arithmeticMean() {
+        let sum = arr.reduce((accum, el) => accum + el);
+        let result = sum / arr.length;
+        console.log(result);
+      }
+      arithmeticMean(arr);
+    </script>
+  </body>
+</html>

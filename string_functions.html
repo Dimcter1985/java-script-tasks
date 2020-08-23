@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Дана строка 'aaa@bbb@ccc'. Замените все @ на '!' с помощью глобального поиска и замены.
+      let str = "aaa@bbb@ccc";
+      console.log(str.replace(/@/g, "!"));
+
+      //2 Дана строка 'aaa bbb ccc'. Вырежите из нее слово 'bbb' тремя разными способами (через substr, substring, slice).
+      let str2 = "aaa bbb ccc";
+      console.log(str2.substr(4, 3)); //устарел
+      console.log(str2.substring(4, 7));
+      console.log(str2.slice(4, 7));
+
+      //3 В переменной date лежит дата в формате '2025-12-31'. Преобразуйте эту дату в формат '31/12/2025'.
+      let date = "2025-12-31";
+      let arr = date.split("-");
+      console.log(`${arr[0]}/${arr[1]}/${arr[2]}`);
+
+      //4 Дана строка 'js'. Сделайте из нее строку 'JS'.
+      let title = "js";
+      console.log(title.toUpperCase());
+
+      //5 Дана строка 'JS'. Сделайте из нее строку 'js'.
+      let text = "JS";
+      console.log(title.toLowerCase());
+
+      //6 Дана строка 'я учу javascript!'. Найдите количество символов в этой строке.
+      let str3 = "я учу javascript!";
+      console.log(str3.length);
+
+      //7 Дана строка 'я учу javascript!'. Вырежите из нее слово 'учу' и слово 'javascript'
+      let str4 = "я учу javascript!";
+      console.log(str4.slice(2, 5));
+      console.log(str4.slice(6, 17));
+
+      //8 Дана строка 'я учу javascript!'. Найдите позицию подстроки 'учу'.
+      let str5 = "я учу javascript!";
+      console.log(str5.indexOf("учу"));
+
+      //9 Дана переменная str, в которой хранится какой-либо текст. Реализуйте обрезание длинного текста по следующему принципу: если количество символов этого текста больше заданного в переменной n, то в переменную result запишем первые n символов строки str и добавим в конец троеточие '...'. В противном случае в переменную result запишем содержимое переменной str.
+      let str6 = "Реализуйте обрезание длинного текста по следующему принципу";
+      let n = 25;
+      let result = "";
+      if (str6.length > n) {
+        result = str6.slice(0, 25) + "...";
+      } else {
+        result = str6;
+      }
+      console.log(result);
+
+      //10 Дана строка 'Я-учу-javascript!'. Замените все дефисы на '!' с помощью глобального поиска и замены.
+      let str7 = "Я-учу-javascript!";
+      console.log(str7.replace(/-/g, "!"));
+
+      //11 Дана строка 'я учу javascript!'. С помощью метода split запишите каждое слово этой строки в отдельный элемент массива.
+      let str8 = "Я учу javascript!";
+      console.log(str8.split(" "));
+
+      // 12Дана строка 'я учу javascript!'. С помощью метода split запишите каждый символ этой строки в отдельный элемент массива.
+      let str9 = "Я учу javascript!";
+      console.log(str9.split(""));
+
+      //13 В переменной date лежит дата в формате '2025-12-31'. Преобразуйте эту дату в формат '31.12.2025'
+      let date2 = "2025-12-31";
+      let newDate2 = date2.split("-").reverse().join(".");
+      console.log(newDate2);
+
+      //14 Дан массив ['я', 'учу', 'javascript', '!']. С помощью метода join преобразуйте массив в строку 'я+учу+javascript+!'.
+      let arr2 = ["я", "учу", "javascript", "!"];
+      console.log(arr2.join("+"));
+
+      //15 Преобразуйте первую букву строки в верхний регистр.
+      let letter = "первая";
+      console.log(letter[0].toUpperCase() + letter.slice(1, 6));
+
+      //16 Преобразуйте первую букву каждого слова строки в верхний регистр.
+      let row = "первую букву каждого слова";
+      function upperCase(row) {
+        return row.replace(/(^|\s)\S/g, (a) => a.toUpperCase());
+      }
+      console.log(upperCase(row));
+
+      //17 Преобразуйте строку 'var_test_text' в 'varTestText'. Скрипт, конечно же, олджен работать с любыми аналогичными строками.
+      let row2 = "var_test_text";
+      function repl(row2) {
+        return row2.replace(/_\S/g, (a) => a.toUpperCase());
+      }
+      console.log(repl(row2).split("_").join(""));
+    </script>
+  </body>
+</html>

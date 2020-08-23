@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1  С помощью цикла for сформируйте строку '123456789' и запишите ее в переменную str.
+      let str = "";
+      for (let i = 1; i <= 9; i++) {
+        str += i;
+      }
+      console.log(str);
+
+      //2 С помощью цикла for сформируйте строку '987654321' и запишите ее в переменную str.
+      let str2 = "";
+      for (let i = 9; i >= 1; i--) {
+        str2 += i;
+      }
+      console.log(str2);
+
+      //3  С помощью цикла for сформируйте строку '-1-2-3-4-5-6-7-8-9-' и запишите ее в переменную str.
+      let str3 = "";
+      for (let i = 1; i <= 9; i++) {
+        str3 += `-${i}`;
+      }
+      str3 += `-`;
+      console.log(str3);
+
+      //4  Нарисуйте пирамиду, как показано на рисунке, только у вашей пирамиды должно быть 20 рядов, а не 5:
+      let el1 = document.createElement("div");
+      document.body.appendChild(el1);
+      for (let i = 1; i <= 20; i++) {
+        for (let j = 1; j <= i; j++) {
+          let str4 = "x";
+          el1.innerHTML += str4;
+        }
+        el1.innerHTML += "<br>";
+      }
+
+      //5 С помощью двух вложенных циклов нарисуйте следующую пирамидку:
+      let el2 = document.createElement("div");
+      document.body.appendChild(el2);
+      for (let i = 1; i <= 9; i++) {
+        for (let j = 1; j <= i; j++) {
+          el1.innerHTML += i;
+        }
+        el1.innerHTML += "<br>";
+      }
+
+      //6  Нарисуйте пирамиду, как показано на рисунке, воспользовавшись циклом for:
+      let el3 = document.createElement("div");
+      document.body.appendChild(el3);
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= i; j++) {
+          let newStr = "x";
+          el3.innerHTML += newStr;
+        }
+        el3.innerHTML += "<br>";
+      }
+    </script>
+  </body>
+</html>

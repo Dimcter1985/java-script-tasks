@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1
+    let a = 0;
+    if(a == 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //2
+    if(a > 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //3
+    if(a < 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //4
+    if(a >= 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //5
+    if(a <= 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //6
+    if(a != 0) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //7
+    if(a == 'test') {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //8
+    if(a === '0') {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //9
+    if(a == '0') {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //10
+    let test = true;
+    if(test == true) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //11
+    if(test != true) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //12
+    if(a > 0 && a < 5) {
+      console.log('верно');
+    }
+    else {console.log('неверно');}
+
+    //13
+    if(a == 0 || a == 2) {
+      a += 7;
+      console.log(a);
+    }
+    else {
+      a /= 10;
+      console.log(a);
+      }
+
+      //14
+      let b = 3;
+      if(a <= 1 && b >= 3) {
+      console.log(a + b);
+    }
+    else {
+      console.log(a - b);
+      }
+
+      //15
+      if(a > 2 && a <11 || b >= 6 && b < 14) {
+      console.log('true');
+    }
+    else {
+      console.log('false');
+      }
+
+      //16
+      let num = 2;
+      let result = '';
+      switch(num) {
+        case 1: 
+          result = 'зима';
+          console.log(result);
+        break;
+        case 2: 
+          result = 'весна';
+          console.log(result);
+        break;
+        case 2: 
+          result = 'лето';
+          console.log(result);
+        break;
+        case 2: 
+          result = 'осень';
+          console.log(result);
+        break;
+      }
+
+      //17
+      let day = 17;
+      if(day >= 1 && day <=10) {
+        console.log('1 decade');
+      }
+      else if(day > 10 && day <= 20) {
+        console.log('2 decade');
+      }
+      else {
+        console.log('3 decade');
+      }
+
+      //18
+      let month = 8;
+      if(month >= 1 && month <= 2 || month === 12) {
+        console.log('winter');
+      }
+      else if(month > 2 && month <= 5) {
+        console.log('spring');
+      }
+      else if(month > 5 && month <= 8) {
+        console.log('summer');
+      }
+      else {
+        console.log('autumn');
+      }
+
+      //19
+      let str = 'abcde';
+      if(str[0] === 'a') {
+        console.log('yes');
+      }
+      else {console.log('no');}
+
+      let str2 = '123';
+      let sum = (+str2[0]) + (+str2[1]) + (+str2[2]);
+      console.log(sum);
+
+      //20
+      let str3 = '123456';
+      let sum2 = (+str3[0]) + (+str3[1]) + (+str3[2]);
+      let sum3 = (+str3[3]) + (+str3[4]) + (+str3[5]);
+      if(sum2 === sum3) {
+        console.log('yes');
+      }
+      else {console.log('no');}
+  </script>
+</body>
+</html>

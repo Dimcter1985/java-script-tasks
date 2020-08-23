@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="input"
+      id="input"
+      placeholder="введите в формате 'год-месяц-день'"
+      style="width: 250px;"
+    />
+    <div class="text"></div>
+    <script>
+      //1 Выведите на экран текущие день, месяц и год в формате 'год-месяц-день'.
+      (function () {
+        let date = new Date();
+        console.log(
+          `${date.getFullYear()}-${date.getMonth()}-${date.getDay()}`
+        );
+      })();
+
+      //2 Выведите на экран текущий месяц словом, по-русски.
+      (function () {
+        let months = [
+          "январь",
+          "февраль",
+          "март",
+          "апрель",
+          "май",
+          "июнь",
+          "июль",
+          "август",
+          "сентябрь",
+          "октябрь",
+          "ноябрь",
+          "декабрь",
+        ];
+        let date = new Date();
+        let month = date.getMonth();
+        console.log(months[month]);
+      })();
+
+      //3 Выведите на экран текущий день.
+      (function () {
+        let days = [
+          "воскресенье",
+          "понедельник",
+          "вторник",
+          "среда",
+          "четверг",
+          "пятница",
+          "суббота",
+        ];
+        let date = new Date();
+        let day = date.getDay();
+        console.log(days[day]);
+      })();
+
+      //4 Выведите на экран текущий месяц.
+      (function () {
+        let months = [
+          "январь",
+          "февраль",
+          "март",
+          "апрель",
+          "май",
+          "июнь",
+          "июль",
+          "август",
+          "сентябрь",
+          "октябрь",
+          "ноябрь",
+          "декабрь",
+        ];
+        let date = new Date();
+        let month = date.getMonth();
+        console.log(months[month]);
+      })();
+
+      //5 Выведите на экран текущий год.
+      (function () {
+        let date = new Date();
+        let year = date.getFullYear();
+        console.log(year);
+      })();
+
+      //6 Выведите на экран текущую дату-время в формате '12:59:59 31.12.2014'. Для решения этой задачи напишите функцию, которая будет добавлять 0 перед днями и месяцами, которые состоят из одной цифры (из 1.9.2014 сделает 01.09.2014)
+      (function () {
+        let date = new Date();
+        let time = date.toLocaleTimeString();
+        let day = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        function getFullDate() {
+          if (day < 10) {
+            day = "0" + day;
+          }
+          if (month < 10) {
+            month = "0" + month;
+          }
+          console.log(`${time} ${day}.${month}.${year}`);
+        }
+        getFullDate();
+      })();
+
+      //6 другой способ
+      (function () {
+        let date = new Date();
+        let time = date.toLocaleTimeString();
+        let fullDate = date.toLocaleDateString();
+        console.log(`${time} ${fullDate}`);
+      })();
+
+      //7 Выведите на экран номер текущего дня недели
+      (function () {
+        let date = new Date();
+        console.log(date.getDay());
+      })();
+
+      //8 Выведите на экран текущий день недели (словом, по-русски). Создайте для этого вспомогательную функцию showDay, которая параметром принимает число, а возвращает день недели по-русски
+      (function () {
+        let days = [
+          "воскресенье",
+          "понедельник",
+          "вторник",
+          "среда",
+          "четверг",
+          "пятница",
+          "суббота",
+        ];
+        let date = new Date();
+        let day = date.getDay();
+        function showDay() {
+          return days[day];
+        }
+        console.log(showDay());
+      })();
+
+      //9 Узнайте, какой день был 7-го января 2015 года
+      (function () {
+        let date = new Date(2015, 0, 7);
+        let days = [
+          "воскресенье",
+          "понедельник",
+          "вторник",
+          "среда",
+          "четверг",
+          "пятница",
+          "суббота",
+        ];
+        let day = date.getDay();
+        console.log(days[day]);
+      })();
+
+      //10 Выведите на экран количество минут с 1-го января 1970 года до настоящего момента времени.
+      (function () {
+        let date = new Date();
+        console.log(date.getTime());
+      })();
+
+      //11 Выведите на экран количество часов, прошедшее между 1 марта 1988 года и текущим моментом с помощью Date.parse
+      (function () {
+        let time = Date.parse("1988-03-01T00:00:00");
+        let date = new Date();
+        let currTime = date.getTime();
+        let result = (currTime - time) / (1000 * 60 * 60);
+        console.log(Math.round(result));
+      })();
+
+      ///12  Выведите на экран количество секунд, которое осталось до конца дня.
+      (function () {
+        let date = new Date();
+        let time = Date.parse("2020-08-12T00:00:00");
+        let currTime = date.getTime();
+        let result = (time - currTime) / 1000;
+        console.log(Math.round(result));
+      })();
+
+      //13 Создайте инпут, в который пользователь вводит дату своего рождения в формате '2014-12-31' (с конкретным годом). По потери фокуса выведите под инпутом сколько дней осталось до его дня рождения. Воспользуйтесь методом Date.parse.
+      (function () {
+        let inp = document.querySelector("#input");
+        let txt = document.querySelector(".text");
+        inp.addEventListener("blur", () => {
+          let date = new Date();
+          let time = Date.parse(inp.value);
+          let currTime = date.getTime();
+          txt.innerHTML = Math.round((time - currTime) / (1000 * 60 * 60 * 24));
+        });
+      })();
+    </script>
+  </body>
+</html>

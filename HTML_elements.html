@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1 -->
+    <button class="btn">push</button>
+    <span class="span">some text</span><br />
+
+    <!-- 2 -->
+    <div>************************</div>
+    <button class="btn1">push</button>
+    <span class="span1">some text</span><br />
+
+    <!-- 3 -->
+    <div>************************</div>
+    <h2>Заголовок, не поменяется.</h2>
+    <p>Абзац, поменяется.</p>
+    <p>Абзац, поменяется.</p>
+    <p>Абзац, поменяется.</p>
+    <br />
+    <button class="btn2">push</button><br />
+
+    <!-- 4 -->
+    <div>************************</div>
+    <h2 class="zzz">Заголовок с классом zzz.</h2>
+    <p class="zzz">Абзац с классом zzz.</p>
+    <p class="zzz">Абзац с классом zzz.</p>
+    <p>Просто абзац, не поменяется.</p>
+    <button class="btn3">push</button><br />
+
+    <!-- 4 -->
+    <div>************************</div>
+    <h2 class="qqq">Заголовок с классом zzz.</h2>
+    <p class="qqq">Абзац с классом zzz.</p>
+    <p class="qqq">Абзац с классом zzz.</p>
+    <p>Просто абзац, не поменяется.</p>
+    <button class="btn4">push</button><br />
+
+    <!-- 5 -->
+    <div>************************</div>
+    <button class="btn5">push</button>
+    <span class="span2">some text</span><br />
+
+    <!-- 6 -->
+    <div>************************</div>
+    <button class="btn6">push</button><br />
+    <span class="span3">some text</span><br />
+
+    <!-- 7 -->
+    <div>************************</div>
+    <button class="btn7">push</button><br />
+    <span class="span4">some text</span><br />
+
+    <!-- 8 -->
+    <div>************************</div>
+    <input type="text" id="input1" />
+    +
+    <input type="text" id="input2" />
+    =
+    <span class="span5">?</span>
+    <br />
+    <br />
+    <button class="btn8">push</button><br />
+
+    <!-- 9 -->
+    <div>************************</div>
+    <p>some text</p>
+    <p>some text</p>
+    <p>some text</p>
+    <p>some text</p>
+    <h2>some title</h2>
+    <button class="btn9">push</button><br />
+
+    <!-- 10 -->
+    <div>************************</div>
+    <h2 class="www">Заголовок с классом www.</h2>
+    <p class="www">Абзац с классом www.</p>
+    <p class="www">Абзац с классом www.</p>
+    <p>Просто абзац, не поменяется.</p>
+    <button class="btn10">push</button><br />
+
+    <!-- 11 -->
+    <div>************************</div>
+    <h2 class="hhh">Заголовок с классом hhh.</h2>
+    <p class="hhh">Абзац с классом hhh.</p>
+    <p class="hhh">Абзац с классом hhh.</p>
+    <p>Просто абзац, не поменяется.</p>
+    <button class="btn11">push</button><br />
+    <br />
+
+    <!-- 12 -->
+    <div>************************</div>
+    <button class="btn12">push</button>
+    <span class="span6">some text</span><br /><br />
+
+    <!-- 13 -->
+    <div>************************</div>
+    <div class="block">
+      <button class="btn13">add</button>
+      <button class="btn14">remove</button>
+    </div>
+    <span class="span7">some text</span><br /><br />
+
+    <!-- 14 -->
+    <div>************************</div>
+    <div class="block1">
+      <button class="btn15">add</button>
+      <button class="btn16">remove</button>
+    </div>
+    <span class="span8">some text</span><br /><br />
+
+    <!-- 15 -->
+    <div>************************</div>
+    <input type="text" class="input3" value="" />
+    <span class="span9"></span><br /><br />
+
+    <!-- 16 -->
+    <div>************************</div>
+    <a href="http//google.com" class="link">link1</a><br />
+    <a href="http//google.com" class="link">link2</a><br />
+    <a href="http//google.com" class="link">link3</a><br />
+    <button class="btn17">push</button><br /><br />
+
+    <!-- 17 -->
+    <div>************************</div>
+    <button class="btn18">push</button>
+    <span class="span10">some text</span><br />
+
+    <!-- 18 -->
+    <div>************************</div>
+    <p class="paragraf">some text</p>
+    <p class="paragraf">some text</p>
+    <p class="paragraf">some text</p>
+    <p class="paragraf">some text</p>
+    <p class="paragraf">some text</p>
+    <button class="btn19">push</button>
+
+    <!-- 18 -->
+    <div>************************</div>
+    <p class="paragraf1">some text</p>
+    <p class="paragraf1">some text</p>
+    <p class="paragraf1">some text</p>
+    <p class="paragraf1">some text</p>
+    <p class="paragraf1">some text</p>
+    <button class="btn20">push</button>
+
+    <style>
+      .span7,
+      .span8,
+      .red {
+        color: red;
+      }
+    </style>
+
+    <script>
+      //1 изменить текст в span
+      (function () {
+        let btn = document.querySelector(".btn");
+        let txt = document.querySelector(".span");
+        btn.addEventListener("click", () => {
+          txt.textContent = "!!!!!!!!";
+        });
+      })();
+
+      //2 Замена span на тег b без изменения текста
+      (function () {
+        let btn = document.querySelector(".btn1");
+        let txt = document.querySelector(".span1");
+        btn.addEventListener("click", () => {
+          txt.outerHTML = "<b>" + txt.innerHTML;
+          btn.disabled = true;
+        });
+      })();
+
+      //3 Поменяйте содержимое абзацев на их порядковый номер.(getElementsByTagName)
+      (function () {
+        let btn = document.querySelector(".btn2");
+        btn.addEventListener("click", () => {
+          let elems = document.getElementsByTagName("p");
+          for (let i = 0; i < elems.length; i++) {
+            elems[i].textContent = i + 1;
+          }
+        });
+      })();
+
+      //4 Поменяйте содержимое элементов с классом zzz на их порядковый номер в коде.(getElementsByClassName)
+      (function () {
+        let btn = document.querySelector(".btn3");
+        btn.addEventListener("click", () => {
+          let elems = document.getElementsByClassName("zzz");
+          for (let i = 0; i < elems.length; i++) {
+            elems[i].textContent = i + 1;
+          }
+        });
+      })();
+
+      //4 Поменяйте содержимое элементов с классом zzz на их порядковый номеркоде.(querySelectorAll)
+      (function () {
+        let btn = document.querySelector(".btn4");
+        btn.addEventListener("click", () => {
+          let elems = document.querySelectorAll(".qqq");
+          for (let i = 0; i < elems.length; i++) {
+            elems[i].textContent = i + 1;
+          }
+        });
+      })();
+
+      //5 Поменять текст по нажатию на кнопку
+      (function () {
+        let btn = document.querySelector(".btn5");
+        let txt = document.querySelector(".span2");
+        btn.addEventListener("click", () => {
+          txt.innerHTML = "<b>new</b> text";
+        });
+      })();
+
+      //6 Поменять span на h3 и изменить текст внутри по нажатию на кнопку
+      (function () {
+        let btn = document.querySelector(".btn6");
+        let txt = document.querySelector(".span3");
+        btn.addEventListener("click", () => {
+          txt.innerHTML = "<h3>new text</h3>";
+        });
+      })();
+
+      //7 Поменять span на h3 без изменения текста по нажатию на кнопку
+      (function () {
+        let btn = document.querySelector(".btn7");
+        let txt = document.querySelector(".span4");
+        btn.addEventListener("click", () => {
+          txt.outerHTML = "<h3>" + txt.innerHTML;
+          btn.disabled = true;
+        });
+      })();
+
+      //8
+      (function () {
+        let btn = document.querySelector(".btn8");
+        let txt = document.querySelector(".span5");
+        let inp1 = document.querySelector("#input1");
+        let inp2 = document.querySelector("#input2");
+        btn.addEventListener("click", () => {
+          let sum = +inp1.value + +inp2.value;
+          txt.textContent = sum;
+        });
+      })();
+
+      //9
+      (function () {
+        let btn = document.querySelector(".btn9");
+        btn.addEventListener("click", () => {
+          let elements = document.getElementsByTagName("p");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].textContent = "new text";
+          }
+        });
+      })();
+
+      //10
+      (function () {
+        let btn = document.querySelector(".btn10");
+        btn.addEventListener("click", () => {
+          let elements = document.getElementsByClassName("www");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].textContent = "new text";
+          }
+        });
+      })();
+
+      //11
+      (function () {
+        let btn = document.querySelector(".btn11");
+        btn.addEventListener("click", () => {
+          let elements = document.querySelectorAll(".hhh");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].textContent = "new text";
+          }
+        });
+      })();
+
+      //12
+      (function () {
+        let btn = document.querySelector(".btn12");
+        let txt = document.querySelector(".span6");
+        btn.addEventListener("click", () => {
+          let attr = txt.getAttribute("class");
+          alert(attr);
+        });
+      })();
+
+      //13
+      (function () {
+        let block = document.querySelector(".block");
+        let txt = document.querySelector(".span7");
+        block.addEventListener("click", (event) => {
+          if (event.target.className == "btn13") {
+            alert(txt.getAttribute("class"));
+          }
+          if (event.target.className == "btn14") {
+            txt.removeAttribute("class");
+          }
+        });
+      })();
+
+      //14
+      (function () {
+        let block = document.querySelector(".block1");
+        let txt = document.querySelector(".span8");
+        block.addEventListener("click", (event) => {
+          if (event.target.className == "btn15") {
+            alert(txt.getAttribute("class"));
+          }
+          if (event.target.className == "btn16") {
+            txt.removeAttribute("class");
+            txt.setAttribute("class", "new-class");
+            alert("класс изменен, нажмите первую кнопку стобы проверить это");
+          }
+        });
+      })();
+
+      //15
+      (function () {
+        let inp = document.querySelector(".input3");
+        let txt = document.querySelector(".span9");
+        inp.addEventListener("input", () => {
+          txt.textContent = inp.value;
+        });
+      })();
+
+      //16
+      (function () {
+        let link = document.querySelectorAll(".link");
+        let btn = document.querySelector(".btn17");
+        btn.addEventListener("click", (event) => {
+          link.forEach((elem) => {
+            elem.innerHTML += `( ${elem.getAttribute("href")})`;
+          });
+          btn.disabled = true;
+        });
+      })();
+
+      //17
+      (function () {
+        let txt = document.querySelector(".span10");
+        let btn = document.querySelector(".btn18");
+        btn.addEventListener("click", () => {
+          txt.textContent = "new text";
+          txt.classList.add("red");
+          btn.disabled = true;
+        });
+      })();
+
+      //18
+      (function () {
+        let paragraf = document.querySelectorAll(".paragraf");
+        let btn = document.querySelector(".btn19");
+        btn.addEventListener("click", () => {
+          paragraf.forEach((item, index) => {
+            item.textContent = index;
+          });
+        });
+      })();
+
+      //19
+      (function () {
+        let paragraf = document.querySelectorAll(".paragraf1");
+        let btn = document.querySelector(".btn20");
+        btn.addEventListener("click", () => {
+          paragraf.forEach((item, index) => {
+            item.textContent = `${index}. ${item.textContent}`;
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

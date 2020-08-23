@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Дан массив с числами. Создайте из него новый массив, где останутся лежать только положительные числа. Создайте для этого вспомогательную функцию isPositive(), которая параметром будет принимать число и возвращать true, если число положительное, и false - если отрицательное.
+      let arr = [-1, 2, 4, -5, 7, -3];
+      let newArr = [];
+      function isPositive(num) {
+        if (num >= 0) {
+          return true;
+        }
+        return false;
+      }
+      for (let i = 0; i <= arr.length; i++) {
+        if (isPositive(arr[i])) {
+          newArr.push(arr[i]);
+        }
+      }
+      console.log(newArr);
+
+      //2 Сделайте функцию isNumberInRange, которая параметром принимает число и проверяет, что оно больше нуля и меньше 10. Если это так - пусть функция возвращает true, если не так - false.
+      function isNumberInRange(n) {
+        if (n > 0 && n < 10) {
+          return true;
+        }
+        return false;
+      }
+      console.log(isNumberInRange(55));
+
+      //3 Дан массив с числами. Запишите в новый массив только те числа, которые больше нуля и меньше 10-ти. Для этого используйте вспомогательную функцию
+      let arr2 = [1, 7, -4, 9, 33];
+
+      function isArrayInRange() {
+        let newArr2 = [];
+        return arr2.filter((item) => {
+          if (item > 0 && item < 10) {
+            return newArr2.push(item);
+          }
+        });
+      }
+      console.log(isArrayInRange());
+
+      //4 Сделайте функцию getDigitsSum (digit - это цифра), которая параметром принимает целое число и возвращает сумму его цифр.
+      function getDigitsSum(digit) {
+        let sum = 0;
+        let str = String(digit);
+        for (let i = 0; i < str.length; i++) {
+          sum += Number(str[i]);
+        }
+        return sum;
+      }
+      console.log(getDigitsSum(145));
+
+      //5 Найдите все года от 1 до 2020, сумма цифр которых равна 13. Для этого используйте вспомогательную функцию getDigitsSum из предыдущей задачи.
+      for (let i = 1; i <= 2020; i++) {
+        if (getDigitsSum(i) === 13) {
+          console.log(i);
+        }
+      }
+
+      //6 Сделайте функцию isEven() (even - это четный), которая параметром принимает целое число и проверяет: четное оно или нет. Если четное - пусть функция возвращает true, если нечетное - false.
+      function isEven(even) {
+        if (even % 2 == 0) {
+          return true;
+        }
+        return false;
+      }
+      console.log(isEven(111));
+
+      //7 Дан массив с целыми числами. Создайте из него новый массив, где останутся лежать только четные из этих чисел. Для этого используйте вспомогательную функцию isEven из предыдущей задачи.
+      let arr3 = [1, 4, 24, 133, 60, 333, 200];
+      let newArr3 = [];
+      arr3.filter((i) => {
+        if (isEven(i)) return newArr3.push(i);
+      });
+      console.log(newArr3);
+
+      //8 Сделайте функцию getDivisors, которая параметром принимает число и возвращает массив его делителей (чисел, на которое делится данное число).
+      function getDivisors(c) {
+        let arr4 = [];
+        for (let i = 1; i <= c; i++) {
+          if (c % i == 0) arr4.push(i);
+        }
+        return arr4;
+      }
+      console.log(getDivisors(1234));
+    </script>
+  </body>
+</html>

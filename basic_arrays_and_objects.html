@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1
+    let arr = [1, 2, 3,4];
+    console.log(arr);
+
+    //2
+    console.log(arr[0], arr[1], arr[2],);
+
+    //3
+    let arr2 = ['a', 'b', 'c', 'd'];
+    let str = `${arr2[0]} + ${arr2[1]},${arr2[2]} + ${arr2[3]}`;
+    console.log(str);
+
+    //4
+    let arr3 = [2, 5, 3, 9];
+    let result = `${arr3[0] * arr3[1] + arr3[2] * arr3[3]}`;
+    console.log(result);
+
+    //5
+    let obj = {'a': 1, 'b': 2, 'c': 3};
+    console.log(obj['a']);
+    console.log(obj.a);
+
+    //6
+    let obj2 = {kolya: '1000', vasya: '2000', petya: '333'};
+    console.log(obj2.kolya, obj2.petya);
+
+    //7
+    let obj3 = {'1': 'monday', 
+                '2': 'tuesday',
+                '3': 'wednsday',
+                '4': 'thursday',
+                '5': 'friday',
+                '6': 'saturday',
+                '7': 'sunday'
+                }
+    console.log(obj3['3']);
+    
+    //8
+    let day =   obj3['3'];
+    console.log(day);   
+
+    //9
+    let arr4 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    let i = arr4[0];
+    console.log(i[2]);
+
+    //10
+    let obj4 = {js:['jQuery', 'Angular'], php: 'hello', css: 'world'};
+    console.log(obj4.js [0]); 
+
+    //11
+    let obj5 = {ru: ['пон','вт','ср','чт','пт','сб','вс'],
+                en: ['monday','tuesday','wednsday','thursday','friday','saturday','sunday']
+                }    
+    console.log(obj5.ru [0], obj5.en [2]); 
+
+    //12
+    let lang = obj5.en;
+    if(lang == obj5.en && day == obj3['3'])  {
+      console.log('среда');
+    }
+  </script>
+</body>
+</html>

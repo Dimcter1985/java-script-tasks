@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Заполните массив следующим образом: в первый элемент запишите 'x', во второй 'xx', в третий 'xxx' и так далее.
+      let arr = [];
+      let str = "x";
+      for (let i = 0; i <= 5; i++) {
+        arr.push(str);
+        str += "x";
+      }
+      console.log(arr);
+
+      //2 Заполните массив следующим образом: в первый элемент запишите '1', во второй '22', в третий '333' и так далее.
+      let arr2 = [];
+      for (let i = 1; i <= 5; i++) {
+        let str = "";
+        for (let j = 1; j <= i; j++) {
+          str += i;
+        }
+        arr2.push(str);
+      }
+      console.log(arr2);
+
+      //3 Сделайте функцию arrayFill, которая будет заполнять массив заданными значениями. Первым параметром функция принимает значение, которым заполнять массив, а вторым - сколько элементов должно быть в массиве.
+
+      function arrayFill(item, lehgth) {
+        let arr3 = [];
+        for (let i = 0; i < lehgth; i++) {
+          arr3.push(item);
+        }
+        return arr3;
+      }
+      console.log(arrayFill("x", 5));
+
+      //4 Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить, чтобы в сумме получилось больше 10-ти.
+
+      let arr4 = [1, 2, 3, 4, 5, 6];
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum += arr4[i];
+        if (sum > 10) {
+          console.log(i + 1);
+        }
+      }
+
+      //5 Дан массив с числами. Не используя метода reverse переверните его элементы в обратном порядке.
+      let arr5 = [1, 2, 3, 4, 5];
+      let arr6 = [];
+      for (let i = arr5.length - 1; i >= 0; i--) {
+        arr6.push(arr5[i]);
+      }
+      console.log(arr6);
+
+      //6 Дан двухмерный массив с числами, например [[1, 2, 3], [4, 5], [6]]. Найдите сумму элементов этого массива. Массив, конечно же, может быть произвольным
+      let arr7 = [[1, 2, 3], [4, 5], [6]];
+      let newArr = arr7.reduce((a, b) => {
+        return a.concat(b);
+      });
+      let sum1 = newArr.reduce((c, d) => {
+        return c + d;
+      });
+      console.log(sum1);
+
+      //7 Дан трехмерный массив с числами, например [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]. Найдите сумму элементов этого массива. Массив, конечно же, может быть произвольным.
+      let arr8 = [
+        [
+          [1, 2],
+          [3, 4],
+        ],
+        [
+          [5, 6],
+          [7, 8],
+        ],
+      ];
+      let sum2 = 0;
+      for (let i = 0; i < arr8.length; i++) {
+        for (let j = 0; j < arr8[i].length; j++) {
+          for (let k = 0; k < arr8[i][j].length; k++) {
+            sum2 += arr8[i][j][k];
+          }
+        }
+      }
+      console.log(sum2);
+    </script>
+  </body>
+</html>

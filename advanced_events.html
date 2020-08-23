@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1 -->
+    <div>******************</div>
+    <a href="3333" class="link">link1</a>
+    <a href="4444" class="link">link2</a>
+    <a href="5555" class="link">link3</a><br /><br />
+
+    <!-- 2 -->
+    <div>******************</div>
+    <a href="3333" title="" class="link2">link1</a>
+    <a href="4444" title="" class="link2">link2</a>
+    <a href="5555" title="" class="link2">link3</a><br /><br />
+
+    <!-- 3 -->
+    <div>******************</div>
+    <a href="3333" title="" class="link3">link1</a>
+    <a href="4444" title="" class="link3">link2</a>
+    <a href="5555" title="" class="link3">link3</a><br /><br />
+
+    <!-- 4 -->
+    <div>******************</div>
+    <input type="text" value="1" class="inp" /><br /><br />
+    <input type="text" value="1" class="inp" /><br /><br />
+    <input type="text" value="1" class="inp" /><br /><br />
+    <div class="txt"></div>
+    <br /><br />
+
+    <!-- 5 -->
+    <div>******************</div>
+    <p>10</p>
+    <p>200</p>
+    <p>3000</p>
+    <br /><br />
+
+    <!-- 6 -->
+    <div>******************</div>
+    <input type="text" data-length="5" class="inp2" /><br /><br />
+    <input type="text" data-length="5" class="inp2" /><br /><br />
+    <input type="text" data-length="5" class="inp2" /><br /><br />
+    <br /><br />
+
+    <!-- 7 -->
+    <div>******************</div>
+    <div class="block"></div>
+    <br />
+    <div class="block"></div>
+    <br />
+    <div class="block"></div>
+    <br />
+
+    <style>
+      .block {
+        width: 100px;
+        height: 100px;
+        border: 3px solid;
+      }
+      .green {
+        border-color: chartreuse;
+      }
+
+      .red {
+        border-color: red;
+      }
+    </style>
+
+    <script>
+      //1 Даны ссылки. Привяжите к каждой ссылке событие, чтобы по клику на картинку алертом выводился ее href
+      (function () {
+        let link = document.querySelectorAll(".link");
+
+        link.forEach((el) => {
+          el.addEventListener("click", showHref);
+        });
+
+        function showHref(event) {
+          event.preventDefault();
+          alert(this.getAttribute("href"));
+        }
+      })();
+
+      //2 Даны ссылки. Привяжите всем ссылкам событие - по наведению на ссылку в атрибут title запишется ее текст
+      (function () {
+        let link = document.querySelectorAll(".link2");
+
+        link.forEach((el) => {
+          el.addEventListener("mouseover", addTitle);
+        });
+
+        function addTitle() {
+          this.setAttribute("title", this.textContent);
+        }
+      })();
+
+      //3 Привяжите всем ссылкам событие - по наведению на ссылку в конец ее текста дописывается ее href в круглых скобках. После первого наведению на ссылку следует отвязать от нее событие
+      (function () {
+        let link = document.querySelectorAll(".link3");
+
+        link.forEach((el) => {
+          el.addEventListener("mouseover", addHref);
+        });
+
+        function addHref() {
+          this.textContent += `(${this.getAttribute("href")})`;
+          this.removeEventListener("mouseover", addHref);
+        }
+      })();
+
+      //4 Привяжите всем инпутам следующее событие - по потери фокуса каждый инпут выводит свое value в абзац. Для всех инпутов сделайте так, чтобы они выводили свой value алертом при нажатии на любой из них, но только по первому нажатию. Повторное нажатие на инпут не должно вызывать реакции.
+      (function () {
+        let inp = document.querySelectorAll(".inp");
+        let txt = document.querySelector(".txt");
+
+        inp.forEach((el) => {
+          el.addEventListener("blur", addText);
+          el.addEventListener("click", alertText);
+        });
+
+        function addText() {
+          txt.textContent = this.value;
+        }
+
+        function alertText() {
+          alert(this.value);
+          this.removeEventListener("click", alertText);
+        }
+      })();
+
+      //5 Даны абзацы с числами. По нажатию на абзац в нем должен появится квадрат числа, которое он содержит.
+      (function () {
+        let p = document.querySelectorAll("p");
+
+        p.forEach((el) => {
+          el.addEventListener("click", sqr);
+        });
+
+        function sqr() {
+          this.textContent = Math.pow(this.textContent, 2);
+          this.removeEventListener("click", sqr);
+        }
+      })();
+
+      //6 Даны инпуты. Сделайте так, чтобы все инпуты по потери фокуса проверяли свое содержимое на правильное количество символов. Сколько символов должно быть в инпуте, указывается в атрибуте data-length. Если вбито правильное количество, то граница инпута становится зеленой, если неправильное - красной
+      (function () {
+        let inp = document.querySelectorAll(".inp2");
+
+        inp.forEach((el) => {
+          el.addEventListener("blur", checkValidity);
+        });
+
+        function checkValidity() {
+          let dl = this.getAttribute("data-length");
+          let value = this.value.length;
+          value <= dl && value > 0
+            ? this.classList.add("green")
+            : this.classList.add("red");
+        }
+      })();
+
+      //7  Даны дивы. По первому нажатию на каждый див он красится красным фоном, по второму красится обратно и так далее каждый клик происходит чередование фона. Сделайте так, чтобы было две функции: одна красит в красный цвет, другая в зеленый и они сменяли друг друга через removeEventListener
+      (function () {
+        let block = document.querySelectorAll(".block");
+
+        block.forEach((el) => {
+          el.addEventListener("click", setGreenBorder);
+        });
+
+        function setGreenBorder() {
+          this.style.background = "green";
+          this.removeEventListener("click", setGreenBorder);
+          this.addEventListener("click", setRedBorder);
+        }
+
+        function setRedBorder() {
+          this.style.background = "red";
+          this.removeEventListener("click", setRedBorder);
+          this.addEventListener("click", setGreenBorder);
+        }
+      })();
+    </script>
+  </body>
+</html>

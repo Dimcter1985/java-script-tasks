@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Сделайте функцию, которая параметрами принимает 2 числа. Если эти числа равны - пусть функция вернет true, а если не равны - false.
+      function compareNumbers(num1, num2) {
+        if (num1 === num2) {
+          return true;
+        }
+        return false;
+      }
+      console.log(compareNumbers(2, 2));
+
+      //2  Сделайте функцию, которая параметрами принимает 2 числа. Если их сумма больше 10 - пусть функция вернет true, а если нет - false.
+      function sumNumbers(num3, num4) {
+        if (num3 + num4 > 10) {
+          return true;
+        }
+        return false;
+      }
+      console.log(sumNumbers(5, 5));
+
+      //3 Сделайте функцию, которая параметром принимает число и проверяет - отрицательное оно или нет. Если отрицательное - пусть функция вернет true, а если нет - false.
+      function checkNumber(num5) {
+        if (num5 < 0) {
+          return true;
+        }
+        return false;
+      }
+      console.log(checkNumber(-2));
+    </script>
+  </body>
+</html>

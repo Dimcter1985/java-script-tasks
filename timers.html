@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1 -->
+    <span class="count">0</span><br />
+    <button class="btn">start</button><br />
+
+    <!-- 2 -->
+    <div>*******************************</div>
+    <span class="count1">0</span><br />
+    <div class="buttons">
+      <button class="btn1">start</button><br /><br />
+      <button class="btn2">stop</button><br />
+    </div>
+
+    <!-- 3 -->
+    <div>*******************************</div>
+    <span class="clock"></span><br />
+
+    <!-- 4 -->
+    <div>*******************************</div>
+    <span class="count2">10</span><br />
+    <span class="text">обратный отсчет завершен</span>
+    <button class="btn3">start</button><br />
+
+    <!-- 5 -->
+    <div>*******************************</div>
+    <ul class="list">
+      <li class="item red active"></li>
+      <li class="item green"></li>
+      <li class="item blue"></li>
+      <li class="item orange"></li>
+    </ul>
+
+    <!-- 6-->
+    <div>*******************************</div>
+    <ul class="list2">
+      <li class="item2 red"></li>
+      <li class="item2 green"></li>
+      <li class="item2 blue"></li>
+    </ul>
+    <br />
+    <button class="btn4">start</button>
+
+    <!-- 7-->
+    <div>*******************************</div>
+    <ul class="list3">
+      <li class="item3 red"></li>
+      <li class="item3 green"></li>
+      <li class="item3 blue"></li>
+      <li class="item3 orange"></li>
+      <li class="item3 gray"></li>
+      <li class="item3 brown"></li>
+    </ul>
+    <br />
+    <div class="buttons2">
+      <button class="btn5">start</button>
+      <button class="btn6">stop</button><br />
+    </div>
+
+    <!-- 8-->
+    <div>*******************************</div>
+    <table class="table">
+      <tr>
+        <th>часы</th>
+        <th>минуты</th>
+        <th>секунды</th>
+      </tr>
+      <tr class="row">
+        <td class="cell">00</td>
+        <td class="cell">00</td>
+        <td class="cell">00</td>
+      </tr>
+    </table>
+
+    <style>
+      .text {
+        display: none;
+      }
+
+      .text-active {
+        display: block;
+      }
+
+      .list {
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+
+      .item {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: 1s;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .green {
+        background-color: seagreen;
+      }
+
+      .blue {
+        background-color: steelblue;
+      }
+
+      .orange {
+        background-color: orange;
+      }
+
+      .gray {
+        background-color: gray;
+      }
+
+      .brown {
+        background-color: brown;
+      }
+
+      .active {
+        opacity: 1;
+      }
+
+      .list2 {
+        width: 800px;
+        height: 200px;
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .item2 {
+        list-style: none;
+        width: 200px;
+        height: 200px;
+      }
+
+      .list3 {
+        width: 500px;
+
+        padding: 0;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .item3 {
+        list-style: none;
+        width: 100px;
+        height: 100px;
+      }
+
+      tr,
+      th,
+      td,
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+    <script>
+      //1 Создайте отсчет от 0 до бесконечности:
+      (function () {
+        let btn = document.querySelector(".btn");
+
+        function timer() {
+          let count = document.querySelector(".count");
+          count.innerHTML = +count.innerHTML + 1;
+        }
+
+        btn.addEventListener("click", () => {
+          btn.disabled = true;
+          window.setInterval(timer, 1000);
+        });
+      })();
+
+      //2 Создайте отсчет с кнопкой остановки:
+      (function () {
+        let btn1 = document.querySelector(".btn1");
+        let btn2 = document.querySelector(".btn2");
+        let buttons = document.querySelector(".buttons");
+
+        function timer() {
+          let count = document.querySelector(".count1");
+          count.innerHTML = +count.innerHTML + 1;
+        }
+
+        buttons.addEventListener("click", (event) => {
+          if (event.target == btn1) {
+            btn1.disabled = true;
+            timerId = setInterval(timer, 1000);
+          } else if (event.target == btn2) {
+            btn1.disabled = false;
+            clearInterval(timerId);
+          }
+        });
+      })();
+
+      //3  Создайте тикающие часики:
+      (function () {
+        function time() {
+          let clock = document.querySelector(".clock");
+          let date = new Date();
+          clock.innerHTML = date.toLocaleTimeString();
+        }
+        setInterval(time, 1000);
+      })();
+
+      //4 Создайте таймер обратного отсчета:
+      (function () {
+        let btn = document.querySelector(".btn3");
+        let count = document.querySelector(".count2");
+        let txt = document.querySelector(".text");
+        function timer() {
+          count.textContent = +count.textContent - 1;
+          if (count.textContent == 0) {
+            txt.classList.add("text-active");
+            clearInterval(timerId2);
+          }
+        }
+
+        btn.addEventListener("click", () => {
+          btn.disabled = true;
+          timerId2 = setInterval(timer, 1000);
+        });
+      })();
+
+      //5 Создайте простой слайдер:
+      (function () {
+        let slides = document.querySelectorAll(".item");
+        let currentSlide = 0;
+        function slider() {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+        setInterval(slider, 2000);
+      })();
+
+      //6 Создайте карусель:
+      (function () {
+        let btn = document.querySelector(".btn4");
+        let slides = document.querySelectorAll(".item3");
+        function slider() {
+          let slide1 = slides[0].className;
+          let slide2 = slides[1].className;
+          let slide3 = slides[2].className;
+          slides[0].className = slide2;
+          slides[1].className = slide3;
+          slides[2].className = slide1;
+        }
+
+        btn.addEventListener("click", () => {
+          btn.disabled = true;
+          setInterval(slider, 1000);
+        });
+      })();
+
+      //7 Создайте карусель:
+      (function () {
+        let buttons = document.querySelector(".buttons2");
+        let slides = document.querySelectorAll(".item3");
+        let btn1 = document.querySelector(".btn5");
+        let btn2 = document.querySelector(".btn6");
+
+        function slider() {
+          let slide1 = slides[0].className;
+          let slide2 = slides[1].className;
+          let slide3 = slides[2].className;
+          let slide4 = slides[3].className;
+          let slide5 = slides[4].className;
+          let slide6 = slides[5].className;
+          slides[0].className = slide2;
+          slides[1].className = slide3;
+          slides[2].className = slide4;
+          slides[3].className = slide5;
+          slides[4].className = slide6;
+          slides[5].className = slide1;
+        }
+
+        buttons.addEventListener("click", (event) => {
+          if (event.target == btn1) {
+            btn1.disabled = true;
+            btn2.disabled = false;
+            timerId3 = setInterval(slider, 1000);
+          } else if (event.target == btn2) {
+            btn2.disabled = true;
+            btn1.disabled = false;
+            clearInterval(timerId3);
+          }
+        });
+      })();
+
+      //8 Создайте отсчет до полуночи:
+      (function () {
+        function toMidnight() {
+          let cell = document.querySelectorAll(".cell");
+          let date = new Date();
+          let hour = addZero(24 - date.getHours() - 1);
+          let minute = addZero(60 - date.getMinutes() - 1);
+          let second = addZero(60 - date.getSeconds() - 1);
+
+          cell[0].textContent = hour;
+          cell[1].textContent = minute;
+          cell[2].textContent = second;
+
+          function addZero(num) {
+            if (num <= 9) {
+              num = "0" + num;
+            }
+            return num;
+          }
+        }
+        setInterval(toMidnight, 1000);
+      })();
+    </script>
+  </body>
+</html>

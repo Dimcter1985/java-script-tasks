@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Дана строка. Сделайте заглавным первый символ каждого слова этой строки. Для этого сделайте вспомогательную функцию ucfirst, которая будет получать строку, делать первый символ этой строки заглавным и возвращать обратно строку с заглавной первой буквой.
+      let str = "заглавным первый символ";
+      function ucfirst(str) {
+        return str.replace(/(^|\s)\S/g, (a) => a.toUpperCase());
+      }
+      console.log(ucfirst(str));
+
+      //2 Дана строка вида 'var_text_hello'. Сделайте из него текст 'varTextHello'.
+      let str2 = "var_text_hello";
+      function repl(str2) {
+        return str2.replace(/_\S/g, (a) => a.toUpperCase());
+      }
+      console.log(repl(str2).split("_").join(""));
+
+      //3 Сделайте функцию inArray, которая определяет, есть в массиве элемент с заданным текстом или нет. Функция первым параметром должна принимать текст элемента, а вторым - массив, в котором делается поиск. Функция должна возвращать true или false.
+      let arr = ["one", "two", "three"];
+      let txt = "7";
+      function findText() {
+        for (let i = 0; i <= arr.length; i++) {
+          if (arr[i] == txt) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
+      console.log(findText(txt, arr));
+
+      //4 Дана строка, например, '123456'. Сделайте из нее '214365'.
+      let row = "123456";
+      function repl2() {
+        let res = row.split(""); //превратили строку в массив
+        let newArr = []; //создали пустой массив
+        for (let i = 0; i < res.length; i += 2) {
+          //перебрали массив с шагом в 2 эл та
+          let temp = res.slice(i, i + 2).reverse(); //на каждой итерациии вернули новый перевернутый массив из 2х значений
+          newArr = newArr.concat(temp); // склеили массивы в один
+        }
+        row = newArr.join(""); //превратили массив в строку
+        return row; //вернули измененую строку
+      }
+      console.log(repl2(row));
+    </script>
+  </body>
+</html>

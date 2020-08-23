@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  fsdgsdfgd
+  <script>
+    //1
+    for (let i = 1; i <= 100; i++) {
+      console.log(i);
+    }
+    //2
+    let i = 1;
+    while (i <= 100) {
+      console.log(i);
+      i++;
+    }
+    //3
+    for (let i = 11; i <= 33; i++) {
+      console.log(i);
+    }
+    //4
+    for (let i = 1; i <= 100; i++) {
+      if (i % 2 == 0) {
+        console.log(i);
+      }
+    }
+    //5
+    let sum = 0;
+    for (let i = 1; i <= 100; i++) {
+      sum += i;
+      console.log(sum);
+    }
+    //6
+    let arr = [1, 2, 3, 4, 5];
+    for (let i = 0; i < arr.length; i++) {
+      console.log(arr[i]);
+    }
+    //7
+    let arr2 = [1, 2, 3, 4, 5];
+    let sum2 = 0;
+    for (let i = 0; i <= arr2.length; i++) {
+      sum2 += i;
+    }
+    let result = sum2;
+    console.log(result);
+    //8
+    let obj = {green: 'зеленый', red: 'красный', blue: 'голубой'}
+    for (key in obj) {
+      console.log(key);
+      console.log(obj[key]);
+    }
+    //9
+    let obj2 = {
+      Дима: '200',
+      Лена: '300',
+      Коля: '400'
+    }
+    for (let key in obj2) {
+      console.log(`${key} - зарплата ${obj2[key]} долларов`)
+    }
+    //10
+    let arr3 = [2, 5, 9, 15, 0 ,4];
+    for (let i = 0; i <= arr3.length; i++) {
+      if (arr3[i] > 3 && arr3[i] < 10) {
+        console.log(arr3[i]);
+      }
+    }
+    //11
+    let arr4 = [-2, 5, 9, -15, 0 ,-4];
+    let sum3 = 0;
+    for (let i = 0; i <= arr4.length; i++) {
+      if (arr4[i] > 0) {
+        sum3 += arr4[i];
+      }
+    }
+    console.log(sum3);
+
+    //12
+    let arr5 = [1, 2, 5, 9, 4, 13, 4, 10];
+    for (let i = 0; i <= arr5.length; i++) {
+      if (arr5[i] === 4) {
+        console.log('Есть');
+        break
+      }
+    }
+    //13
+    let arr6 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let str = '';
+      for (let i = 0; i < arr6.length; i++) {
+        str += '-' + arr6[i];
+      }
+    console.log(str + '-');
+    //14
+    let arr7 = [10, 20, 30, 50, 235, 3000];
+    for (let i = 0; i < arr7.length; i++) {
+      if (/^-?[125]/.test(arr7[i])) {
+        console.log(arr7[i]); 
+      }
+    }
+    //15
+    let arr8 = ['monday', 'Tuesday','Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    for ( let i = 0; i < arr8.length; i++) {
+      if (arr8[i] == 'Saturday' || arr8[i] == 'Sunday') {
+        document.write(`<b>${arr8[i]}</b><br>`);
+      } 
+      else {
+        document.write(`${arr8[i]}<br>`);
+        }
+    }
+
+  </script>
+</body>
+</html>

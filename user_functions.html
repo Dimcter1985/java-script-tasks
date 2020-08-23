@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Сделайте функцию, которая возвращает квадрат числа. Число передается параметром.
+      function getSqrt(num) {
+        return Math.pow(num, 2);
+      }
+      console.log(getSqrt(3));
+
+      //2 Сделайте функцию, которая возвращает сумму двух чисел.
+      function getSum(x, y) {
+        return x + y;
+      }
+      console.log(getSum(5, 6));
+
+      //3 Сделайте функцию, которая отнимает от первого числа второе и делит на третье.
+      function getExp(x, y, z) {
+        return (x - y) / z;
+      }
+      console.log(getExp(5, 7, 4));
+
+      //4 Сделайте функцию, которая принимает параметром число от 1 до 7, а возвращает день недели на русском языке.
+      let days = {
+        1: "Понедельник",
+        2: "Вторник",
+        3: "Среда",
+        4: "Четверг",
+        5: "Пятница",
+        6: "Суббота",
+        7: "Воскресенье",
+      };
+
+      function getDay(num) {
+        for (let day in days) {
+          if (day == num) {
+            console.log(days[day]);
+          }
+        }
+      }
+      getDay(7);
+    </script>
+  </body>
+</html>

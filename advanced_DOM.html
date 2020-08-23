@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1 -->
+    <div id="elem"></div>
+
+    <!-- 2 -->
+    <div id="elem2" class="www2"></div>
+
+    <!-- 3 -->
+    <div id="elem3" class="www3"></div>
+
+    <!-- 4 -->
+    <div id="elem4" class="www4"></div>
+
+    <!-- 5 -->
+    <div id="elem5" class="1 2 3 4"></div>
+
+    <!-- 6 -->
+    <div id="elem6" class="1 2 3 4"></div>
+
+    <!-- 7 -->
+    <div id="elem7"></div>
+    <br />
+
+    <!-- 8 -->
+    <div id="elem8">elem8</div>
+    <br />
+
+    <!-- 9 -->
+    <div id="elem9">elem9</div>
+    <br />
+
+    <!-- 10 -->
+    <div class="www5">elem10</div>
+    <div class="www5">elem10</div>
+    <div class="www5">elem10</div>
+    <br />
+
+    <!-- 11 -->
+    <ol class="list"></ol>
+    <br />
+
+    <!-- 12 -->
+    <ul class="list2"></ul>
+    <br />
+
+    <!-- 13 -->
+    <ul class="list3"></ul>
+    <br />
+
+    <!-- 14 -->
+    <ul class="list4">
+      <li class="" id="item">***</li>
+    </ul>
+    <br />
+
+    <!-- 15 -->
+    <div id="elem10">elem10</div>
+    <br />
+
+    <!-- 16 -->
+    <div id="elem11">elem10</div>
+    <br />
+
+    <!-- 17 -->
+    <div id="elem12">elem10</div>
+    <br />
+
+    <!-- 18 -->
+    <div id="elem13">elem10</div>
+    <br />
+
+    <!-- 19 -->
+    <div id="elem14">
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+    </div>
+    <br />
+
+    <!-- 20 -->
+    <div id="elem15">
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+    </div>
+    <br />
+
+    <!-- 21 -->
+    <div id="elem16">
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+      <span class="txt">some text</span>
+    </div>
+    <br />
+
+    <!-- 22 -->
+    <div>
+      <p>123</p>
+      <div class="div"></div>
+    </div>
+    <br />
+
+    <!-- 23 -->
+    <div>
+      <div class="div2"></div>
+      <p>123</p>
+    </div>
+    <br />
+
+    <!-- 24 -->
+    <div>
+      <div class="div3">321</div>
+      <p>123</p>
+      <span>321</span>
+    </div>
+    <br />
+
+    <!-- 25 -->
+    <div style="width: 100px; height: 100px;">
+      <div class="div4"></div>
+    </div>
+    <br />
+
+    <!-- 26 -->
+    <div style="width: 100px; height: 100px;">
+      <div>
+        <div class="div5">some text</div>
+      </div>
+    </div>
+    <br />
+
+    <!-- 27 -->
+    <div id="parent">
+      <div id="child">321</div>
+    </div>
+    <button id="btn">delete</button>
+
+    <!-- 28 -->
+    <ol class="parent">
+      <li class="child"></li>
+      <li class="child"></li>
+      <li class="child"></li>
+    </ol>
+    <button class="btn">delete</button><br /><br />
+
+    <!-- 29 -->
+    <div class="parent2">
+      <div class="child2">some text</div>
+    </div>
+
+    <!-- 30 -->
+    <ol class="parent3">
+      <li class="child3">123</li>
+      <li class="child3">456</li>
+      <li class="child3">789</li>
+    </ol>
+
+    <!-- 31 -->
+    <div class="parent4">
+      <input type="text" class="inp" />
+      <button class="btn2">push</button>
+    </div>
+
+    <script>
+      //1 Дан элемент #elem. Добавьте ему класс www.
+      let el1 = document.querySelector("#elem");
+      el1.classList.add("www");
+
+      //2 Дан элемент #elem. Добавьте ему класс www.
+      let el2 = document.querySelector("#elem2");
+      el2.classList.remove("www2");
+
+      //3 Дан элемент #elem. Проверьте наличие у него класса www.
+      let el3 = document.querySelector("#elem3");
+      console.log(el3.classList.contains("www3"));
+
+      //4 Дан элемент #elem. Добавьте ему класс www, если его нет и удалите - если есть.
+      let el4 = document.querySelector("#elem4");
+      el4.classList.contains("www4")
+        ? el4.classList.remove("www4")
+        : el4.classList.add("www4");
+
+      //5 Дан элемент #elem. Узнайте количество его классов.
+      let el5 = document.querySelector("#elem5");
+      console.log(el5.classList.length);
+
+      //6  Дан элемент #elem. Выведите последовательно алертом его классы.
+      let el6 = document.querySelector("#elem6");
+      el6.classList.forEach((i) => {
+        // alert(i);
+      });
+
+      //7 Дан элемент #elem. Сделайте его красного цвета, размером 30px, добавьте ему границу. Решите задачу с помощью свойства cssText.
+      let el7 = document.querySelector("#elem7");
+      el7.style.cssText =
+        "background: red; height: 100px; width: 100px; border: 2px solid black;";
+
+      //8 Дан элемент #elem. По клику на него выведите название его тега.
+      let el8 = document.querySelector("#elem8");
+      el8.addEventListener("click", () => console.log(el8.tagName));
+
+      //9 Дан элемент #elem. По клику на него выведите название его тега в нижнем регистре.
+      let el9 = document.querySelector("#elem9");
+      el9.addEventListener("click", () =>
+        console.log(el8.tagName.toLocaleLowerCase())
+      );
+
+      //10  Даны элементы с классом. Добавьте каждому элементу в конец название его тега в нижнем регистре.
+      let el10 = document.querySelectorAll(".www5");
+      el10.forEach((i) => {
+        i.textContent += i.tagName.toLocaleLowerCase();
+      });
+
+      //11 Дан ol. Вставьте ему в конец li с текстом 'пункт'.
+      let list = document.querySelector(".list");
+      let item = document.createElement("li");
+      item.textContent = "пункт";
+      list.appendChild(item);
+
+      //12 Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li.
+      let list2 = document.querySelector(".list2");
+      let arr = ["1", "2", "3", "4"];
+      arr.forEach((i) => {
+        let item = document.createElement("li");
+        item.textContent = i;
+        list2.appendChild(item);
+      });
+
+      //13 Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li. Сделайте так, чтобы к вставляемым li было привязано следующее событие: по нажатию на li она должна вывести на экран свой текст.
+      let list3 = document.querySelector(".list3");
+      let arr2 = ["1", "2", "3", "4"];
+      arr2.forEach((i) => {
+        let item = document.createElement("li");
+        item.textContent = i;
+        list3.appendChild(item);
+        item.addEventListener("click", () => alert(item.textContent));
+      });
+
+      //14  Дан элемент ul, а в нем li #elem. Вставьте перед элементом #elem новую li с текстом '!!!'.
+      let list4 = document.querySelector(".list4");
+      let item2 = document.querySelector("#item");
+      let newLi = document.createElement("li");
+      newLi.textContent = "!!!";
+      list4.insertBefore(newLi, item2);
+
+      //15 Дан элемент #elem. Вставьте перед ним span с текстом '!!!'.
+      let el11 = document.querySelector("#elem10");
+      el11.insertAdjacentHTML("beforebegin", "<span>!!!</span>");
+
+      //16  Дан элемент #elem. Вставьте после него span с текстом '!!!'.
+      let el12 = document.querySelector("#elem11");
+      el12.insertAdjacentHTML("afterend", "<span>!!!</span>");
+
+      //17 Дан элемент #elem. Вставьте ему в начало span с текстом '!!!'.
+      let el13 = document.querySelector("#elem12");
+      el13.insertAdjacentHTML("afterbegin", "<span>!!!</span>");
+
+      //18 Дан элемент #elem. Вставьте ему в конец span с текстом '!!!'.
+      let el14 = document.querySelector("#elem13");
+      el14.insertAdjacentHTML("beforeend", "<span>!!!</span>");
+
+      //19  Дан элемент #elem. Найдите первого потомка этого элемента и сделайте его текст красного цвета.
+      let el15 = document.querySelector("#elem14");
+      el15.firstElementChild.style.color = "red";
+
+      //20 Дан элемент #elem. Найдите последнего потомка этого элемента и сделайте его текст красного цвета.
+      let el16 = document.querySelector("#elem15");
+      el16.lastElementChild.style.color = "red";
+
+      //21  Дан элемент #elem. Найдите всех потомков этого элемента и добавьте им в конец текст '!'.
+      let el17 = document.querySelector("#elem16").children;
+      for (let value of el17) {
+        value.textContent += "!";
+      }
+
+      //22  Дан элемент #elem. Найдите его соседа сверху и добавьте ему в конец текст '!'.
+      let el18 = document.querySelector(".div");
+      el18.previousElementSibling.textContent += "!!!";
+
+      //23  Дан элемент #elem. Найдите его соседа снизу и добавьте ему в конец текст '!'.
+      let el19 = document.querySelector(".div2");
+      el19.nextElementSibling.textContent += "!!!";
+
+      //24  Дан элемент #elem. Найдите его соседа снизу его соседа снизу (следующий элемент за соседним) и добавьте ему в конец текст '!'.
+      let el20 = document.querySelector(".div3");
+      let nextEl = el20.nextElementSibling;
+      nextEl.nextElementSibling.textContent += "!!!";
+
+      //25 Дан элемент #elem. Найдите его родителя и покрасьте его в красный цвет.
+      let el21 = document.querySelector(".div4");
+      el21.parentElement.style.background = "red";
+
+      //26 Дан элемент #elem. Найдите родителя его родителя и покрасьте его в красный цвет.
+      let el22 = document.querySelector(".div5");
+      let parent = el22.parentNode;
+      parent.parentNode.style.background = "red";
+
+      //27 Дан элемент #parent, внутри него дан элемент #child. Дана кнопка. По нажатию на эту кнопку удалите элемент #child.
+      let parent2 = document.querySelector("#parent");
+      let btn = document.querySelector("#btn");
+      let child = document.querySelector("#child");
+      btn.addEventListener("click", () => {
+        parent2.removeChild(child);
+        btn.disabled = true;
+      });
+
+      //28  Дан ol. По нажатию на кнопку получите его последнего потомка и удалите его.
+      let parent3 = document.querySelector(".parent");
+      let btn2 = document.querySelector(".btn");
+      btn2.addEventListener("click", () => {
+        let lastChild = parent3.lastElementChild;
+        parent3.removeChild(lastChild);
+        btn2.disabled = true;
+      });
+
+      //29 Дан элемент. Сделайте так, чтобы по нажатию по нему этот элемент удалялся.
+      let parent4 = document.querySelector(".parent2");
+      let child2 = document.querySelector(".child2");
+      child2.addEventListener("click", () => {
+        parent4.removeChild(child2);
+      });
+
+      //30 Дан ol, а внутри него li. Сделайте так, чтобы по нажатию на любую li эта li удалялась.
+      let parent5 = document.querySelector(".parent3");
+      parent5.addEventListener("click", (event) => {
+        if (event.target.className == "child3") {
+          parent5.removeChild(event.target);
+        }
+      });
+
+      //31 Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.
+      let inp = document.querySelector(".inp");
+      let btn3 = document.querySelector(".btn2");
+      let parent6 = document.querySelector(".parent4");
+      btn3.addEventListener("click", cloneEl);
+      function cloneEl() {
+        let clone = inp.cloneNode();
+        parent6.prepend(clone);
+      }
+    </script>
+  </body>
+</html>
