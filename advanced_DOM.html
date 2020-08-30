@@ -170,6 +170,26 @@
       <input type="text" class="inp" />
       <button class="btn2">push</button>
     </div>
+    <br />
+
+    <!-- 33 -->
+    <div class="parent5">
+      <input type="text" class="inp2" />
+      <button class="btn3">+</button>
+    </div>
+    <br />
+
+    <!-- 34 -->
+    <div class="parent6">
+      <input type="text" class="inp3" />
+    </div>
+    <br />
+
+    <!-- 35 -->
+    <div class="parent7" style="width: 100px; height: 100px; background: red;">
+      <button class="btn4">push</button>
+    </div>
+    <br />
 
     <script>
       //1 Дан элемент #elem. Добавьте ему класс www.
@@ -342,11 +362,64 @@
       let inp = document.querySelector(".inp");
       let btn3 = document.querySelector(".btn2");
       let parent6 = document.querySelector(".parent4");
+
       btn3.addEventListener("click", cloneEl);
+
       function cloneEl() {
         let clone = inp.cloneNode();
         parent6.prepend(clone);
       }
+
+      //32 Дан массив. Создайте ul через createElement, затем вставьте каждый элемент этого массива в отдельную li внутри этой ul, затем вставьте эту ul в конец body.
+      let arr3 = ["1", "2", "3", "4"];
+
+      function createList() {
+        let list = document.createElement("ul");
+
+        arr3.forEach((el) => {
+          let item = document.createElement("li");
+          item.textContent = el;
+          list.appendChild(item);
+        });
+
+        document.body.appendChild(list);
+      }
+      createList();
+
+      //33 Дан инпут. Рядом с ним находится кнопочка "+". По нажатию на эту кнопку под нашим инпутом должен появится еще один пустой инпут.
+
+      let parent7 = document.querySelector(".parent5");
+      let btn4 = document.querySelector(".btn3");
+      let inp2 = document.querySelector(".inp2");
+
+      function cloneInput() {
+        let newInput = inp2.cloneNode();
+        parent7.insertAdjacentElement("afterend", newInput);
+        btn4.removeEventListener("click", cloneInput);
+      }
+
+      btn4.addEventListener("click", cloneInput);
+
+      //34 Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы каждая цифра вставилась в новый инпут. Инпутов для цифр изначально не существует, они должны создаться в процессе работы скрипта.
+      let inp3 = document.querySelector(".inp3");
+      let parent8 = document.querySelector(".parent6");
+      inp3.addEventListener("blur", () => {
+        for (el of inp3.value) {
+          let newInp = document.createElement("input");
+          newInp.value = +el;
+
+          !isNaN(newInp.value)
+            ? parent8.appendChild(newInp)
+            : (inp3.value = `вместо ${el} введите число`);
+        }
+      });
+
+      //35 Дана кнопка. Сделайте так, чтобы по нажатию на эту кнопку, скрывался родитель этой кнопки.
+      let btn5 = document.querySelector(".btn4");
+      let parent9 = document.querySelector(".parent7");
+      btn5.addEventListener("click", () => {
+        btn5.parentNode.style.opacity = "0";
+      });
     </script>
   </body>
 </html>

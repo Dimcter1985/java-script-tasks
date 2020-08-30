@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>guess number</title>
+</head>
+<body>
+  <input type="text" class="user-num">
+  <button class="btn">нажми</button>
+  <hr>
+  <div class="answer"></div>
+  <div class="attempts">осталось попыток: 5</div>
+  <script>
+    let randomNum = Math.floor((Math.random() * 10) + 1);
+    console.log(randomNum);
+    let btn = document.querySelector('.btn');
+    let result = document.querySelector('.answer');
+    let attempt = 5;
+    
+    function userAttempts() {
+      let userNum = document.querySelector('.user-num').value;
+
+      if(attempt > 0) {
+        if(isNaN(userNum) || userNum == '') {
+          result.textContent = 'это не число!!';
+        } else {
+          if(userNum == randomNum) {
+            result.textContent = 'правильно!!';
+          } else if (userNum > randomNum) {
+            result.textContent = 'больше чем нужно!!';
+          } else {
+            result.textContent = 'меньше чем нужно!!';
+          }
+        }
+        attempt -= 1;
+        document.querySelector('.attempts').textContent = `осталось попыток: ${attempt}`;
+      } else {
+        result.textContent = 'вы проиграли!!';
+        location.reload();
+      }    
+    };
+
+    btn.onclick = userAttempts;
+  </script>
+</body>
+</html>

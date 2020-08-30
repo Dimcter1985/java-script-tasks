@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="div">
+      <!-- 18 -->
+      <button class="btn18">scroll to bottom</button><br /><br />
+      <!-- 19 -->
+      <button class="btn19">scrollBy</button><br /><br />
+
+      <div class="block"></div>
+      <br />
+      <!-- 1 -->
+      <button class="btn1">border top</button><br /><br />
+      <!-- 2 -->
+      <button class="btn2">border left</button><br /><br />
+      <!-- 3 -->
+      <button class="btn3">full width</button><br /><br />
+      <!-- 4 -->
+      <button class="btn4">full height</button><br /><br />
+      <!-- 5 -->
+      <button class="btn5">inner width</button><br /><br />
+      <!-- 6 -->
+      <button class="btn6">inner height</button><br /><br />
+
+      <div class="block2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+        ratione blanditiis neque soluta aspernatur? A, id consequuntur deserunt
+        quaerat repudiandae tenetur eos similique nobis reprehenderit ad dolore
+        ut esse atque.
+      </div>
+      <br />
+      <!-- 7 -->
+      <button class="btn7">scroll height</button><br /><br />
+      <!-- 8 -->
+      <button class="btn8">scroll width</button><br /><br />
+      <!-- 9 -->
+      <button class="btn9">scroll</button><br /><br />
+      <!-- 10 -->
+      <button class="btn10">scrolling</button><br /><br />
+      <!-- 11 -->
+      <button class="btn11">scroll height</button><br /><br />
+      <!-- 12 -->
+      <button class="btn12">scroll width</button><br /><br />
+      <!-- 13 -->
+      <button class="btn13">scroll to 100px</button><br /><br />
+      <!-- 14 -->
+      <button class="btn14">page scroll</button><br /><br />
+      <!-- 15 -->
+      <button class="btn15">page scroll</button><br /><br />
+      <!-- 16 -->
+      <button class="btn16">scroll to</button><br /><br />
+      <!-- 17 -->
+      <button class="btn17">scroll by</button><br /><br />
+      <!-- 20 -->
+      <button class="btn20">20</button><br /><br />
+      <!-- 21 -->
+      <div class="block3"></div>
+      <br />
+      <button class="btn21">++</button><br /><br />
+    </div>
+    <style>
+      .div {
+        width: 2000px;
+        padding: 200px;
+      }
+
+      .block,
+      .block2,
+      .block3 {
+        width: 100px;
+        height: 100px;
+        padding: 30px;
+        border: 10px solid gray;
+        background: indianred;
+        overflow: auto;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+    <script>
+      //1 Дан элемент block с границами. По нажатию на кнопку выведите толщину его верхней границы.
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn1");
+
+        btn.addEventListener("click", showBorderWidth);
+
+        function showBorderWidth() {
+          console.log(block.clientTop);
+        }
+      })();
+
+      //2 Дан элемент block с границами. По нажатию на кнопку выведите толщину его левой границы.
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn2");
+
+        btn.addEventListener("click", showBorderWidth);
+
+        function showBorderWidth() {
+          console.log(block.clientLeft);
+        }
+      })();
+
+      //3 Дан элемент block с границами. По нажатию на кнопку выведите его полную ширину с учетом границы и padding
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn3");
+
+        btn.addEventListener("click", showWidth);
+
+        function showWidth() {
+          console.log(block.offsetWidth);
+        }
+      })();
+
+      //4 Дан элемент block с границами. По нажатию на кнопку выведите его полную высоту с учетом границы и padding
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn4");
+
+        btn.addEventListener("click", showHeight);
+
+        function showHeight() {
+          console.log(block.offsetHeight);
+        }
+      })();
+
+      //5 Дан элемент block с границами. По нажатию на кнопку выведите его полную ширину без учета границы, но с padding
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn5");
+
+        btn.addEventListener("click", showInnerWidth);
+
+        function showInnerWidth() {
+          console.log(block.clientWidth);
+        }
+      })();
+
+      //6 Дан элемент block с границами. По нажатию на кнопку выведите его полную высоту без учета границы, но с padding
+      (function () {
+        let block = document.querySelector(".block");
+        let btn = document.querySelector(".btn6");
+
+        btn.addEventListener("click", showInnerHeight);
+
+        function showInnerHeight() {
+          console.log(block.clientHeight);
+        }
+      })();
+
+      //7 Дан элемент block. Получите его ширину и высоту, без учета границы и padding
+      (function () {
+        let block = document.querySelector(".block");
+        let style = window.getComputedStyle(block);
+        console.log(style.width);
+        console.log(style.height);
+      })();
+
+      //8  Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку выведите на сколько элемент прокручен сверху
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn7");
+
+        btn.addEventListener("click", showScrollTop);
+
+        function showScrollTop() {
+          console.log(block.scrollTop);
+        }
+      })();
+
+      //9  Дан элемент block2 с горизонтальной полосой прокрутки. По нажатию на кнопку выведите на сколько элемент прокручен слева
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn8");
+
+        btn.addEventListener("click", showScrollLeft);
+
+        function showScrollLeft() {
+          console.log(block.scrollLeft);
+        }
+      })();
+
+      //10 Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку прокрутите его до позиции 100px сверху
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn9");
+
+        btn.addEventListener("click", toTop);
+
+        function toTop() {
+          block.scrollTop = 100;
+        }
+      })();
+
+      //11  Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку прокрутите его на 100px вниз от текущего положения
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn10");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          block.scrollTop += 100;
+        }
+      })();
+
+      //12 Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку выведите реальную высоту элемента с учетом прокрутки
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn11");
+
+        btn.addEventListener("click", scrollHeight);
+
+        function scrollHeight() {
+          console.log(block.scrollHeight);
+        }
+      })();
+
+      //13 Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку выведите реальную ширину элемента с учетом прокрутки
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn12");
+
+        btn.addEventListener("click", scrollWidth);
+
+        function scrollWidth() {
+          console.log(block.scrollWidth);
+        }
+      })();
+
+      //13  Дан элемент block2 с вертикальной полосой прокрутки. По нажатию на кнопку прокрутите его до позиции 100px от нижнего края элемента
+      (function () {
+        let block = document.querySelector(".block2");
+        let btn = document.querySelector(".btn13");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          let fullHeight = block.scrollHeight;
+          let neededHeight = fullHeight - 100;
+          block.scrollTop = neededHeight;
+        }
+      })();
+
+      //14 Дана страница с вертикальной полосой прокрутки. По нажатию на кнопку узнайте на сколько страница прокручена по вертикали
+      (function () {
+        let btn = document.querySelector(".btn14");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          console.log(window.pageYOffset);
+        }
+      })();
+
+      //15 Дана страница с горизонтальной полосой прокрутки. По нажатию на кнопку узнайте на сколько страница прокручена по горизонтали
+      (function () {
+        let btn = document.querySelector(".btn15");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          console.log(window.pageXOffset);
+        }
+      })();
+
+      //16 Дана страница с горизонтальной и вертикальной полосами прокрутки. По нажатию на кнопку прокрутите ее в точку 300px слева, 500px сверху
+      (function () {
+        let btn = document.querySelector(".btn16");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          window.scrollTo(300, 500);
+        }
+      })();
+
+      //17 Дана страница с вертикальной полосой прокрутки. По нажатию на кнопку прокрутите на 300px вниз от текущего положения
+      (function () {
+        let btn = document.querySelector(".btn17");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          window.scrollBy(0, 300);
+        }
+      })();
+
+      //18  По нажатию на кнопку прокрутите страницу до самого низа
+      (function () {
+        let btn = document.querySelector(".btn18");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          window.scrollTo(0, document.body.clientHeight);
+        }
+      })();
+
+      //19 По нажатию на кнопку прокрутите страницу на 400px от текущего положения
+      (function () {
+        let btn = document.querySelector(".btn19");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          window.scrollBy(0, 400);
+        }
+      })();
+
+      //20  По нажатию на кнопку проверьте, прокручена ли страница до самого низа. Если это так - прокрутите ее в положение 100px от верхнего края
+      (function () {
+        let btn = document.querySelector(".btn20");
+
+        btn.addEventListener("click", scrolling);
+
+        function scrolling() {
+          let body = document.documentElement;
+          if (body.scrollHeight - body.scrollTop == body.clientHeight) {
+            window.scrollTo(0, 100);
+          }
+        }
+      })();
+
+      //21 Дан элемент #elem. По клику на него увеличьте его ширину и высоту в 2 раза
+      (function () {
+        let btn = document.querySelector(".btn21");
+        let block = document.querySelector(".block3");
+
+        btn.addEventListener("click", foo);
+
+        function foo() {
+          let blockWidth = block.offsetWidth;
+          let blockHeight = block.offsetHeight;
+          block.style.width = blockWidth * 2 + "px";
+          block.style.height = blockHeight * 2 + "px";
+          btn.removeEventListener("click", foo);
+        }
+      })();
+    </script>
+  </body>
+</html>

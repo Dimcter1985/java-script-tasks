@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="text">Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur       adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+    Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!Lorem ipsumolore earum, sint id, qui odio, praesentium sapiente quasi am dolor, sit amet consectetur adipisicing elit. Det obcaecati beatae suscipit voluptatem est cum non hic quis. Iusto, quidem? Itaque!
+  </p>
+  <button id="btn">UP</button>
+
+  <style>
+    #text {
+      width: 100px;
+    }
+
+    #btn {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+    }
+  </style>
+
+  <script>
+    window.onload = function() { //когда загрузится страница
+      let scrolled;
+      let timer;
+      let btn = document.querySelector('#btn');
+      
+      btn.addEventListener('click', () => {
+        scrolled = window.pageYOffset;
+        console.log(scrolled);
+
+        scrollToTop();
+
+        function scrollToTop() {
+          if(scrolled > 0) {
+            window.scrollTo(0, scrolled);
+            scrolled -= 50//скорость прокрутки
+            timer = setTimeout(scrollToTop, 50);
+          } 
+          else {
+            clearTimeout(timer);
+            window.scrollTo(0, 0);
+          }
+        }
+      })
+    }
+  </script>
+</body>
+</html>

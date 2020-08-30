@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="height: 1100px">
+    <button class="btn">1</button><br /><br />
+    <button class="btn2">2</button><br /><br />
+    <button class="btn3">3</button><br /><br />
+    <script>
+      //1 Дана кнопка. По нажатию на эту кнопку выведите высоту окна браузера
+      (function () {
+        let btn = document.querySelector(".btn");
+        btn.addEventListener("click", () =>
+          console.log(document.documentElement.clientHeight)
+        );
+      })();
+
+      //2 Дана кнопка. По нажатию на эту кнопку прокрутите окно браузера до самого низа
+      (function () {
+        let btn = document.querySelector(".btn2");
+        btn.addEventListener("click", () => {
+          let currHeight = window.innerHeight;
+          window.scrollTo(0, currHeight);
+        });
+      })();
+
+      //3 Дана кнопка. По нажатию на эту кнопку узнайте, есть ли у окна браузера вертикальная прокрутка.
+      (function () {
+        let btn = document.querySelector(".btn3");
+        btn.addEventListener("click", () => {
+          let heightPage = document.documentElement.clientHeight;
+          let scrollHeight = document.documentElement.scrollHeight;
+          heightPage < scrollHeight
+            ? console.log("есть прокрутка")
+            : console.log("нет прокрутки");
+        });
+      })();
+    </script>
+  </body>
+</html>
