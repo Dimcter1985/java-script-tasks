@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <form action="" name="form1" id="form1">
+      <input type="text" class="input" name="input" value="1" /><br /><br />
+      <input type="text" class="input" name="input" value="2" /><br /><br />
+      <input type="text" class="input" name="input" value="3" /><br /><br />
+    </form>
+    <br /><br />
+    <form action="" name="form2" id="form2">
+      <input type="text" class="input" name="input" value="1" /><br /><br />
+      <input type="text" class="input" name="input" value="2" /><br /><br />
+      <input type="text" class="input" name="input" value="3" /><br /><br />
+    </form>
+    <br /><br />
+    <form action="" name="form3" id="form3">
+      <input type="text" class="input" name="input" value="1" /><br /><br />
+      <input type="text" class="input" name="input" value="2" /><br /><br />
+      <input type="text" class="input" name="input" value="3" /><br /><br />
+    </form>
+    <br /><br />
+    <button class="btn">press</button>
+    <script>
+      //1 На странице расположено несколько форм. В них есть инпуты, в инпутах числа. Дана кнопка. По нажатию на эту кнопку циклом переберите все формы на странице, затем циклом переберите все инпуты в каждой форме и найдите сумму чисел из всех этих инпутов.
+      (function () {
+        let btn = document.querySelector(".btn");
+
+        btn.addEventListener("click", () => {
+          let sum = 0;
+
+          for (let form of document.forms) {
+            for (let element of form.elements) {
+              sum += +element.value;
+            }
+          }
+
+          console.log(sum);
+        });
+      })();
+    </script>
+  </body>
+</html>

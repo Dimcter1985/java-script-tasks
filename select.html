@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <select name="select" id="select" class="list">
+      <option value="germany">Германия</option>
+      <option value="russia">Россия</option>
+      <option value="usa">США</option></select
+    ><br /><br />
+    <input type="text" class="input" /><br /><br />
+    2
+    <select name="select" id="select" class="list2">
+      <option value="germany">Германия</option>
+      <option value="russia">Россия</option>
+      <option value="usa">США</option></select
+    ><br /><br />
+    <input type="text" class="input2" /><br /><br />
+    <button class="btn">push</button><br /><br />
+    3
+    <select name="select" id="select" class="list3">
+      <option value="germany">Германия</option>
+      <option value="russia">Россия</option>
+      <option value="usa">США</option>
+    </select>
+    <div class="parent"></div>
+    <br />
+    4
+    <div class="parent2">
+      <select name="" class="day"></select>
+      <select name="" class="month"></select>
+      <select name="" class="year"></select>
+    </div>
+
+    <style>
+      .parent {
+        margin-left: 100px;
+      }
+    </style>
+
+    <script>
+      //1 Дан селект. Дан инпут. По изменению селекта выведите текст выбранного пункта в инпут.
+      (function () {
+        let list = document.querySelector(".list");
+        list.addEventListener("change", () => {
+          let inp = document.querySelector(".input");
+          for (let option of list.options) {
+            if (option.selected === true) {
+              inp.value = option.text;
+            }
+          }
+        });
+      })();
+
+      //2 Дан селект. Дан инпут. Дана кнопка. Сделайте так, чтобы в инпут можно было ввести число, нажать на кнопку и в селекте становился выбранным пункт с этим номером.
+      (function () {
+        let btn = document.querySelector(".btn");
+        btn.addEventListener("click", () => {
+          let inp = document.querySelector(".input2");
+          let num = +inp.value;
+          let list = document.querySelector(".list2");
+          list.selectedIndex = num;
+          if (num < 0 || num > 2 || isNaN(num)) {
+            inp.value = "введите число от 0 до 2";
+          }
+        });
+      })();
+
+      //3 Дан селект со списком стран. Сделайте так, чтобы при выборе страны рядом появлялся еще и селект со списком городов из этой страны.
+      (function () {
+        let parent = document.querySelector(".parent");
+        let list = document.querySelector(".list3");
+        let sityes = [
+          ["Берлин", "Гамбург", "Мюнхен"],
+          ["Москва", "Санкт-Петербург", "Новосибирск"],
+          ["Вашингтон", "Нью-Йорк", "Лос-Анджелес"],
+        ];
+
+        function createSelect() {
+          for (let i = 0; i < sityes.length; i++) {
+            if (list.selectedIndex == i) {
+              let select = document.createElement("select");
+              for (let k = 0; k < sityes[i].length; k++) {
+                let option = document.createElement("option");
+                option.text = sityes[i][k];
+                select.appendChild(option);
+              }
+
+              parent.appendChild(select);
+              if (parent.children.length > 1) {
+                parent.removeChild(select.previousElementSibling);
+              }
+            }
+          }
+        }
+
+        list.addEventListener("change", createSelect);
+      })();
+
+      //4  Даны 3 селекта: с днем, с месяцем и годом. Сделайте так, чтобы некорректную дату нельзя было выбрать.
+      (function () {
+        let yearSelect = document.querySelector(".year");
+        let monthSelect = document.querySelector(".month");
+        let daySelect = document.querySelector(".day");
+
+        let date = new Date();
+        let currentYear = date.getFullYear();
+        let currentMonth = date.getMonth() + 1;
+        let currentDay = date.getDate();
+
+        fillSelect(yearSelect, range(currentYear - 10, currentYear + 10));
+        fillSelect(monthSelect, range(1, 12));
+        fillSelect(daySelect, range(1, 31));
+
+        yearSelect.value = currentYear;
+        monthSelect.value = currentMonth;
+        daySelect.value = currentDay;
+
+        yearSelect.addEventListener("focus", selectFocusHandle);
+        monthSelect.addEventListener("focus", selectFocusHandle);
+        daySelect.addEventListener("focus", selectFocusHandle);
+
+        yearSelect.addEventListener("change", selectChangeHandle);
+        monthSelect.addEventListener("change", selectChangeHandle);
+        daySelect.addEventListener("change", selectChangeHandle);
+
+        function selectChangeHandle() {
+          if (checkDate(yearSelect.value, monthSelect.value, daySelect.value)) {
+            console.log("yes!");
+          } else {
+            console.log("no!");
+            this.value = this.dataset.default;
+          }
+        }
+
+        function selectFocusHandle() {
+          this.dataset.default = this.value;
+        }
+
+        function fillSelect(select, arr) {
+          arr.forEach(function (element) {
+            select.add(new Option(element));
+          });
+        }
+
+        function range(from, to) {
+          let arrFromTo = [];
+          for (let i = from; i <= to; i++) {
+            arrFromTo.push(i);
+          }
+          return arrFromTo;
+        }
+
+        function checkDate(year, month, day) {
+          let date = new Date(year, month - 1, day);
+          if (
+            date.getFullYear() == year &&
+            date.getMonth() == month - 1 &&
+            date.getDate() == day
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

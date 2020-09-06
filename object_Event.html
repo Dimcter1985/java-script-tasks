@@ -6,16 +6,72 @@
     <title>Document</title>
   </head>
   <body>
+    1
     <div class="field">
       <span class="x">X:</span><br />
       <span class="y">Y:</span>
     </div>
+    <br />
+    2
+    <div class="field2">
+      <div class="block"></div>
+    </div>
+    <br />
+    3
+    <br />
+    <input type="text" name="" class="inp" /><br />
+    <span class="txt">Код нажатой клавиши: ?</span><br /><br />
+    4
+    <br />
+    <input type="text" name="" class="inp2" /><br />
+    <span class="txt2">Нажатая клавиша: ?</span><br /><br />
+    5
+    <br />
+    <div class="el"></div>
+    <br />
+    6
+    <br />
+    <span class="txt3"></span><br /><br />
+    7
+    <br />
+    <input
+      type="text"
+      class="inp3"
+      placeholder="введи текст и нажми Enter"
+    /><br />
+    <span class="txt4"></span>
     <style>
-      .field {
-        width: 500px;
-        height: 500px;
+      * {
+        box-sizing: border-box;
+      }
+      .field,
+      .field2,
+      .field3 {
+        width: 300px;
+        height: 300px;
         border: 2px dashed grey;
         padding: 20px;
+      }
+
+      .block,
+      .block2 {
+        width: 60px;
+        height: 60px;
+        border: 1px solid red;
+        position: absolute;
+      }
+
+      .el {
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+      }
+
+      .txt3 {
+        display: block;
+        width: 50px;
+        height: 30px;
+        border: 1px solid black;
       }
     </style>
     <script>
@@ -31,6 +87,79 @@
           x.textContent = `X:${event.clientX}`;
           y.textContent = `Y:${event.clientY}`;
         }
+      })();
+
+      //2
+      (function () {
+        let field = document.querySelector(".field2");
+
+        field.addEventListener("click", transferBlock);
+
+        function transferBlock(event) {
+          let block = document.querySelector(".block");
+          block.style.left = event.clientX + "px";
+          block.style.top = event.clientY + "px";
+        }
+      })();
+
+      //3
+      (function () {
+        let inp = document.querySelector(".inp");
+        inp.addEventListener("keypress", showKeyCode);
+        function showKeyCode(event) {
+          let txt = document.querySelector(".txt");
+          txt.textContent = `Код нажатой клавиши:${event.keyCode}`;
+        }
+      })();
+
+      //4
+      (function () {
+        let inp = document.querySelector(".inp2");
+        inp.addEventListener("keypress", showKey);
+        function showKey(event) {
+          let txt = document.querySelector(".txt2");
+          txt.textContent = `Нажатая клавиша:${String.fromCharCode(
+            event.keyCode
+          )}`;
+        }
+      })();
+
+      //5  Дан элемент. Сделайте так, чтобы по клику на него он красился в красный цвет, но только если в момент клика нажата клавиша Ctrl.
+      (function () {
+        let el = document.querySelector(".el");
+        el.addEventListener("click", (event) => {
+          if (event.ctrlKey) {
+            el.style.background = "red";
+          }
+        });
+      })();
+
+      //6 Дан элемент. Сделайте так, чтобы при клике на него и нажатой клавише Ctrl - в его текст записывалось '1', при нажатой клавише Alt - '2', а при нажатой клавише Shift - '3'.
+      (function () {
+        let el = document.querySelector(".txt3");
+        el.addEventListener("click", (event) => {
+          if (event.ctrlKey) {
+            el.textContent = "1";
+          }
+          if (event.altKey) {
+            el.textContent = "2";
+          }
+          if (event.shiftKey) {
+            el.textContent = "3";
+          }
+        });
+      })();
+
+      //7 Дан инпут. В него вводится текст и нажимается клавиша Enter (ее код имеет номер 13). Сделайте так, чтобы по нажатию Enter введенный текст попадал в абзац под инпутом, а содержимое инпута очищалось.
+      (function () {
+        let inp = document.querySelector(".inp3");
+        inp.addEventListener("keypress", (event) => {
+          let txt = document.querySelector(".txt4");
+          if (event.keyCode === 13) {
+            txt.textContent = inp.value;
+            inp.value = "";
+          }
+        });
       })();
     </script>
   </body>

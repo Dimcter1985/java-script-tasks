@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <div class="field">
+      <div class="block"></div>
+    </div>
+    <br />
+    2
+    <ul class="list">
+      <li class="item">пункт</li>
+      <li class="item">пункт</li>
+      <li class="item">пункт</li>
+    </ul>
+    <button class="btn">press</button><br /><br />
+    3
+    <table class="table">
+      <tr>
+        <th>Name</td>
+        <th>LastName</th>
+      </tr>
+    </table>
+    <br />
+    <form action="" , class="form">
+      <input type="text" placeholder="введите имя" /><br /><br />
+      <input type="text" placeholder="введите фамилию" /><br /><br />
+      <input type="button" class="btn2" value="press" />
+    </form>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .field {
+        width: 300px;
+        height: 300px;
+        border: 2px dashed grey;
+        padding: 20px;
+      }
+
+      .block {
+        width: 60px;
+        height: 60px;
+        border: 1px solid red;
+        position: absolute;
+      }
+
+      .table,
+      tr,
+      td,
+      th {
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      //1
+      (function () {
+        let field = document.querySelector(".field");
+
+        field.addEventListener("click", transferBlock);
+
+        function transferBlock(event) {
+          let block = document.querySelector(".block");
+          block.style.left = event.clientX - 30 + "px";
+          block.style.top = event.clientY - 30 + "px";
+        }
+      })();
+
+      //2 Дан ul, в нем несколько li. Под ul сделайте кнопку, по нажатию на которую в конец ul будет добавляться новый li с текстом 'пункт'. Сделайте так, чтобы при клике на каждый li, ему в конец добавлялся '!'. Это должно работать и для вновь добавленных li. Задачу решите с помощью делегирования (то есть событие должно быть навешано на ul).
+      (function () {
+        let list = document.querySelector(".list");
+        let btn = document.querySelector(".btn");
+
+        btn.addEventListener("click", () => {
+          let newLi = document.createElement("li");
+          newLi.textContent = "пункт";
+          list.appendChild(newLi);
+        });
+
+        list.addEventListener("click", (event) => {
+          if ((event.target.tagName = "LI")) {
+            event.target.textContent = "пункт!!!!!!!!!!!";
+          }
+        });
+      })();
+
+      //3 Дана таблица с юзерами с двумя колонками: имя и фамилия. Под таблицей сделайте форму, с помощью которой можно будет добавить нового юзера в таблицу. Сделайте так, чтобы при клике на любую ячейку появлялся prompt, с помощью которого можно изменить текст ячейки. Задачу решите с помощью делегирования (то есть событие должно быть навешано на table).
+      (function () {
+        let table = document.querySelector('.table');
+        let btn = document.querySelector('.btn2')
+
+        btn.addEventListener('click', addNewUser);
+        table.addEventListener('click', rename)
+
+        function addNewUser() {
+          let newTr = document.createElement('tr');
+          
+
+          function addName() {
+            let name = document.forms[0].elements[0];
+            let newTd1 = document.createElement('td');
+            newTd1.textContent = name.value;
+            newTr.appendChild(newTd1);
+          }
+
+          function addLastName() {
+            let lastName = document.forms[0].elements[1];
+            let newTd2 = document.createElement('td');
+            newTd2.textContent = lastName.value;
+            newTr.appendChild(newTd2);
+          }
+
+          addName();
+          addLastName();
+
+          table.appendChild(newTr);
+        }
+
+        function rename(event) {
+          let target = event.target;
+          if (target.tagName === 'TD') {
+            let msg = prompt();
+            target.textContent = msg
+          }
+        }
+      })()
+    </script>
+  </body>
+</html>
