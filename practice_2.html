@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  1
+  <br />
+  <div class="parent">
+    <input type="text" class="num" /><br />
+    <input type="text" class="num" /><br />
+    <input type="text" class="num" /><br />
+    <button class="btn">push</button><br />
+    <input type="text" class="sum" /><br />
+  </div>
+  <br />
+  2
+  <br />
+  <div class="parent">
+    <input type="text" class="num2" /><br />
+    <input type="text" class="num2" /><br />
+    <input type="text" class="num2" /><br />
+    <button class="btn2">push</button><br />
+    <div id="result"></div>
+    <br />
+  </div>
+  <br />
+  3
+  <div class="parent">
+    <input type="text" class="num3" />
+    <div id="result2"></div>
+  </div>
+  <br />
+  4
+  <div class="parent">
+    <input type="text" class="num4" />
+    <div class="result3"></div>
+  </div>
+  <br />
+  5
+  <div class="parent">
+    <input
+      type="text"
+      class="num5"
+      placeholder="введите фио через пробел"
+    /><br />
+    <input type="text" class="inp" /><br />
+    <input type="text" class="inp" /><br />
+    <input type="text" class="inp" /><br />
+  </div>
+  <br />
+  6
+  <div class="parent">
+    <input
+      type="text"
+      class="num6"
+      placeholder="введите фио через пробел"
+    /><br />
+  </div>
+  <br />
+  7
+  <div class="parent"><input type="text" class="num7" /><br /></div>
+  <br />
+  8
+  <div class="parent"><input type="text" class="num8" /><br /></div>
+  <br />
+  9
+  <div class="parent"><input type="text" class="num9" /><br /></div>
+  <br />
+  10
+  <div class="parent">
+    <input
+      type="text"
+      class="input10"
+      placeholder="введите год рождения"
+    /><br />
+    <span class="txt"></span><br />
+    <button class="btn3">push</button>
+  </div>
+  <br />
+  11
+  <div class="parent"><input type="text" class="num11" /><br /></div>
+  <br />
+  12
+  <div class="parent">
+    <input type="text" class="num12" /><br />
+    <button class="btn4">push</button>
+  </div>
+  <br />
+  13
+  <div class="parent"><input type="text" class="num13" /><br /></div>
+  <br />
+  14
+  <div class="parent">
+    <p
+      class="paragraph"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    ></p>
+    <p
+      class="paragraph"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    ></p>
+    <p
+      class="paragraph"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    ></p>
+    <button class="btn5">push</button>
+  </div>
+  <br />
+  15
+  <div class="parent">
+    <p
+      class="paragraph2"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      4
+    </p>
+    <p
+      class="paragraph2"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      2
+    </p>
+    <p
+      class="paragraph2"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      3
+    </p>
+    <input type="text" class="num14" />
+    <button class="btn6">push</button>
+  </div>
+  <br />
+  16
+  <div class="parent">
+    <a href="https://learn.javascript.ru/regexp-introduction" class="link"
+      >link1</a
+    ><br />
+    <a href="https://learn.javascript.ru/regexp-introduction" class="link"
+      >link2</a
+    ><br />
+    <a href="https://learn.javascript.ru/regexp-introduction" class="link"
+      >link3</a
+    ><br />
+  </div>
+  17
+  <div class="parent">
+    <a href="222" class="link2">link1</a><br />
+    <a href="https://learn.javascript.ru/regexp-introduction" class="link2"
+      >link2</a
+    ><br />
+    <a href="223" class="link2">link3</a><br />
+  </div>
+  18
+  <div class="parent">
+    <p
+      class="paragraph3"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      2
+    </p>
+    <p
+      class="paragraph3"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      4
+    </p>
+    <p
+      class="paragraph3"
+      style="border: 1px solid black; width: 20px; height: 20px"
+    >
+      6
+    </p>
+  </div>
+  19
+  <div class="parent">
+    <div
+      class="block"
+      style="background: blueviolet; width: 50px; height: 50px"
+    ></div>
+    <br />
+    <div
+      class="block"
+      style="background: blueviolet; width: 50px; height: 50px"
+    ></div>
+  </div>
+
+  <body>
+    <script>
+      //1 Даны 3 инпута и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в четвертый инпут.
+      (function () {
+        let btn = document.querySelector(".btn");
+
+        btn.addEventListener("click", () => {
+          let num = document.querySelectorAll(".num");
+          let sum = document.querySelector(".sum");
+          let result = 0;
+          num.forEach((el) => (result += +el.value));
+          sum.value = result;
+        });
+      })();
+
+      //2 Даны N инпутов с классом .num2 и кнопка. По нажатию на кнопку получите числа, стоящие в этих инпутах и запишите их сумму в div с id="result".
+      (function () {
+        let btn = document.querySelector(".btn2");
+
+        btn.addEventListener("click", () => {
+          let num = document.querySelectorAll(".num2");
+          let result = document.querySelector("#result");
+          let sum = 0;
+          num.forEach((el) => (sum += +el.value));
+          result.textContent = sum;
+        });
+      })();
+
+      //3 Дан инпут. В него вводится число. По потери фокуса найдите сумму цифр этого числа.
+      (function () {
+        let num = document.querySelector(".num3");
+
+        num.addEventListener("blur", () => {
+          let txt = document.querySelector("#result2");
+          let result = num.value.split("").reduce((sum, el) => +sum + +el);
+          txt.textContent = result;
+        });
+      })();
+
+      //4 Дан инпут. В него вводятся числа через запятую. По потери фокуса найдите среднее арифметическое этих чисел (сумма делить на количество).
+      (function () {
+        let num = document.querySelector(".num4");
+
+        num.addEventListener("blur", () => {
+          let txt = document.querySelector(".result3");
+          let str = num.value.split(",");
+          let result = str.reduce((sum, el) => +sum + +el);
+          txt.textContent = result / str.length;
+        });
+      })();
+
+      //5 Дан инпут. В него вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и отчество в отдельные инпуты.
+      (function () {
+        let fullName = document.querySelector(".num5");
+
+        fullName.addEventListener("blur", () => {
+          let arr = fullName.value.split(" ");
+          let inp = document.querySelectorAll(".inp");
+
+          for (let i = 0; i < arr.length; i++) {
+            if (arr.length <= inp.length) {
+              inp[i].value = arr[i];
+            }
+          }
+        });
+      })();
+
+      //6 Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в том же инпуте).
+      (function () {
+        let input = document.querySelector(".num6");
+
+        input.addEventListener("blur", () => {
+          let value = input.value;
+          let upperCase = value.replace(/(^|\s)\S/g, (value) =>
+            value.toUpperCase()
+          );
+        });
+      })();
+
+      //7 Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.
+      (function () {
+        let input = document.querySelector(".num7");
+
+        input.addEventListener("blur", () => {
+          let words = input.value.split(" ");
+          console.log(words.length);
+        });
+      })();
+
+      //8 Дан инпут. В него вводится текст. По потери фокуса узнайте количество символов в самом длинном слове в этом тексте.
+      (function () {
+        let input = document.querySelector(".num8");
+        let max = 0;
+        let current = 0;
+
+        input.addEventListener("blur", () => {
+          let words = input.value.split(" ");
+          words.forEach((item) => {
+            let word = item.split("");
+            current = word.length;
+            if (current > max) {
+              max = current;
+            }
+          });
+          console.log(max);
+        });
+      })();
+
+      //9 Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31.
+      (function () {
+        let input = document.querySelector(".num9");
+
+        input.addEventListener("blur", () => {
+          let reverce = input.value.split(".").reverse().join("-");
+          input.value = reverce;
+        });
+      })();
+
+      //10 Дан инпут. В него вводится год рождения пользователя. По нажатию на кнопку выведите в абзац ниже сколько пользователю лет
+      (function () {
+        let btn = document.querySelector(".btn3");
+
+        btn.addEventListener("click", () => {
+          let birthYear = document.querySelector(".input10").value;
+          let txt = document.querySelector(".txt");
+          let date = new Date();
+          let CurrentYear = date.getFullYear();
+
+          txt.textContent = CurrentYear - +birthYear;
+        });
+      })();
+
+      //11 Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату
+      (function () {
+        let input = document.querySelector(".num11");
+
+        input.addEventListener("blur", () => {
+          let value = input.value;
+          let date = new Date(value);
+          let day = date.getDay();
+          let days = [
+            "воскресенье",
+            "понедельник",
+            "вторник",
+            "среда",
+            "четверг",
+            "пятница",
+            "суббота",
+          ];
+          console.log(days[day]);
+        });
+      })();
+
+      //12 Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам)
+      (function () {
+        let btn = document.querySelector(".btn4");
+
+        btn.addEventListener("click", () => {
+          let word = document.querySelector(".num12").value;
+          let wordReverse = word.split("").reverse().join("");
+
+          word === wordReverse ? console.log("да") : console.log("нет");
+        });
+      })();
+
+      //13 Дан инпут. В него вводится число. Проверьте по вводу, что это число содержит внутри себя цифру 3
+      (function () {
+        let input = document.querySelector(".num13");
+
+        input.addEventListener("input", () => {
+          if (input.value.match(/3/)) {
+            console.log("contain");
+          }
+        });
+      })();
+
+      //14 Даны N абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер
+      (function () {
+        let btn = document.querySelector(".btn5");
+
+        btn.addEventListener("click", () => {
+          let paragraph = document.querySelectorAll(".paragraph");
+
+          paragraph.forEach((element, index) => {
+            element.textContent = index + 1;
+          });
+        });
+      })();
+
+      //15 Даны N абзацев с числами. По нажатию на кнопку выведите эти числа в инпут через запятую в порядке возрастания
+      (function () {
+        let btn = document.querySelector(".btn6");
+
+        btn.addEventListener("click", () => {
+          let paragraph = document.querySelectorAll(".paragraph2");
+          let input = document.querySelector(".num14");
+          let arr = [];
+
+          paragraph.forEach((el) => {
+            arr.push(+el.textContent);
+          });
+
+          input.value = arr.sort((a, b) => a - b);
+        });
+      })();
+
+      //16 Даны ссылки. По загрузке страницы добавьте в конец каждой ссылки ее href в круглых скобках.
+      (function () {
+        let links = document.querySelectorAll(".link");
+        document.addEventListener("DOMContentLoaded", () => {
+          links.forEach((el) => {
+            let attr = el.getAttribute("href");
+            el.textContent += `(${attr})`;
+          });
+        });
+      })();
+
+      //17 Даны ссылки. По загрузке страницы, если ссылка начинается с http://, то добавьте ей в конец стрелку → (делается так: &rarr;)
+      (function () {
+        let links = document.querySelectorAll(".link2");
+        document.addEventListener("DOMContentLoaded", () => {
+          links.forEach((el) => {
+            if (el.href.indexOf("https://") === 0) {
+              el.textContent += `${String.fromCharCode(0x2192)}`;
+            }
+          });
+        });
+      })();
+
+      //18 Даны N абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится
+      (function () {
+        let txt = document.querySelectorAll(".paragraph3");
+        txt.forEach((element) => {
+          element.addEventListener("click", function () {
+            this.textContent = +this.textContent * +this.textContent;
+          });
+        });
+      })();
+
+      //19 Даны блоки. По нажатию на любой блок увеличьте его в 2 раза.
+      (function () {
+        let block = document.querySelectorAll(".block");
+
+        function increaseBlock() {
+          let blockWidth = this.offsetWidth;
+          let blockHeight = this.offsetHeight;
+          this.style.width = blockWidth * 2 + "px";
+          this.style.height = blockHeight * 2 + "px";
+          this.removeEventListener("click", increaseBlock);
+        }
+
+        block.forEach((element) => {
+          element.addEventListener("click", increaseBlock);
+        });
+      })();
+    </script>
+  </body>
+</html>
