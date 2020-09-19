@@ -185,6 +185,38 @@
       style="background: blueviolet; width: 50px; height: 50px"
     ></div>
   </div>
+  20
+  <div class="parent">
+    <div
+      class="block2"
+      style="background: blueviolet; width: 50px; height: 50px"
+    ></div>
+    <br />
+    <div
+      class="block2"
+      style="background: blueviolet; width: 50px; height: 50px"
+    ></div>
+  </div>
+  21
+  <div class="parent2">
+    <div
+      class="block3"
+      style="background: blueviolet; width: 30px; height: 30px"
+    ></div>
+    <br />
+    <div
+      class="block3"
+      style="background: blueviolet; width: 30px; height: 30px"
+    ></div>
+    <br />
+    <div class="container"></div>
+  </div>
+  22
+  <div class="parent">
+    <button class="btn7">-1</button>
+    <input type="text" class="num15" />
+    <button class="btn7">+1</button>
+  </div>
 
   <body>
     <script>
@@ -439,6 +471,85 @@
 
         block.forEach((element) => {
           element.addEventListener("click", increaseBlock);
+        });
+      })();
+
+      //20 Даны блоки. По первому нажатию на люб блок увеличьте его в 2 раза. По второму нажатию - уменьшите обратно
+      (function () {
+        let block = document.querySelectorAll(".block2");
+
+        function increaseBlock() {
+          let blockWidth = this.offsetWidth;
+          let blockHeight = this.offsetHeight;
+          this.style.width = blockWidth * 2 + "px";
+          this.style.height = blockHeight * 2 + "px";
+          this.removeEventListener("click", increaseBlock);
+          this.addEventListener("click", reduceBlock);
+        }
+
+        function reduceBlock() {
+          let blockWidth = this.offsetWidth;
+          let blockHeight = this.offsetHeight;
+          this.style.width = blockWidth / 2 + "px";
+          this.style.height = blockHeight / 2 + "px";
+          this.removeEventListener("click", reduceBlock);
+          this.addEventListener("click", increaseBlock);
+        }
+
+        block.forEach((element) => {
+          element.addEventListener("click", increaseBlock);
+        });
+      })();
+
+      //21 Даны N блоков размера 30px. По нажатию на блок под ними появляется блок размером в 50px
+      (function () {
+        let parent = document.querySelector(".parent2");
+
+        function increaseBlock(el) {
+          el.style.width = 50 + "px";
+          el.style.height = 50 + "px";
+        }
+
+        parent.addEventListener(
+          "click",
+          (event) => {
+            let target = event.target;
+            let container = document.querySelector(".container");
+
+            if (target.className === "block3") {
+              let clone = target.cloneNode();
+              parent.appendChild(clone);
+              increaseBlock(clone);
+            }
+          },
+          { once: true }
+        );
+      })();
+
+      //22 Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.
+      (function () {
+        let btn = document.querySelectorAll(".btn7");
+        let inp = document.querySelector(".num15");
+        let value = inp.value;
+
+        function increment() {
+          value = +inp.value + 1;
+          inp.value = value;
+        }
+
+        function decrement() {
+          value = +inp.value - 1;
+          inp.value = value;
+
+          if (value <= 0) {
+            inp.value = 0;
+          }
+        }
+
+        btn.forEach((el) => {
+          el.addEventListener("click", (event) => {
+            event.target.textContent === "+1" ? increment() : decrement();
+          });
         });
       })();
     </script>
