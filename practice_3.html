@@ -37,6 +37,34 @@
     <input type="text" class="input7" placeholder="символы" /><br /><br />
     <button class="btn2">push</button><br /><br />
     <input type="text" class="input5" /><br /><br />
+    29
+    <br />
+    <input type="text" class="input8" /><br /><br />
+    <p class="txt4"></p>
+    30
+    <div class="block"></div>
+    31
+    <div class="block2" style="width: 100px; height: 100px"></div>
+    32
+    <p class="txt5"></p>
+    <br />
+    <span class="link">следующая строка</span><br><br>
+    33
+    <input class="input9"></input>
+    <input class="input9"></input>
+    <input class="input9"></input>
+
+    <style>
+      .block {
+        width: 100px;
+        height: 100px;
+        background: green;
+      }
+      .active {
+        background: red;
+      }
+    </style>
+
     <script>
       //23  Дан инпут. В него вводится число. По потери фокуса проверьте, что в нем лежит число от 1 до 100. Если это так - покрасьте инпут в зеленый цвет, а если не так - в красный.
       (function () {
@@ -134,6 +162,88 @@
         }
 
         btn.addEventListener("click", generateString);
+      })();
+
+      //29 Дан инпут. В него вводится число. По потери фокуса сделайте так, чтобы в абзаце ниже начал тикать обратный отсчет, начиная с введенного числа. Когда отсчет дойдет до нуля - он должен закончится
+      (function () {
+        const inp = document.querySelector(".input8");
+        const txt = document.querySelector(".txt4");
+
+        function countdown() {
+          inp.value--;
+          txt.textContent = inp.value;
+          if (inp.value <= 0) {
+            clearInterval(intervalID);
+          }
+        }
+
+        inp.addEventListener("blur", () => {
+          intervalID = setInterval(countdown, 1000);
+        });
+      })();
+
+      //30 Дан абзац. Сделайте так, чтобы каждую секунду он менял свой цвет с красного на зеленый и наоборот.
+      (function () {
+        function func() {
+          let block = document.querySelector(".block");
+          block.classList.toggle("active");
+        }
+        setInterval(func, 1000);
+      })();
+
+      //31  Дан абзац. Дан массив цветов ['red', 'green', 'blue']. Сделайте так, чтобы каждую секунду абзац менял свой цвет на определенное значение их массива: сначала 'red', потом 'green' и так далее. Как только цвета в массиве закончатся - все начнется сначала. Количество цветов в массиве может быть любым
+      (function () {
+        let block = document.querySelector(".block2");
+        let colors = ["red", "green", "blue"];
+        let color = 0;
+
+        function func() {
+          block.style.background = colors[color];
+          color++;
+          if (color >= colors.length) {
+            color = 0;
+          }
+        }
+        setInterval(func, 1000);
+      })();
+
+      //32 Дан абзац. Дан массив строк ['один', 'два', 'три']. Под абзацем ссылка 'следующая строка'. По заходу на страницу в абзаце должен стоять нулевой элемент этого массива, а по нажатию на ссылку - вставлятся следующий элемент
+      (function () {
+        const txt = document.querySelector(".txt5");
+        const arr = ["один", "два", "три"];
+        const link = document.querySelector(".link");
+        let i = 0;
+        
+        function setString() {txt.textContent = arr[i];}
+        setString()
+
+        function toggleStr() {
+          i++;
+          setString()
+          if (i >= arr.length) {
+            i = 0;
+            setString()
+          }
+        }
+
+        link.addEventListener("click", toggleStr);
+      })();
+
+      //33 Даны инпуты с числами. Произвольное количетсво, пусть три. В первый инпут запишите 1, через секунду во второй инпут запишите 2, еще через секунду в третий инпут 3, потом через секунду в первый инпут запишите 4, во второй 5 и так далее до бесконечности
+      (function () {
+        const inp = document.querySelectorAll(".input9");
+        let num = 1;
+        let i = 0;
+
+        function func() {
+          inp[i].value = num;
+          num++;
+          i++;
+          if (i >= inp.length) {
+            i = 0;
+          }
+        }
+        window.setInterval(func, 1000);
       })();
     </script>
   </body>
