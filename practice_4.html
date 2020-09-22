@@ -23,6 +23,56 @@
     <input type="radio" class="radio" name="radio" value="js" /><br />
     <input type="radio" class="radio" name="radio" value="php" /><br />
     <p class="txt"></p>
+    39
+    <br />
+    <input type="checkbox" class="checkbox3" name="radio" value="html" /><br />
+    <input type="checkbox" class="checkbox3" name="radio" value="css" /><br />
+    <input type="checkbox" class="checkbox3" name="radio" value="js" /><br />
+    <input type="checkbox" class="checkbox3" name="radio" value="php" /><br />
+    <p class="txt2"></p>
+    40
+    <br />
+    <input type="checkbox" class="checkbox4" />
+    <input type="text" class="input" /><br /><br />
+    41
+    <br />
+    <input type="checkbox" class="checkbox5" /><br />
+    <p class="txt3"></p>
+    <input type="checkbox" class="checkbox5" /><br />
+    <p class="txt3"></p>
+    <input type="checkbox" class="checkbox5" /><br />
+    <p class="txt3"></p>
+    42
+    <input type="text" class="input2" />
+    <ul class="list">
+      <li class="item"></li>
+      <li class="item"></li>
+      <li class="item"></li>
+    </ul>
+
+    <style>
+      .input {
+        opacity: 0;
+      }
+
+      .txt3 {
+        display: none;
+        width: 100px;
+        height: 40px;
+        border: 1px solid black;
+      }
+
+      .item {
+        width: 100px;
+        height: 20px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+
+      .active {
+        opacity: 1;
+      }
+    </style>
 
     <script>
       //36 Дана ссылка. Дан чекбокс. По нажатию на ссылку меняйте состояние чекбокса с отмеченного на неотмеченное и наоборот.
@@ -66,6 +116,64 @@
           el.addEventListener("change", () => {
             if (el.checked === true) {
               txt.textContent = el.value;
+            }
+          });
+        });
+      })();
+
+      //39 Спросите у пользователя какие языки (html, css, js, php) он знает с помощью чекбоксов. Выбранные языки должны выводится в абзац ниже через запятую
+      (function () {
+        const langueges = document.querySelectorAll(".checkbox3");
+        const txt = document.querySelector(".txt2");
+
+        langueges.forEach((el) => {
+          el.addEventListener("change", () => {
+            if (el.checked === true) {
+              txt.textContent += `${el.value}, `;
+            }
+          });
+        });
+      })();
+
+      //40 Дан чекбокс. Дан инпут. Сделайте так, что если чекбокс отмечен - инпут видимый, если не отмечен - не видимый
+      (function () {
+        const checkbox = document.querySelector(".checkbox4");
+        const input = document.querySelector(".input");
+
+        function showInput() {
+          checkbox.checked === true
+            ? input.classList.add("active")
+            : input.classList.remove("active");
+        }
+
+        checkbox.addEventListener("change", showInput);
+      })();
+
+      //41  Даны чекбоксы. Под каждым чекбоксом размещен абзац. Сделайте так, что если чекбокс отмечен - соответствующий абзац видимый, а если не отмечен - не видимый.
+      (function () {
+        const checkboxes = document.querySelectorAll(".checkbox5");
+        const txt = document.querySelectorAll(".txt3");
+
+        checkboxes.forEach((el, index) => {
+          el.addEventListener("change", () => {
+            if (el.checked === true) {
+              el.nextElementSibling.nextElementSibling.style.display = "block";
+            } else {
+              el.nextElementSibling.nextElementSibling.style.display = "none";
+            }
+          });
+        });
+      })();
+
+      //42 Дан инпут. Даны li. В инпут пишется номер. Сделайте так, чтобы по вводу числа, li с заданным номером покрасился в красный цвет.
+      (function () {
+        const input = document.querySelector(".input2");
+        const items = document.querySelectorAll(".item");
+
+        input.addEventListener("input", () => {
+          items.forEach((el, index) => {
+            if (+input.value === index) {
+              el.style.background = "red";
             }
           });
         });
