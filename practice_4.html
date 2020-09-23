@@ -18,17 +18,32 @@
     <button class="btn">push</button><br /><br />
     38
     <br />
-    <input type="radio" class="radio" name="radio" value="html" /><br />
-    <input type="radio" class="radio" name="radio" value="css" /><br />
-    <input type="radio" class="radio" name="radio" value="js" /><br />
-    <input type="radio" class="radio" name="radio" value="php" /><br />
+    <input type="radio" class="radio" name="radio" value="html" />html<br />
+    <input type="radio" class="radio" name="radio" value="css" />css<br />
+    <input type="radio" class="radio" name="radio" value="js" />js<br />
+    <input type="radio" class="radio" name="radio" value="php" />php<br />
     <p class="txt"></p>
     39
     <br />
-    <input type="checkbox" class="checkbox3" name="radio" value="html" /><br />
-    <input type="checkbox" class="checkbox3" name="radio" value="css" /><br />
-    <input type="checkbox" class="checkbox3" name="radio" value="js" /><br />
-    <input type="checkbox" class="checkbox3" name="radio" value="php" /><br />
+    <input
+      type="checkbox"
+      class="checkbox3"
+      name="radio"
+      value="html"
+    />html<br />
+    <input
+      type="checkbox"
+      class="checkbox3"
+      name="radio"
+      value="css"
+    />css<br />
+    <input type="checkbox" class="checkbox3" name="radio" value="js" />js<br />
+    <input
+      type="checkbox"
+      class="checkbox3"
+      name="radio"
+      value="php"
+    />php<br />
     <p class="txt2"></p>
     40
     <br />
@@ -49,6 +64,29 @@
       <li class="item"></li>
       <li class="item"></li>
     </ul>
+    43
+    <br />
+    <input
+      type="checkbox"
+      class="checkbox6"
+      value="перечеркнуть"
+    />перечеркнуть<br />
+    <br />
+    <input type="checkbox" class="checkbox6" value="сделать жирным" />сделать
+    жирным<br />
+    <br />
+    <input type="checkbox" class="checkbox6" value="сделать красным" />сделать
+    красным<br />
+    <p class="txt4">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa deleniti
+      minima ex doloremque obcaecati fuga saepe excepturi illum nostrum
+      voluptatum debitis animi officiis tenetur maxime expedita labore dolore,
+      omnis quisquam.
+    </p>
+    44
+    <div class="block">
+      <button class="btn2">закрыть элемент</button>
+    </div>
 
     <style>
       .input {
@@ -176,6 +214,43 @@
               el.style.background = "red";
             }
           });
+        });
+      })();
+
+      //43 Дан абзац. Даны чекбоксы 'перечеркнуть', 'сделать жирным', 'сделать красным'. Если соответствующий чекбокс отмечен - заданное действие происходит с абзацем (становится красным, например). Если чекбоксу снять отметку - действие отменяется
+      (function () {
+        const checkboxes = document.querySelectorAll(".checkbox6");
+        const txt = document.querySelector(".txt4");
+
+        checkboxes.forEach((el) => {
+          el.addEventListener("change", () => {
+            if (el.checked === true) {
+              switch (el.value) {
+                case "перечеркнуть":
+                  txt.style.textDecoration = "line-through";
+                  break;
+                case "сделать жирным":
+                  txt.style.fontWeight = "bold";
+                  break;
+                case "сделать красным":
+                  txt.style.color = "red";
+                  break;
+              }
+            } else {
+              txt.style.textDecoration = "";
+              txt.style.fontWeight = "";
+              txt.style.color = "";
+            }
+          });
+        });
+      })();
+
+      //44  Дан блок с кнопкой 'закрыть блок'. По нажатию на эту кнопку блок должен исчезнуть. Кнопка размещается внутри блока и должна исчезнуть вместе с ним. Блоков может быть любое количество, каждый из них закрывает своя кнопка.
+      (function () {
+        const btn = document.querySelector(".btn2");
+
+        btn.addEventListener("click", () => {
+          btn.parentElement.style.display = "none";
         });
       })();
     </script>

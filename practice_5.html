@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    45
+    <br />
+    <input
+      type="text"
+      class="input"
+      placeholder="введите название стран через запятую"
+    /><br /><br />
+    <button class="btn">press</button><br /><br />
+    <ul class="list"></ul>
+
+    <script>
+      //45 В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так, чтобы эти страны записались в ul под инпутом (каждая страна отдельный li).
+      (function () {
+        const input = document.querySelector(".input");
+        const btn = document.querySelector(".btn");
+
+        function showCountrys() {
+          const list = document.querySelector(".list");
+          let arr = input.value.split(", ");
+
+          arr.forEach((el) => {
+            let item = document.createElement("li");
+            item.textContent = el;
+            list.appendChild(item);
+          });
+        }
+
+        btn.addEventListener("click", showCountrys);
+      })();
+    </script>
+  </body>
+</html>
