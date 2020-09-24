@@ -15,6 +15,18 @@
     /><br /><br />
     <button class="btn">press</button><br /><br />
     <ul class="list"></ul>
+    46
+    <br />
+    <input
+      type="text"
+      class="input2"
+      placeholder="введи страну и нажми Enter"
+    /><br />
+    <p class="txt"></p>
+    47
+    <div class="txt2">Loremipsumdolor</div>
+    <div class="txt2">Loremipsumdolor</div>
+    <div class="txt2">Loremipsumdolor</div>
 
     <script>
       //45 В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так, чтобы эти страны записались в ul под инпутом (каждая страна отдельный li).
@@ -34,6 +46,29 @@
         }
 
         btn.addEventListener("click", showCountrys);
+      })();
+
+      //46  В инпут вводится страна и нажимается Enter. По нажатию на Enter сделайте так, чтобы введенные страны записывались в абзац под инпутом через запятую. То есть по каждому нажатию Enter в абзац будут добавляться все новые и новые страны.
+      (function () {
+        const input = document.querySelector(".input2");
+        const txt = document.querySelector(".txt");
+
+        input.addEventListener("keydown", (event) => {
+          if (event.keyCode === 13) {
+            txt.textContent += `${input.value}, `;
+            input.value = "";
+          }
+        });
+      })();
+
+      //47 На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+      (function () {
+        const txt = document.querySelectorAll(".txt2");
+
+        txt.forEach((el) => {
+          let newStr = el.textContent.substring(0, 10);
+          el.textContent = `${newStr}...`;
+        });
       })();
     </script>
   </body>
