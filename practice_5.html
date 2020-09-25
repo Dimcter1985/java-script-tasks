@@ -27,6 +27,69 @@
     <div class="txt2">Loremipsumdolor</div>
     <div class="txt2">Loremipsumdolor</div>
     <div class="txt2">Loremipsumdolor</div>
+    48
+    <table
+      class="table"
+      style="border: 1px solid black; border-collapse: collapse"
+    >
+      <tr
+        class="row"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          2
+        </td>
+        <td
+          class="cell"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          9
+        </td>
+        <td
+          class="cell"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          4
+        </td>
+      </tr>
+    </table>
+    <br />
+    <button class="btn2">press</button><br />
+    49
+    <table
+      class="table"
+      style="border: 1px solid black; border-collapse: collapse"
+    >
+      <tr
+        class="row"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell2"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          2
+        </td>
+        <td
+          class="cell2"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          9
+        </td>
+        <td
+          class="cell2"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          4
+        </td>
+      </tr>
+    </table>
+    <br />
+    <button class="btn3">press</button><br />
+    <input type="text" class="input3" /><br />
 
     <script>
       //45 В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так, чтобы эти страны записались в ul под инпутом (каждая страна отдельный li).
@@ -68,6 +131,41 @@
         txt.forEach((el) => {
           let newStr = el.textContent.substring(0, 10);
           el.textContent = `${newStr}...`;
+        });
+      })();
+
+      //48 Дана таблица с числами. По нажатию на кнопку найдите ячейку, в которой хранится максимальное число, и сделайте ее фон красным
+      (function () {
+        const btn = document.querySelector(".btn2");
+        const cells = document.querySelectorAll(".cell");
+        let cell = cells[0].textContent;
+
+        btn.addEventListener("click", () => {
+          cells.forEach((el) => {
+            if (el.textContent > cell) {
+              cell = el;
+            }
+          });
+          cell.style.background = "red";
+        });
+      })();
+
+      //49 Дана таблица с числами. По нажатию на кнопку в инпут под таблицей выведите эти числа через запятую в порядке возрастания
+      (function () {
+        const btn = document.querySelector(".btn3");
+        const cells = document.querySelectorAll(".cell2");
+        const input = document.querySelector(".input3");
+
+        btn.addEventListener("click", () => {
+          let arr = [];
+          cells.forEach((el) => {
+            arr.push(+el.innerHTML);
+          });
+
+          arr.sort();
+
+          let str = arr.join(", ");
+          input.value = str;
         });
       })();
     </script>
