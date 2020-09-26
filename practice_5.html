@@ -90,6 +90,154 @@
     <br />
     <button class="btn3">press</button><br />
     <input type="text" class="input3" /><br />
+    50
+    <table
+      class="table"
+      style="border: 1px solid black; border-collapse: collapse"
+    >
+      <tr
+        class="row2"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          2
+        </td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          9
+        </td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          4
+        </td>
+      </tr>
+      <tr
+        class="row2"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          2
+        </td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          9
+        </td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          4
+        </td>
+      </tr>
+      <tr
+        class="row2"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        ></td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        ></td>
+        <td
+          class="cell3"
+          style="border: 1px solid black; border-collapse: collapse"
+        ></td>
+      </tr>
+    </table>
+    <br />
+    <button class="btn4">press</button><br /><br />
+    51
+    <table
+      class="table"
+      style="border: 1px solid black; border-collapse: collapse"
+    >
+      <tr
+        class="row3"
+        style="border: 1px solid black; border-collapse: collapse"
+      >
+        <td
+          class="cell4"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          2
+        </td>
+        <td
+          class="cell4"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          9
+        </td>
+        <td
+          class="cell4"
+          style="border: 1px solid black; border-collapse: collapse"
+        >
+          4
+        </td>
+      </tr>
+    </table>
+    <br />
+    <div class="buttons">
+      <button class="btn5">press</button><br /><br />
+      <button class="btn6">clear</button><br />
+    </div>
+    <br />
+    <p class="txt3"></p>
+    52
+    <table class="table">
+      <tr class="row4">
+        <td class="cell5">Россия</td>
+        <td class="cell5">Украина</td>
+        <td class="cell5">Беларусь</td>
+      </tr>
+      <tr class="row4">
+        <td class="cell5">Германия</td>
+        <td class="cell5">Великобритания</td>
+        <td class="cell5">Франция</td>
+      </tr>
+      <tr class="row4">
+        <td class="cell5">США</td>
+        <td class="cell5">Мексика</td>
+        <td class="cell5">Канада</td>
+      </tr>
+    </table>
+    <br />
+
+    <style>
+      .table {
+        border: 1px solid black;
+      }
+      .cell5 {
+        width: 250px;
+        border: 1px solid black;
+        position: relative;
+        height: 25px;
+      }
+      .edit {
+        display: none;
+        z-index: 10;
+      }
+      .active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+      }
+    </style>
 
     <script>
       //45 В инпут через запятую вводятся страны. По нажатию на кнопку сделайте так, чтобы эти страны записались в ul под инпутом (каждая страна отдельный li).
@@ -166,6 +314,88 @@
 
           let str = arr.join(", ");
           input.value = str;
+        });
+      })();
+
+      //50 Дана таблица с числами. По нажатию на кнопку в последний ряд таблицы в каждую ячейку запишите сумму чисел в столбце таблицы, расположенном над определенной ячейкой.
+      (function () {
+        const btn = document.querySelector(".btn4");
+        const rows = document.querySelectorAll(".row2");
+
+        function func() {
+          let arr = [];
+
+          for (let i = 0; i < rows.length - 1; i++) {
+            for (let j = 0; j < rows[i].children.length; j++) {
+              if (arr[j] === undefined) {
+                arr[j] = 0;
+              }
+              arr[j] += +rows[i].children[j].textContent;
+            }
+          }
+          for (let k = 0; k < rows[rows.length - 1].children.length; k++) {
+            rows[rows.length - 1].children[k].textContent = arr[k];
+          }
+        }
+
+        btn.addEventListener("click", func);
+      })();
+
+      //51 Дана таблица с числами. По нажатию на ячейку она активируется и становится красного цвета. Активировать можно много ячеек. Под таблицей кнопка. По нажатию по этой кнопке в абзац ниже выведите сумма активированных ячеек. Реализуйте кнопку 'сбросить активированные ячейки'.
+      (function () {
+        const cells = document.querySelectorAll(".cell4");
+        const buttons = document.querySelector(".buttons");
+        const txt = document.querySelector(".txt3");
+        let arrCells = [];
+
+        cells.forEach((el) => {
+          el.addEventListener("click", () => {
+            el.style.background = "red";
+            arrCells.push(+el.textContent);
+          });
+        });
+
+        buttons.addEventListener("click", (event) => {
+          if (event.target.className === "btn5") sumCells();
+          if (event.target.className === "btn6") throwActiveCell();
+        });
+
+        function sumCells() {
+          let sum = arrCells.reduce((acc, curr) => acc + curr);
+          txt.textContent = sum;
+        }
+
+        function throwActiveCell() {
+          arrCells = [];
+          txt.textContent = "";
+          cells.forEach((el) => {
+            el.style.background = "none";
+          });
+        }
+      })();
+
+      //52 Дана таблица. По нажатию на ячейку в ней появляется инпут с содержимым этой ячейки и кнопка сохранить. Можно поредактировать текст в инпуте, сохранить - и текст ячейки поменяется.
+      (function () {
+        const cells = document.querySelectorAll(".cell5");
+
+        cells.forEach((el) => {
+          el.addEventListener("click", () => {
+            let val = el.textContent;
+            el.style.display = "none";
+            let inp = document.createElement("input");
+            inp.value = val;
+            el.parentNode.insertBefore(inp, el.nextSibling);
+            let btn = document.createElement("button");
+            btn.textContent = "press";
+            el.parentNode.insertBefore(btn, el.nextSibling);
+
+            btn.addEventListener("click", () => {
+              el.textContent = inp.value;
+              el.style.display = "";
+              el.parentNode.removeChild(inp);
+              el.parentNode.removeChild(btn);
+            });
+          });
         });
       })();
     </script>
