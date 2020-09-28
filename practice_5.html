@@ -216,6 +216,33 @@
       </tr>
     </table>
     <br />
+    53
+    <ul class="list">
+      <li class="item">
+        <p class="coutry">Россия</p>
+        <ul class="sities">
+          <li class="sity">Москва</li>
+          <li class="sity">Пермь</li>
+          <li class="sity">Сочи</li>
+        </ul>
+      </li>
+      <li class="item">
+        <p class="coutry">США</p>
+        <ul class="sities">
+          <li class="sity">Детройт</li>
+          <li class="sity">Сиэтл</li>
+          <li class="sity">Атланта</li>
+        </ul>
+      </li>
+      <li class="item">
+        <p class="coutry">Япония</p>
+        <ul class="sities">
+          <li class="sity">Токио</li>
+          <li class="sity">Осака</li>
+          <li class="sity">Киото</li>
+        </ul>
+      </li>
+    </ul>
 
     <style>
       .table {
@@ -235,6 +262,13 @@
         position: absolute;
         top: 0;
         left: 0;
+        display: block;
+      }
+      .sities {
+        display: none;
+      }
+
+      .visible {
         display: block;
       }
     </style>
@@ -400,6 +434,25 @@
       })();
 
       //53 Реализуйте раскрывающийся список. По умолчанию есть список стран (ul), по нажатию на страну внутри li со страной появляется список городов
+      (function () {
+        const countries = document.querySelectorAll(".coutry");
+
+        function show() {
+          this.nextElementSibling.classList.add("visible");
+          this.removeEventListener("click", show);
+          this.addEventListener("click", hide);
+        }
+
+        function hide() {
+          this.nextElementSibling.classList.remove("visible");
+          this.removeEventListener("click", hide);
+          this.addEventListener("click", show);
+        }
+
+        for (coutry of countries) {
+          coutry.addEventListener("click", show);
+        }
+      })();
     </script>
   </body>
 </html>

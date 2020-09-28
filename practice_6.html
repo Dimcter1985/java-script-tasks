@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    54
+    <br />
+    <select name="" id="" class="countries">
+      <option value="russia" class="country">Россия</option>
+      <option value="usa" class="country">США</option>
+      <option value="germany" class="country">Германия</option>
+    </select>
+    <select name="" id="" class="sities"></select>
+    <p class="txt"></p>
+    55
+    <div class="parent2">
+      <select name="" class="day"></select>
+      <select name="" class="month"></select>
+      <select name="" class="year"></select>
+    </div>
+    <br />
+    59
+    <div>
+      <a href="#" class="link">first</a>
+      <a href="#" class="link">second</a>
+      <a href="#" class="link">third</a>
+    </div>
+    <p class="txt2"></p>
+
+    <style>
+      .link {
+        display: block;
+        width: 50px;
+        height: 20px;
+        border: 1px solid black;
+        margin-bottom: 10px;
+      }
+      .active {
+        background: red;
+      }
+    </style>
+
+    <script>
+      //54 Даны два селекта. В первом находятся страны, во втором - города. Сделайте так, чтобы когда выбирается определенная страна - в другом селекте появлялись города этой страны. В абзац ниже пишите выбранную страну и город через запятую
+      (function () {
+        const countries = document.querySelector(".countries");
+        const sities = document.querySelector(".sities");
+        const txt = document.querySelector(".txt");
+        let arr = [
+          ["Москва", "Санкт-Петербург", "Новосибирск"],
+          ["Вашингтон", "Нью-Йорк", "Лос-Анджелес"],
+          ["Берлин", "Гамбург", "Мюнхен"],
+        ];
+
+        function showSities() {
+          for (let i in arr) {
+            if (countries.selectedIndex == i) {
+              for (let k of arr[i]) {
+                let sity = document.createElement("option");
+                sity.innerHTML = k;
+                sities.appendChild(sity);
+                if (sities.children.length > arr[i].length) {
+                  sities.removeChild(
+                    sity.previousElementSibling.previousElementSibling
+                      .previousElementSibling
+                  );
+                }
+              }
+            }
+          }
+          toParagraph();
+        }
+
+        function toParagraph() {
+          txt.textContent = `${
+            countries.options[countries.selectedIndex].text
+          }, ${sities.options[sities.selectedIndex].text}`;
+        }
+
+        countries.addEventListener("change", showSities);
+        sities.addEventListener("change", toParagraph);
+      })();
+
+      //55 Сделайте селекты день, мес, год. Сделайте так, чтобы не корректную дату нельзя было выбрать (например, 30 февраля нельзя, а 30 марта можно или 29 февраля можно, но только в високосный год).
+      (function () {
+        let yearSelect = document.querySelector(".year");
+        let monthSelect = document.querySelector(".month");
+        let daySelect = document.querySelector(".day");
+
+        let date = new Date();
+        let currentYear = date.getFullYear();
+        let currentMonth = date.getMonth() + 1;
+        let currentDay = date.getDate();
+
+        fillSelect(yearSelect, range(currentYear - 10, currentYear + 10));
+        fillSelect(monthSelect, range(1, 12));
+        fillSelect(daySelect, range(1, 31));
+
+        yearSelect.value = currentYear;
+        monthSelect.value = currentMonth;
+        daySelect.value = currentDay;
+
+        yearSelect.addEventListener("focus", selectFocusHandle);
+        monthSelect.addEventListener("focus", selectFocusHandle);
+        daySelect.addEventListener("focus", selectFocusHandle);
+
+        yearSelect.addEventListener("change", selectChangeHandle);
+        monthSelect.addEventListener("change", selectChangeHandle);
+        daySelect.addEventListener("change", selectChangeHandle);
+
+        function selectChangeHandle() {
+          if (checkDate(yearSelect.value, monthSelect.value, daySelect.value)) {
+            console.log("yes!");
+          } else {
+            console.log("no!");
+            this.value = this.dataset.default;
+          }
+        }
+
+        function selectFocusHandle() {
+          this.dataset.default = this.value;
+        }
+
+        function fillSelect(select, arr) {
+          arr.forEach(function (element) {
+            select.add(new Option(element));
+          });
+        }
+
+        function range(from, to) {
+          let arrFromTo = [];
+          for (let i = from; i <= to; i++) {
+            arrFromTo.push(i);
+          }
+          return arrFromTo;
+        }
+
+        function checkDate(year, month, day) {
+          let date = new Date(year, month - 1, day);
+          if (
+            date.getFullYear() == year &&
+            date.getMonth() == month - 1 &&
+            date.getDate() == day
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      })();
+
+      //59 Дан ряд ссылок. Сделайте так, чтобы по нажатию на ссылку она становилась с красным фоном. По нажатию на другую ссылку выделение первой ссылки снимается и выделяется та, на которую мы нажали. В абзац ниже пишите текст активной ссылки.
+      (function () {
+        const links = document.querySelectorAll(".link");
+        const txt = document.querySelector(".txt2");
+
+        function toggleBackground(event) {
+          event.preventDefault();
+
+          let siblings = [...this.parentNode.children].filter(
+            (item) => item !== this
+          );
+
+          if (this.classList.contains("active")) {
+            this.classList.remove("active");
+          } else {
+            this.classList.add("active");
+            siblings.forEach((sibling) => sibling.classList.remove("active"));
+          }
+          txt.textContent = this.textContent;
+        }
+
+        links.forEach((link) => {
+          link.addEventListener("click", toggleBackground);
+        });
+      })();
+    </script>
+  </body>
+</html>

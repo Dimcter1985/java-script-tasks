@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="slider">
+    <ul class="slider__list">
+      <li class="slider__item">1</li>
+      <li class="slider__item">2</li>
+      <li class="slider__item">3</li>
+      <li class="slider__item">4</li>
+    </ul>
+  </div>
+  <div class="slider__toggle">
+    <button class="slider__left">&lArr;</button>
+    <button class="slider__right">&rArr;</button>
+  </div>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .slider {
+      width: 600px;
+      height: 400px;
+      position: relative;
+      border: 1px solid black;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .slider__list {
+      position: absolute;
+      left: 0;
+      top: 0;
+      list-style: none;
+      display: flex;
+      transition: ease .5s;
+    }
+
+    .slider__item {
+      height: 400px;
+      width: 600px;
+      text-align: center;
+      font-size: 60px;
+      padding-top: 140px;
+    }
+
+    .slider__item:nth-child(1) {
+      background-color: chartreuse;
+    }
+
+    .slider__item:nth-child(2) {
+      background-color: red;
+    }
+
+    .slider__item:nth-child(3) {
+      background-color: royalblue;
+    }
+
+    .slider__item:nth-child(4) {
+      background-color: violet;
+    }
+
+    .slider__left, .slider__right {
+      padding: 5px 15px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    let list = document.querySelector('.slider__list');
+    let left = document.querySelector('.slider__left');
+    let right = document.querySelector('.slider__right')
+    let original = 0;
+    
+    function toLeft() {
+      if(original >= 0) {
+        list.style.left = 0 + 'px';
+      } else {
+        original += 600;
+        list.style.left = original + 'px';
+      }
+    }
+
+    function toRight() {
+      if(original <= -1800) {
+        list.style.left = -1800 + 'px';
+      } else {
+        original -= 600;
+        list.style.left = original + 'px';
+      }
+    }
+
+    left.onclick = toLeft;
+    right.onclick = toRight;
+
+  </script>
+</body>
+</html>
