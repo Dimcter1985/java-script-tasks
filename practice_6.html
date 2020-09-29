@@ -22,6 +22,16 @@
       <select name="" class="year"></select>
     </div>
     <br />
+    58
+    <ul class="list">
+      <li class="item">0</li>
+      <li class="item">66</li>
+      <li class="item">-7</li>
+      <li class="item">4</li>
+      <li class="item">9</li>
+    </ul>
+    <button class="btn">push</button><br /><br />
+
     59
     <div>
       <a href="#" class="link">first</a>
@@ -150,6 +160,28 @@
             return false;
           }
         }
+      })();
+
+      //58 Дан список и кнопка. По нажатию на кнопку посортируйте пункты списка по возрастанию.
+      (function () {
+        const btn = document.querySelector(".btn");
+        const items = document.querySelectorAll(".item");
+
+        function toSort() {
+          let itemsArr = [];
+
+          items.forEach((item) => {
+            itemsArr.push(item.textContent);
+          });
+
+          itemsArr.sort((a, b) => a - b);
+
+          for (let i = 0; i < items.length; i++) {
+            items[i].innerHTML = itemsArr[i];
+          }
+        }
+
+        btn.addEventListener("click", toSort);
       })();
 
       //59 Дан ряд ссылок. Сделайте так, чтобы по нажатию на ссылку она становилась с красным фоном. По нажатию на другую ссылку выделение первой ссылки снимается и выделяется та, на которую мы нажали. В абзац ниже пишите текст активной ссылки.
