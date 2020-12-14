@@ -36,6 +36,24 @@
         num = 7;
         console.log(ggg(ggg(num, funcNew), funcNew));
       })();
+
+      //3 Функция ggg принимает 2 параметра: анонимную функцию, которая возвращает 3 и анонимную функцию, которая возвращает 4. Верните результатом функции ggg сумму 3 и 4.
+      (function () {
+        let ggg = function (f1, f2) {
+          return f1() + f2();
+        };
+
+        let num1 = function () {
+          return 3;
+        };
+
+        let num2 = function () {
+          return 4;
+        };
+        console.log(ggg(num1, num2));
+      })();
+
+      //4
     </script>
   </body>
 </html>
