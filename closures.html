@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Если переменная a больше нуля - то в ggg запишем функцию, которая выводит один !, иначе запишем функцию, которая выводит два !
+      (function () {
+        let a = 4;
+        let ggg = "";
+
+        if (a > 0) {
+          ggg = function () {
+            return "!";
+          };
+        } else {
+          ggg = function () {
+            return "!!";
+          };
+        }
+
+        console.log(ggg());
+      })();
+
+      //2 Функция ggg принимает 2 параметра: число и анонимную функцию, которая возводит число в квадрат. Возведите число в 4-тую степень с помощью ggg.
+      (function () {
+        let ggg = function (n, f) {
+          return f(n);
+        };
+        funcNew = function (a) {
+          return Math.pow(a, 2);
+        };
+        num = 7;
+        console.log(ggg(ggg(num, funcNew), funcNew));
+      })();
+    </script>
+  </body>
+</html>

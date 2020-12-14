@@ -22,6 +22,13 @@
       <select name="" class="year"></select>
     </div>
     <br />
+    57
+    <br /><br />
+    <input type="text" class="input" placeholder="кол-во строк" /><br /><br />
+    <input type="text" class="input2" placeholder="кол-во ячеек" /><br /><br />
+    <button class="btn">push</button><br />
+    <table class="table"></table>
+    <br />
     58
     <ul class="list">
       <li class="item">0</li>
@@ -41,6 +48,11 @@
     <p class="txt2"></p>
 
     <style>
+      td {
+        border: 1px solid black;
+        width: 100px;
+        height: 20px;
+      }
       .link {
         display: block;
         width: 50px;
@@ -162,6 +174,31 @@
         }
       })();
 
+      //57  Реализуйте генератор таблиц, ширина и высота таблиц задается в двух инпутах (например, таблица 5 на 10 ячеек)
+      (function () {
+        const button = document.querySelector(".btn");
+        const rows = document.querySelector(".input");
+        const cells = document.querySelector(".input2");
+        const table = document.querySelector(".table");
+
+        function createRows() {
+          for (let i = 0; i < +rows.value; i++) {
+            let row = document.createElement("tr");
+            table.appendChild(row);
+            createCells(row);
+          }
+        }
+
+        function createCells(el) {
+          for (let k = 0; k < +cells.value; k++) {
+            let cell = document.createElement("td");
+            el.appendChild(cell);
+          }
+        }
+
+        button.addEventListener("click", createRows);
+      })();
+
       //58 Дан список и кнопка. По нажатию на кнопку посортируйте пункты списка по возрастанию.
       (function () {
         const btn = document.querySelector(".btn");
@@ -209,6 +246,8 @@
           link.addEventListener("click", toggleBackground);
         });
       })();
+
+      //
     </script>
   </body>
 </html>
