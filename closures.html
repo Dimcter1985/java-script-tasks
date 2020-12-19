@@ -6,11 +6,29 @@
     <title>Document</title>
   </head>
   <body>
+    8
     <div class="buttons">
       <button class="btn">0</button>
       <button class="btn">0</button>
       <button class="btn">0</button>
     </div>
+    <br />
+    9
+    <div class="paragrafs">
+      <p class="txt">asasdfsdfdfdfdfdsfdfsdfds</p>
+      <p class="txt">ghfhfgjghjghjghjghjghjh</p>
+      <p class="txt">rtyrtyrtytrytrytryyertyrtrt</p>
+    </div>
+    <br />
+
+    10
+    <button class="btn2">Фибоначчи</button><span class="txt2"></span>
+    <button class="btn2">Фибоначчи</button><span class="txt2"></span>
+    <button class="btn2">Фибоначчи</button><span class="txt2"></span>
+    <br /><br />
+
+    11
+    <button class="btn3">push</button>
     <script>
       //1 Если переменная a больше нуля - то в ggg запишем функцию, которая выводит один !, иначе запишем функцию, которая выводит два !
       (function () {
@@ -149,6 +167,72 @@
             el.innerHTML = counter();
           });
         });
+      })();
+
+      //9 Дан массив цветов. Даны абзацы. По первому нажатию на абзац он должен покраситься в первый цвет из массива, по второму нажатию - во второй и так далее. Все абзацы работают независимо.
+
+      (function () {
+        let colors = ["red", "blue", "green"];
+        let txt = document.querySelectorAll(".txt");
+
+        let showColor = function () {
+          let index = 0;
+          return function () {
+            this.style.color = colors[index];
+            index++;
+            if (index === colors.length) {
+              index = 0;
+            }
+          };
+        };
+
+        txt.forEach((el) => {
+          el.addEventListener("click", showColor());
+        });
+      })();
+
+      //10  Даны кнопки. Каждая кнопка по нажатию на нее выводить следующее число Фибоначчи. Кнопки работают независимо. Решить через замыкания.
+      (function () {
+        let btn = document.querySelectorAll(".btn2");
+
+        let fibonachhi = function () {
+          let a = 0;
+          let b = 1;
+          let temp = null;
+          return function () {
+            this.nextElementSibling.innerHTML = a;
+            temp = a;
+            a = b;
+            b = temp + a;
+          };
+        };
+
+        btn.forEach((el) => {
+          el.addEventListener("click", fibonachhi());
+        });
+      })();
+
+      //11 Сделайте функцию, каждый вызов который будет генерировать случайные числа от 1 до 100, но так, чтобы они не повторялись, пока не будут перебраны все числа из этого промежутка. Решите задачу через замыкания - в замыкании должен хранится массив чисел, которые уже были сгенерированы функцией
+      (function () {
+        let random = function () {
+          let usedNums = [];
+          return function () {
+            let newNum = Math.floor(Math.random() * 100 + 1);
+
+            for (let i = 0; i < usedNums.length; i++) {
+              if (usedNums[i] === newNum) {
+                console.log("повтор!!!!!");
+                return;
+              }
+            }
+            console.log(newNum);
+            usedNums.push(newNum);
+            console.log(usedNums);
+          };
+        };
+
+        let btn = document.querySelector(".btn3");
+        btn.addEventListener("click", random());
       })();
     </script>
   </body>
