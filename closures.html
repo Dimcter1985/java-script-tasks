@@ -6,6 +6,11 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="buttons">
+      <button class="btn">0</button>
+      <button class="btn">0</button>
+      <button class="btn">0</button>
+    </div>
     <script>
       //1 Если переменная a больше нуля - то в ggg запишем функцию, которая выводит один !, иначе запишем функцию, которая выводит два !
       (function () {
@@ -53,7 +58,98 @@
         console.log(ggg(num1, num2));
       })();
 
-      //4
+      //4 Дана функция ggg. Она требует первым параметром число, вторым функцию, которая возводит в квадрат, а третьим параметром функцию, которая возводит в куб. Эти функции есть как Function Declaration - kvadrat, kub. Пусть функция ggg вернет сумму квадрата и куба числа.
+      (function () {
+        let ggg = function (number, square, сube) {
+          return square(number) + сube(number);
+        };
+
+        let n = 5;
+
+        function kvadrat(number) {
+          return Math.pow(number, 2);
+        }
+
+        function kub(number) {
+          return Math.pow(number, 3);
+        }
+
+        console.log(ggg(n, kvadrat, kub));
+      })();
+
+      //5 Сделайте функцию each, которая первым параметром принимает массив, а вторым - функцию, которая применится к каждому элементу массива. Функция each должна вернуть измененный массив.
+      (function () {
+        let array = [1, 2, 3, 4];
+
+        function changeArr(array) {
+          let newArr = [];
+          for (let i = 0; i < array.length; i++) {
+            newArr[i] = array[i] + 1;
+          }
+          return newArr;
+        }
+
+        let each = function (arr, func) {
+          return func(arr);
+        };
+
+        console.log(each(array, changeArr));
+      })();
+
+      //6 Сделайте функцию each, которая первым параметром принимает массив, а вторым - массив функций, которые по очереди применятся к каждому элементу массива: к первому элементу массива - первая функция, ко второму - вторая и так далее пока функции в массиве не закончатся, после этого возьмется первая функция, вторая и так далее по кругу
+      (function () {
+        let each = function (arr, funcArr) {
+          for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < funcArr.length; j++) {
+              arr[i] = funcArr[j](arr[i]);
+            }
+          }
+          return arr;
+        };
+
+        let f1 = function (a) {
+          return a + 3;
+        };
+        let f2 = function (a) {
+          return a + 2;
+        };
+        let f3 = function (a) {
+          return a + 1;
+        };
+
+        let numbers = [1, 2, 3, 4, 5];
+
+        let functions = [f1, f2, f3];
+
+        console.log(each(numbers, functions));
+      })();
+
+      //7  Сделайте функцию, которая считает и выводит количество своих вызовов.
+      (function () {
+        let i = 1;
+        function counter() {
+          return i++;
+        }
+
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+      })();
+
+      //8 Даны кнопки. Привяжите к каждой кнопке событие по клику, которое будет считать количество нажатий по кнопке и выводить его в текст кнопки. Количество нажатий для каждой кнопки должно хранится в замыкании
+      (function () {
+        let buttons = document.querySelectorAll(".btn");
+        let n = 1;
+        function counter() {
+          return n++;
+        }
+
+        buttons.forEach((el) => {
+          el.addEventListener("click", () => {
+            el.innerHTML = counter();
+          });
+        });
+      })();
     </script>
   </body>
 </html>
