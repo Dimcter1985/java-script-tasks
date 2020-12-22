@@ -55,6 +55,44 @@
 
         console.log(name, surname, age);
       })();
+
+      //7 Дан массив, выведите его элементы последовательно на экран.
+      (function () {
+        let arr = [1, 2, 3, 4];
+
+        for (let i of arr) {
+          console.log(i);
+        }
+      })();
+
+      //8 Дан массив, выведите его элементы последовательно на экран в обратном порядке
+      (function () {
+        let arr = [1, 2, 3, 4];
+        arr.reverse();
+
+        for (let i of arr) {
+          console.log(i);
+        }
+      })();
+
+      //9 Дан массив с числами, найдите сумму элементов этого массива.
+      (function () {
+        let arr = [1, 2, 3, 4];
+        let reduser = arr.reduce((sum, curr) => sum + curr);
+        console.log(reduser);
+      })();
+
+      //10 Дана строка. С помощью for-of подсчитайте количество букв 'о' в ней.
+      (function () {
+        let str = "подконтрольно";
+        let num = 0;
+        for (let i of str) {
+          if (i === "о") {
+            num++;
+          }
+        }
+        console.log(num);
+      })();
     </script>
   </body>
 </html>
