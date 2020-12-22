@@ -28,7 +28,19 @@
     <br /><br />
 
     11
-    <button class="btn3">push</button>
+    <button class="btn3">push</button><br /><br />
+
+    12
+    <div id="conteiner">
+      <div>
+        <button class="prev">←</button><button class="next">→</button>
+        <input type="text" class="inp" />
+      </div>
+      <div>
+        <button class="prev">←</button><button class="next">→</button>
+        <input type="text" class="inp" />
+      </div>
+    </div>
     <script>
       //1 Если переменная a больше нуля - то в ggg запишем функцию, которая выводит один !, иначе запишем функцию, которая выводит два !
       (function () {
@@ -233,6 +245,42 @@
 
         let btn = document.querySelector(".btn3");
         btn.addEventListener("click", random());
+      })();
+
+      //12 Даны инпуты. Сделайте так, чтобы каждый инпут хранил историю своих изменений. Каждый инпут свою. Изменением считается событие onchange.  Над каждым инпутом должны быть стрелочки назад и вперед, с помощью которых можно передвигаться по истории
+      (function () {
+        let input = document.querySelectorAll(".inp");
+        let = prev = document.querySelectorAll(".prev");
+        let = next = document.querySelectorAll(".next");
+
+        for (let i = 0; i < input.length; i++) {
+          input[i].addEventListener(
+            "change",
+            (function () {
+              let arr = [];
+              return function () {
+                arr.push(this.value);
+                let j = arr.length - 1;
+                prev[i].addEventListener("click", function () {
+                  if (j > 0) {
+                    j--;
+                    input[i].value = arr[j];
+                  } else {
+                    input[i].value = "";
+                  }
+                });
+                next[i].addEventListener("click", function () {
+                  if (j < arr.length - 1) {
+                    input[i].value = arr[j];
+                    j++;
+                  } else {
+                    input[i].value = arr[arr.length - 1];
+                  }
+                });
+              };
+            })()
+          );
+        }
       })();
     </script>
   </body>
