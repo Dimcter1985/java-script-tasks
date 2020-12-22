@@ -6,6 +6,18 @@
     <title>Document</title>
   </head>
   <body>
+    <div
+      class="txt"
+      style="width: 100px; height: 30px; border: 1px solid black"
+    >
+      0
+    </div>
+    <div
+      class="txt"
+      style="width: 100px; height: 30px; border: 1px solid black"
+    >
+      0
+    </div>
     <script>
       //1 Дан массив. Запишите первый элемент этого массива в переменную elem1, второй - в переменную elem2, третий - в переменную elem3, а все остальные элементы массива - в переменную arr.
       (function () {
@@ -92,6 +104,48 @@
           }
         }
         console.log(num);
+      })();
+
+      //11 Сделайте функцию, которая получает имя пользователя и выводит на экран 'Привет, Имя' (вместо Имя - полученное параметром имя). По умолчанию (то есть если не передать параметр) функция должна выводить 'Привет, Аноним
+      (function () {
+        function showName(name = "Аноним") {
+          console.log(`Привет ${name}`);
+        }
+        showName();
+      })();
+
+      //12 Дан объект с настройками, например, {id: 'elem', color: 'blue', border: '1px solid red', font: '15px Arial'}. Сделайте функцию, которая получает этот объект, извлекает из него все настройки в соответствующие переменные и для элемента с указанным id (в нашем случае это 'elem') ставит заданные CSS свойства. В объекте могут быть только эти ключи, однако, какой-либо ключ (кроме id) может быть не задан - в этом случае пусть возьмутся следующие значения по умолчанию: color: 'blue', border: '1px solid red', font: '15px Arial'.
+      (function () {
+        const obj = {
+          id: "elem",
+          color: "blue",
+          border: "1px solid red",
+          font: "15px Arial",
+        };
+
+        function changeObj({
+          id,
+          color = "blue",
+          border = "2px solid red",
+          font = "15px Tahoma",
+        }) {
+          console.log(id, color, border, font);
+        }
+        changeObj(obj);
+      })();
+
+      //13 Даны абзацы с числами. Сделайте так, чтобы по нажатию на абзац начинал тикать таймер, который каждую секунду будет увеличивать на единицу число в этом абзаце. По нажатию на другой абзац должно происходить то же самое - он тоже начнет тикать.
+      (function () {
+        let timers = document.querySelectorAll(".txt");
+
+        timers.forEach((el) => {
+          el.addEventListener("click", () => {
+            function count() {
+              el.textContent++;
+            }
+            window.setInterval(count, 1000);
+          });
+        });
       })();
     </script>
   </body>
