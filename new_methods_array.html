@@ -147,6 +147,104 @@
         let newArr = arr.filter(func);
         console.log(newArr.length);
       })();
+
+      //11 Дан массив с числами. Найдите сумму этих чисел.
+      (function () {
+        let arr = [1, 2, 3, 4];
+
+        let result = arr.reduce((sum, el) => {
+          return sum + el;
+        });
+
+        console.log(result);
+      })();
+
+      //12 Дан массив с числами. Найдите сумму первых N элементов до первого нуля. Пример: [1, 2, 3, 0, 4, 5, 6] - суммируем первые 3 элемента, так как дальше стоит элемент с числом 0.
+      (function () {
+        let arr = [1, 2, 3, 0, 4, 5, 6];
+        let num = 0;
+
+        let result = arr.reduce((sum, el) => {
+          if (el === 0) {
+            num = sum;
+          } else {
+            return sum + el;
+          }
+        });
+
+        if (num === undefined) {
+          num = result;
+        }
+
+        console.log(num);
+      })();
+
+      //13 Дан массив с числами. Найдите сумму последних N элементов до первого нуля с конца. Пример: [1, 2, 3, 0, 4, 5, 6] - суммируем последние 3 элемента, так как дальше стоит элемент с числом 0.
+      (function () {
+        let arr = [1, 2, 3, 0, 4, 5, 6];
+        let num = 0;
+
+        let result = arr.reduceRight((sum, el) => {
+          if (el === 0) {
+            num = sum;
+          } else {
+            return sum + el;
+          }
+        });
+
+        if (num === undefined) {
+          num = result;
+        }
+
+        console.log(num);
+      })();
+
+      //14 Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить, чтобы в сумме получилось больше 10-ти.
+      (function () {
+        let arr = [1, 2, 3, 8, 4, 5, 6];
+        let num = 1;
+
+        let result = arr.reduce((sum, el) => {
+          if (sum > 10) {
+            console.log(num);
+            return;
+          } else {
+            num++;
+            return sum + el;
+          }
+        });
+      })();
+
+      //15 Дан массив с числами. Узнайте сколько элементов с конца массива надо сложить, чтобы в сумме получилось больше 10-ти.
+      (function () {
+        let arr = [1, 2, 3, 8, 4, 5, 6];
+        let num = 1;
+
+        let result = arr.reduceRight((sum, el) => {
+          if (sum > 10) {
+            console.log(num);
+            return;
+          } else {
+            num++;
+            return sum + el;
+          }
+        });
+      })();
+
+      //16 Дан массив с числами. Оставьте в нем только положительные числа. Затем извлеките квадратный корень и этих чисел.
+      (function () {
+        let arr = [9, -2, 100, 4, -4, 25, -6];
+
+        let result = arr
+          .filter((el) => {
+            if (el > 0) {
+              return el;
+            }
+          })
+          .map((el) => Math.sqrt(el));
+
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
