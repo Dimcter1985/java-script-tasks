@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p
+      class="txt"
+      style="width: 100px; height: 20px; border: 1px solid red"
+    ></p>
+    <p
+      class="txt"
+      style="width: 100px; height: 20px; border: 1px solid red"
+    ></p>
+    <p
+      class="txt"
+      style="width: 100px; height: 20px; border: 1px solid red"
+    ></p>
+    <script>
+      //1 Пусть даны 3 массива. Создайте коллекцию Map, сделайте ключами коллекции эти массивы, а значениями - какие-нибудь строки.
+      (function () {
+        let arr1 = [1, 2, 3];
+        let arr2 = [4, 5, 6];
+        let arr3 = [7, 8, 9];
+
+        let map = new Map([
+          [arr1, "1-3"],
+          [arr2, "4-6"],
+          [arr3, "7-9"],
+        ]);
+        console.log(map);
+      })();
+
+      //2 Переберите циклом for-of коллекцию, созданную в предыдущей задаче.
+      (function () {
+        let arr1 = [1, 2, 3];
+        let arr2 = [4, 5, 6];
+        let arr3 = [7, 8, 9];
+
+        let map = new Map([
+          [arr1, "1-3"],
+          [arr2, "4-6"],
+          [arr3, "7-9"],
+        ]);
+
+        for (let key of map) {
+          console.log(key);
+        }
+      })();
+
+      //3 Пусть дана коллекция Map. С помощью метода keys получите массив ее ключей и переберите его циклом for-of.
+      (function () {
+        let map = new Map([
+          [1, "one"],
+          [2, "two"],
+          [3, "three"],
+        ]);
+
+        let keys = map.keys();
+
+        for (let key of keys) {
+          console.log(key);
+        }
+      })();
+
+      //4 Пусть дана коллекция Map. С помощью метода values получите массив ее значений и переберите его циклом for-of.
+      (function () {
+        let map = new Map([
+          [1, "one"],
+          [2, "two"],
+          [3, "three"],
+        ]);
+
+        let values = map.values();
+
+        for (let value of values) {
+          console.log(value);
+        }
+      })();
+
+      //5 Пусть дана коллекция Map. С помощью свойства size узнайте количество элементов в этой коллекции.
+      (function () {
+        let map = new Map([
+          [1, "one"],
+          [2, "two"],
+          [3, "three"],
+        ]);
+
+        console.log(map.size);
+      })();
+
+      //6 Пусть даны абзацы. Переберите эти абзацы циклом и создайте коллекцию Map, ключами в которой будут абзацы, а значением - их порядковый номер на странице. Сделайте так, чтобы по клику на любой абзац ему в конец записывался его порядковый номер.
+      (function () {
+        let txt = document.querySelectorAll(".txt");
+        let map = new Map();
+        let value = 1;
+
+        for (let i of txt) {
+          map.set(i, value);
+          value++;
+        }
+
+        txt.forEach((el, index) => {
+          el.addEventListener("click", function () {
+            this.textContent = index + 1;
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
