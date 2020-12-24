@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Дан массив с числами. Создайте новый массив, состоящий из квадратов этих чисел.
+      (function () {
+        let arr = [1, 2, 3, 4];
+        let result = [];
+
+        arr.forEach((el) => {
+          result.push(Math.pow(el, 2));
+        });
+
+        console.log(result);
+      })();
+
+      //2 Дан массив с числами. Найдите сумму этих чисел
+      (function () {
+        let arr = [1, 2, 3, 4];
+        let sum = 0;
+
+        arr.forEach((el) => {
+          sum += el;
+        });
+
+        console.log(sum);
+      })();
+
+      //3 Дан массив с числами. Сделайте из него массив, состоящий из квадратов этих чисел.
+      (function () {
+        let arr = [1, 2, 3, 4];
+
+        let result = arr.map((el) => {
+          return Math.pow(el, 2);
+        });
+
+        console.log(result);
+      })();
+
+      //4 Дан массив с числами. Проверьте то, что все элементы в массиве больше нуля.
+      (function () {
+        let arr = [1, 2, 3, 4];
+
+        let result = arr.every((el) => {
+          if (el > 0) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //5 Дан массив с числами. Проверьте то, что в нем есть отрицательные элементы.
+      (function () {
+        let arr = [1, 2, 3, 4, -2];
+
+        let result = arr.some((el) => {
+          if (el < 0) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //6 Дан массив с числами. Оставьте в нем только отрицательные числа.
+      (function () {
+        let arr = [1, 2, 3, 4, -1, -5];
+
+        let result = arr.filter((el) => {
+          if (el < 0) {
+            return el;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //7 Дан массив с числами. Оставьте в нем только четные числа.
+      (function () {
+        let arr = [1, 2, 3, 4, -1, -5];
+
+        let result = arr.filter((el) => {
+          if (el % 2 === 0) {
+            return el;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //8 Дан массив со строками. Оставьте в нем только те строки, длина которых больше 5-ти символов.
+      (function () {
+        let arr = ["adadas", "asa", "dsfdf", "fs"];
+
+        let result = arr.filter((el) => {
+          if (el.length > 5) {
+            return el;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //9 Дан массив, в нем могут быть обычные элементы и подмассивы, например [1, 2, [3, 4], 5, [6, 7]]. Оставьте в нем только подмассивы.
+      (function () {
+        let arr = [1, 2, [3, 4], 5, [6, 7]];
+
+        let result = arr.filter((el) => {
+          if (Array.isArray(el)) {
+            return el;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //10 Дан массив с числами. Посчитайте количество отрицательных чисел в этом массиве
+      (function () {
+        let arr = [1, 2, -1, -5];
+        let result = 0;
+
+        arr.filter((el) => {
+          if (el < 0) {
+            return result++;
+          }
+        });
+
+        console.log(result);
+      })();
+
+      //другое решение
+      (function () {
+        let arr = [1, 2, -1, -5];
+        function func(elem) {
+          return elem < 0;
+        }
+        let newArr = arr.filter(func);
+        console.log(newArr.length);
+      })();
+    </script>
+  </body>
+</html>
