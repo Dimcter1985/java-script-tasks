@@ -6,9 +6,21 @@
     <title>Document</title>
   </head>
   <body>
+    1
     <input type="text" class="inp" />
     <button class="btn">push</button>
     <p class="txt"></p>
+
+    2
+    <p
+      class="txt2"
+      style="width: 100px; height: 30px; border: 1px solid black"
+    ></p>
+    <p
+      class="txt2"
+      style="width: 100px; height: 30px; border: 1px solid black"
+    ></p>
+    <button class="btn2">push</button>
     <script>
       //1 Создайте пустую коллекцию Set. С помощью метода add добавьте в нее элементы со значениями 1, 2 и 3.
       (function () {
@@ -100,6 +112,39 @@
         }
 
         btn.addEventListener("click", addNumber);
+      })();
+
+      //11 Пусть дан массив. С помощью Set получите этот же массив, но без дублей.
+      (function () {
+        let arr = [1, 1, 2, 2, 3, 4, 5];
+
+        console.log([...new Set(arr)]);
+      })();
+
+      //12 Даны абзацы и кнопка. Пользователь кликает на эти абзацы в произвольном порядке. Сделайте так, чтобы по нажатию на кнопку в конец каждого абзаца, на который был совершен клик, был добавлен восклицательный знак.
+      (function () {
+        let txt = document.querySelectorAll(".txt2");
+        let btn = document.querySelector(".btn2");
+        let set = new Set();
+
+        txt.forEach((el, index) => {
+          el.addEventListener("click", () => {
+            if (index === 0) {
+              set.add("click1");
+            } else {
+              set.add("click2");
+            }
+          });
+        });
+
+        btn.addEventListener("click", () => {
+          if (set.has("click1")) {
+            txt[0].textContent = "!!!!!";
+          }
+          if (set.has("click2")) {
+            txt[1].textContent = "!!!!!";
+          }
+        });
       })();
     </script>
   </body>
