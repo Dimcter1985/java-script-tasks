@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <h3>Депозитный калькулятор.</h3>
+    <div class="wrap">
+      <span>Первоначальный депозит</span>
+      <input type="text" id="initial" />
+    </div>
+    <div class="wrap">
+      <span>Срок вклада?</span>
+      <select name="years" id="years">
+        <option value="5" selected>5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+    <div class="wrap">
+      <span>Годовая процентная ставка?</span>
+      <input type="text" id="interest" />
+    </div>
+    <div class="wrap lastwrap">
+      <div>
+        <span>Было:</span>
+        <p id="txt-before"></p>
+      </div>
+      <div>
+        <span>Станет:</span>
+        <p id="txt-after"></p>
+      </div>
+    </div>
+
+    <style>
+      .wrap {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .lastwrap {
+        justify-content: start;
+        font-weight: bold;
+      }
+
+      .lastwrap div {
+        margin-right: 30px;
+      }
+
+      #years {
+        width: 177px;
+      }
+    </style>
+
+    <script>
+      //1 Создайте интерфейс, позволяющий ввести сумму банковского вклада и процент, а затем рассчитать, какая это будет сумма через заданный промежуток времени.
+      (function () {
+        let inp1 = document.querySelector("#initial");
+        let select = document.querySelector("#years");
+        let inp2 = document.querySelector("#interest");
+
+        inp1.addEventListener("input", calculator);
+        select.addEventListener("change", calculator);
+        inp2.addEventListener("input", calculator);
+
+        function calculator() {
+          let initial = +inp1.value;
+          let interest = inp2.value * 0.01;
+          let years = select.value / 12;
+          let result = Math.round(initial * (1 + interest * years));
+
+          document.getElementById("txt-before").innerHTML = inp1.value;
+          document.getElementById("txt-after").innerHTML = result;
+        }
+      })();
+    </script>
+  </body>
+</html>
