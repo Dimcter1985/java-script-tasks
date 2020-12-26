@@ -24,6 +24,156 @@
         let str = "aa aba abba abbba abbbba abbbbba";
         console.log(str.replace(/ab{4,}a/g, "!"));
       })();
+
+      //4 Дана строка 'a1a a2a a3a a4a a5a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними одна цифра.
+      (function () {
+        let str = "a1a a2a a3a a4a a5a aba aca";
+        console.log(str.replace(/a\da/g, "!"));
+      })();
+
+      //5 Дана строка 'a1a a22a a333a a4444a a55555a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр.
+      (function () {
+        let str = "a1a a22a a333a a4444a a55555a aba aca";
+        console.log(str.replace(/a\d+a/g, "!"));
+      })();
+
+      //6  Дана строка 'aa a1a a22a a333a a4444a a55555a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр (в том числе и ноль цифр, то есть строка 'aa').
+      (function () {
+        let str = "aa a1a a22a a333a a4444a a55555a aba aca";
+        console.log(str.replace(/a\d*a/g, "!"));
+      })();
+
+      //7 Дана строка 'avb a1b a2b a3b a4b a5b abb acb'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не число.
+      (function () {
+        let str = "avb a1b a2b a3b a4b a5b abb acb";
+        console.log(str.replace(/a\Db/g, "!"));
+      })();
+
+      //8 Дана строка 'ave a#b a2b a$b a4b a5b a-b acb'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не буква и не цифра.
+      (function () {
+        let str = "ave a#b a2b a$b a4b a5b a-b acb";
+        console.log(str.replace(/a\Wb/g, "!"));
+      })();
+
+      //9 Дана строка 'ave a#a a2a a$a a4a a5a a-a aca'. Напишите регулярку, которая заменит все пробелы на '!'.
+      (function () {
+        let str = "ave a#a a2a a$a a4a a5a a-a aca";
+        console.log(str.replace(/\s/g, "!"));
+      })();
+
+      //10 Дана строка 'aba aea aca aza axa'. Напишите регулярку, которая найдет строки aba, aea, axa, не затронув остальных.
+      (function () {
+        let str = "aba aea aca aza axa";
+        console.log(str.replace(/a[bex]a/g, "!"));
+      })();
+
+      //11 Дана строка 'aba aea aca aza axa a.a a+a a*a'. Напишите регулярку, которая найдет строки aba, a.a, a+a, a*a, не затронув остальных..
+      (function () {
+        let str = "aba aea aca aza axa a.a a+a a*a";
+        console.log(str.replace(/a[b.*+]a/g, "!"));
+      })();
+
+      //12 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - цифра от 3-х до 7-ми.
+      (function () {
+        let str = "aba aea a6a aza axa a.a a+a a*a";
+        console.log(str.replace(/a[3-7]a/g, "!"));
+      })();
+
+      //13 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до g.
+      (function () {
+        let str = "aba aea a6a aza axa a.a a+a a*a";
+        console.log(str.replace(/a[a-g]a/g, "!"));
+      })();
+
+      //14 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до f и от j до z.
+      (function () {
+        let str = "aba aea a6a aza axa a.a a+a a*a";
+        console.log(str.replace(/a[a-fj-z]a/g, "!"));
+      })();
+
+      //15 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до f и от A до Z.
+      (function () {
+        let str = "aba aea aBa aza axa a.a a+a a*a";
+        console.log(str.replace(/a[a-fA-Z]a/g, "!"));
+      })();
+
+      //16 Дана строка 'aba aea aca aza axa a-a a#a'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - не 'e.
+      (function () {
+        let str = "aba aea aca aza axa a-a a#a";
+        console.log(str.replace(/a[^e]a/, "!"));
+      })();
+
+      //17 Дана строка 'wйw wяw wёw wqw'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'w', а между ними - буква кириллицы.
+      (function () {
+        let str = "wйw wяw wёw wqw";
+        console.log(str.replace(/w[а-яё]w/g, "!"));
+      })();
+
+      //18 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие латинские буквы, не затронув остальных.
+      (function () {
+        let str = "aAXa aeffa aGha aza ax23a a3sSa";
+        console.log(str.replace(/a[a-z]+a/g, "!"));
+      })();
+
+      //19 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие и большие латинские буквы, не затронув остальных.
+      (function () {
+        let str = "aAXa aeffa aGha aza ax23a a3sSa";
+        console.log(str.replace(/a[a-zA-Z]+a/g, "!"));
+      })();
+
+      //20  Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие латинские буквы и цифры, не затронув остальных.
+      (function () {
+        let str = "aAXa aeffa aGha aza ax23a a3sSa";
+        console.log(str.replace(/a[a-z0-9]+a/g, "!"));
+      })();
+
+      //21 Дана строка 'ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ'. Напишите регулярку, которая найдет все слова по шаблону: любая кириллическая буква любое количество раз.
+      (function () {
+        let str = "ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ";
+        console.log(str.replace(/[а-яёА-ЯЁ]+/g, "!"));
+      })();
+
+      //22 Дана строка 'aaa aaa aaa'. Напишите регулярку, которая заменит первое 'aaa' на '!'.
+      (function () {
+        let str = "aaa aaa aaa";
+        console.log(str.replace(/^aaa/g, "!"));
+      })();
+
+      //23 Дана строка 'aaa aaa aaa'. Напишите регулярку, которая заменит первое 'aaa' на '!'.
+      (function () {
+        let str = "aaa aaa aaa";
+        console.log(str.replace(/aaa$/g, "!"));
+      })();
+
+      //24 Дана строка 'aeeea aeea aea axa axxa axxxa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - или буква 'e' любое количество раз или по краям стоят буквы 'a', а между ними - буква 'x' любое количество раз.
+      (function () {
+        let str = "aeeea aeea aea axa axxa axxxa";
+        console.log(str.replace(/a(e+|x+)a/g, "!"));
+      })();
+
+      //25 Дана строка 'aeeea aeea aea axa axxa axxxa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - или буква 'e' два раза или буква 'x' любое количество раз.
+      (function () {
+        let str = "aeeea aeea aea axa axxa axxxa";
+        console.log(str.replace(/a(e{2}|x+)a/g, "!"));
+      })();
+
+      //26 Дана строка 'a\a abc'. Напишите регулярку, которая заменит строку 'a\a' на '!'.
+      (function () {
+        let str = "a\\a abc";
+        console.log(str.replace(/a\\\a/, "!"));
+      })();
+
+      //27 Дана строка 'a\a a\\a a\\\a'. Напишите регулярку, которая заменит строку 'a\\\a' на '!'.
+      (function () {
+        let str = "a\\a a\\\\a a\\\\\\a";
+        console.log(str.replace(/a\\{3}a/, "!"));
+      })();
+
+      //28 Дана строка 'bbb /aaa\ bbb /ccc\'. Напишите регулярку, которая найдет содержимое всех конструкций /...\ и заменит их на '!'.
+      (function () {
+        let str = "bbb /aaa\\ bbb /ccc\\";
+        console.log(str.replace(/\/\w+\\/g, "!"));
+      })();
     </script>
   </body>
 </html>
