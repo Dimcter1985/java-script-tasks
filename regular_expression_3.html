@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Дана строка 'aaa@bbb eee7@kkk'. Напишите регулярку, которая найдет строки по шаблону: любое количество букв и цифр, символ @, любое количество букв и цифр и поменяет местами то, что стоит до @ на то, что стоит после нее. Например, aaa@bbb должно превратиться в bbb@aaa.
+      (function () {
+        let str = "aaa@bbb eee7@kkk";
+
+        console.log(str.replace(/(aaa)@(bbb)/g, "$2@$1"));
+      })();
+
+      //2 Дана строка вида 'a1b2c3'. Напишите регулярку, которая найдет все цифры и удвоит их количество таким образом: 'a11b22c33' (то есть рядом с каждой цифрой напишет такую же).
+      (function () {
+        let str = "a1b2c3";
+
+        console.log(str.replace(/(\d)/g, "$1$1"));
+      })();
+
+      //3 С помощью метода test определите, что переданная строка является емэйлом. Примеры емэйлов для тестирования mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru, my_mail@mail.ru, mail@mail.com, mail@mail.by, mail@yandex.ru.
+      (function () {
+        let str = "my.mail@mail.ru";
+        let reg = /^[a-zA-Z-_.]+@[a-zA-Z]+\.[a-z]{2,3}$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+    </script>
+  </body>
+</html>
