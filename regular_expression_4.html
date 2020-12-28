@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 С помощью позитивного просмотра найдите все строки по шаблону 3 буквы a, затем буква b и поменяйте 3 буквы a на знак '!'. То есть из 'aaab' нужно сделать '!b'.
+      (function () {
+        let str = "aaab";
+        console.log(str.replace(/aaa(?=b)/g, "!"));
+      })();
+
+      //2 С помощью негативного просмотра найдите все строки по шаблону 3 буквы a, затем любая буква, но не b и поменяйте 3 буквы a на знак '!'. То есть из, к примеру, 'aaaw' нужно сделать '!w', а 'aaab' не поменяется.
+      (function () {
+        let str = "aaab aaaw";
+        console.log(str.replace(/aaa(?!b)/g, "!"));
+      })();
+
+      //3 Дана строка с целыми числами. С помощью регулярки преобразуйте строку так, чтобы вместо этих чисел стояли их квадраты.
+      (function () {
+        let str = "1 2 3 4";
+        let result = str.replace(/\d+/g, function (match) {
+          return match * match;
+        });
+
+        console.log(result);
+      })();
+
+      //4 Дана строка с целыми числами. Найдите числа, стоящие в кавычках и увеличьте их в два раза. Пример: из строки 2aaa'3'bbb'4' сделаем строку 2aaa'6'bbb'8'.
+      (function () {
+        let str = "2aaa'3'bbb'4'";
+        let result = str.replace(/\d+(?=')/g, function (match) {
+          return match * match;
+        });
+
+        console.log(result);
+      })();
+
+      //5 Дана строка в которой есть вставки {{текст}}. Найдите все такие вставки и поменяйте в них порядок букв на обратный (то есть из 'текст' нужно сделать 'тскет').
+      (function () {
+        let str = "2aaa'3'{{текст}}'4'";
+
+        let result = str.replace(/(т)(е)(к)(с)(т)(?=)/g, "$5$4$3$2$1");
+
+        console.log(result);
+      })();
+
+      //6 Дана строка '23 + 35 ='. Числа могут быть любыми. Выведите на экран результат операции в виде '23 + 35 = 58'.
+      (function () {
+        let str = "23 + 35 =";
+        let result = str.replace(
+          /(\d+)\s\+\s(\d+)\s=/,
+          (match, match1, match2) => {
+            let sum = +match1 + +match2;
+            return match + ` ${sum}`;
+          }
+        );
+
+        console.log(result);
+      })();
+
+      //7 Определите, что год находится в интервале от 1900 до 2100 с помощью одного только регулярного выражения.
+      (function () {
+        let str = "1899";
+        let reg = /^19\d\d|20\d\d|2100$/;
+        let test = reg.test(str);
+
+        if (test === true) {
+          console.log("подходит");
+        } else {
+          console.log("неподходит");
+        }
+      })();
+
+      //8 С помощью test определите, что переданная строка является корректным временем вида '12:59', '23:41', '00:12', '00:00', '09:15'. Время '24.00', '25.00', '12.60', '12.93', '41.93' является некорректным.
+      (function () {
+        let str = "24:59";
+        let reg = /^[0-1]\d|2[0-3]:[0-5]\d$/;
+        let test = reg.test(str);
+
+        if (test === true) {
+          console.log("подходит");
+        } else {
+          console.log("неподходит");
+        }
+      })();
+
+      //9 С помощью test определите, что переданная строка является корректным временем вида '9.59 am', '12.30 pm'.
+      (function () {
+        let str = "3.554 am";
+        let reg = /^([1-9]|1[0-9])\.[0-5]\d\sam|pm$/;
+        let test = reg.test(str);
+
+        if (test === true) {
+          console.log("подходит");
+        } else {
+          console.log("неподходит");
+        }
+      })();
+
+      //10 Удалите одной регуляркой все слова из предложения, содержащие две одинаковые следующие друг за другом буквы.
+      (function () {
+        let str = "aaa zzqzqaq hsdds erfg";
+        console.log(str.replace(/\W*\w*(\w)\1\w*\W*/g, " "));
+      })();
+
+      //11 Удалите одной регуляркой все повторяющиеся слова из строки, например для 'dsf xxx xxx sd' должно вернуть 'dsf xxx sd'
+      (function () {
+        let str = "dsf xxx xxx sd";
+        console.log(str.replace(/\b(\w+)\s+\1/g, "$1"));
+      })();
+
+      //12  Решите предыдущую задачу с учетом того, что слово может повторяться много раз. Например 'dsf xxx xxx xxx xxx xxx sd' должно вернуть 'dsf xxx sd'.
+      (function () {
+        let str = "dsf xxx xxx xxx xxx xxx sd";
+        console.log(str.replace(/\b(\w+)\b(?:\s+\1\b)+/g, "$1"));
+      })();
+    </script>
+  </body>
+</html>
