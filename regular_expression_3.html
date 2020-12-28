@@ -33,6 +33,149 @@
           console.log("ошибка");
         }
       })();
+
+      //4 Дана строка с текстом, в котором могут быть емейлы. С помощью match найдите все емэйлы в виде массива.
+      (function () {
+        let str = "my.mail@mail.ru a1b2c3 my-mail@mail.ru";
+        let reg = /[a-zA-Z-_.]+@[a-zA-Z]+\.[a-z]{2,3}/g;
+
+        console.log(str.match(reg));
+      })();
+
+      //5 С помощью test определите, что переданная строка является доменом. Примеры доменов: site.ru, site.com, my-site.com.
+      (function () {
+        let str = "site.ru";
+        let reg = /^[a-z-_.]+\.[a-z]{2,3}$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //6 С помощью test определите, что переданная строка является доменом. Примеры доменов: http://site.ru, http://site.com.
+      (function () {
+        let str = "http://site.ru";
+        let reg = /^(http|https):\/\/[a-z-_.]+\.[a-z]{2,3}$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //7 С помощью test определите, что переданная строка является доменом вида http://site.ru. Протокол может быть как http, так и https.
+      (function () {
+        let str = "http://site.ru";
+        let reg = /^https?:\/\/[a-z-_.]+\.[a-z]{2,3}$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //8 С помощью test определите, что переданная строка начинается с http или с https.
+      (function () {
+        let str = "http://site.ru";
+        let reg = /^https?:/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //9 С помощью test определите, что переданная строка заканчивается расширением txt, html или php.
+      (function () {
+        let str = "test.php";
+        let reg = /\.(txt|html|php)$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //10 С помощью test определите, что переданная строка заканчивается расширением jpg или jpeg.
+      (function () {
+        let str = "test.jpg";
+        let reg = /\.jpe?g$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //11 С помощью test узнайте является ли строка числом, длиной до 12 цифр.
+      (function () {
+        let str = "12311";
+        let reg = /^\d{1,12}$/;
+        let check = reg.test(str);
+
+        if (check === true) {
+          console.log("правильно");
+        } else {
+          console.log("ошибка");
+        }
+      })();
+
+      //11 Дана строка с буквами, пробелами и цифрами. Найдите сумму всех чисел из данной строки.
+      (function () {
+        let str = "1_2a3e1-1";
+        let reg = /\d/g;
+        let arr = str.match(reg);
+
+        let result = arr.reduce((sum, el) => {
+          return +sum + +el;
+        });
+
+        console.log(result);
+      })();
+
+      //12 С помощью replace замените в строке домены вида http://site.ru, http://site.com на <a href="http://site.ru">site.ru</a>.
+      (function () {
+        let str = "http://site.ru";
+        let reg = /http:\/\/[a-z-_.]+\.[a-z]{2,3}/g;
+
+        console.log(
+          str.replace(reg, '<a href="http:\/\/site\.ru">site\.ru<\/a>')
+        );
+      })();
+
+      //13 С помощью replace замените все повторяющиеся пробелы на один
+      (function () {
+        let str = "aaa@bbb  eee7@kkk   sssssss   dddd sss";
+
+        console.log(str.replace(/\s{2,}/g, " "));
+      })();
+
+      //14 Найдите и удалите все комментарии CSS.
+      (function () {
+        let str = "/*dfdf*/ sadsad /*dfdf*/";
+
+        console.log(str.replace(/\/\*.*?\*\//g, ""));
+      })();
+
+      //15 Найдите и удалите все комментарии HTML.
+      (function () {
+        let str = "<!--dfdf--> sadsad <!--ghgh-->";
+
+        console.log(str.replace(/<!--.*?-->/g, ""));
+      })();
     </script>
   </body>
 </html>
