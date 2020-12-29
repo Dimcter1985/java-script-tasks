@@ -18,6 +18,18 @@
     />
     <button class="btn2">Сохранить</button><br /><br />
     <div class="date"></div>
+
+    3
+    <form action="" name="form" id="form">
+      <input type="text" class="input" id="one" /><br /><br />
+      <input type="text" class="input" id="two" /><br /><br />
+      <input type="text" class="input" id="three" /><br /><br />
+    </form>
+
+    4
+    <input type="checkbox" class="check" id="one1" />
+    <input type="checkbox" class="check" id="two1" />
+    <input type="checkbox" class="check" id="three1" />
     <script>
       //1 Установите куку с именем 'name' и значением 'Иван'. Выведите содержимое этой куки на экран.
       (function () {
@@ -116,6 +128,74 @@
 
         let birthday = getCookie("birthday");
         if (birthday) showBirthday(birthday);
+      })();
+
+      //5 Дана форма с инпутами. Пользователь вводит какие-то данные и закрывает страницу (не факт, что он заполнил всю форму). Сделайте так, чтобы при следующем заходе на страницу введенные им ранее данные стояли на своих местах.
+      (function () {
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let one = getCookie("one");
+        if (one) document.querySelector("#one").value = one;
+        let two = getCookie("two");
+        if (two) document.querySelector("#two").value = two;
+        let three = getCookie("three");
+        if (three) document.querySelector("#three").value = three;
+
+        window.addEventListener("beforeunload", function () {
+          let inputs = document.querySelectorAll(".input");
+          inputs.forEach((el) => {
+            document.cookie = `${el.id} = ${el.value}`;
+          });
+        });
+      })();
+
+      //6 Даны чекбоксы. Пользователь произвольно отмечает их и закрывает страницу. Сделайте так, чтобы при следующем заходе на страницу чекбоксы стали отмеченными так, как это сделал пользователь ранее.
+      (function () {
+        let inputs = document.querySelectorAll(".check");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let one = getCookie("one1");
+        if (one === "true") document.querySelector("#one1").checked = true;
+        let two = getCookie("two1");
+        if (two === "true") document.querySelector("#two1").checked = true;
+        let three = getCookie("three1");
+        if (three === "true") document.querySelector("#three1").checked = true;
+
+        window.addEventListener("beforeunload", function () {
+          inputs.forEach((el) => {
+            document.cookie = `${el.id} = ${el.checked}`;
+          });
+          console.log(document.cookie);
+        });
       })();
     </script>
   </body>
