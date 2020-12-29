@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <input type="text" class="inp" placeholder="Введите город" />
+    <button class="btn">Сохранить</button><br /><br />
+
+    2
+    <input
+      type="text"
+      class="inp2"
+      placeholder="Введите дату в формате год-мес-день"
+    />
+    <button class="btn2">Сохранить</button><br /><br />
+    <div class="date"></div>
+    <script>
+      //1 Установите куку с именем 'name' и значением 'Иван'. Выведите содержимое этой куки на экран.
+      (function () {
+        let cookie = (document.cookie = "name=Иван");
+        console.log(cookie);
+      })();
+
+      //2 Установите куку с вашем именем и вашим возрастом. Выведите на экран содержимое этих двух кук.
+      (function () {
+        let cookie = (document.cookie = "name=Дима; age=35");
+        console.log(cookie);
+      })();
+
+      //3 Дан инпут. Ведите в него город, например, Минск. Сохраните его в куки. Зайдя занов вы должны увидеть фразу 'ваш город - Минск'.
+      (function () {
+        let inp = document.querySelector(".inp");
+        let btn = document.querySelector(".btn");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        btn.addEventListener("click", () => {
+          document.cookie = `city=${inp.value}`;
+        });
+
+        let city = getCookie("city");
+        window.onload = () => {
+          if (city) alert("Ваш город: " + city);
+        };
+      })();
+
+      //4 При заходе на страницу спросите с помощью инпута день рождения пользователя. Когда он зайдет с следующий раз - напишите сколько месяцев, дней, часов, минут и секунд осталось до его дня рождения. И пусть по этим числам запуститься обратный отсчет (то есть они будут тикать).
+      (function () {
+        let inp = document.querySelector(".inp2");
+        let btn = document.querySelector(".btn2");
+        let date = document.querySelector(".date");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        function showBirthday() {
+          let arr = birthday.split("-").reverse();
+          let today = new Date();
+          let dateBirtday = new Date();
+          dateBirtday.setDate(arr[2]);
+          dateBirtday.setMonth(Number(arr[1]) - 1);
+          dateBirtday.setHours(0);
+          dateBirtday.setMinutes(0);
+          dateBirtday.setSeconds(0);
+
+          if (dateBirtday - today < 0)
+            dateBirtday.setFullYear(today.getFullYear() + 1);
+          today = Math.floor((dateBirtday - today) / 1000);
+          let tsec = today % 60;
+          today = Math.floor(today / 60);
+          if (tsec < 10) tsec = "0" + tsec;
+          let tmin = today % 60;
+          today = Math.floor(today / 60);
+          if (tmin < 10) tmin = "0" + tmin;
+          let thour = today % 24;
+          today = Math.floor(today / 24);
+          let timestr = `${today} дней ${thour} часов ${tmin} минут ${tsec} секунд`;
+          date.textContent = timestr;
+          window.setTimeout(showBirthday, 1000);
+        }
+
+        btn.addEventListener("click", () => {
+          document.cookie = `birthday=${inp.value}`;
+        });
+
+        let birthday = getCookie("birthday");
+        if (birthday) showBirthday(birthday);
+      })();
+    </script>
+  </body>
+</html>
