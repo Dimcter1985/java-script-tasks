@@ -41,7 +41,38 @@
     7
     <button id="backward">«</button>
     <input type="text" id="val" />
-    <button id="forward">»</button>
+    <button id="forward">»</button><br /><br />
+
+    8
+    <div class="banner">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odio
+      temporibus adipisci voluptatum facilis! Hic, facilis molestiae laudantium
+      tenetur, eligendi velit accusantium explicabo optio quae magni rerum
+      dignissimos ipsam officia.
+      <button class="btn3">убрать</button>
+    </div>
+
+    <style>
+      .banner {
+        width: 400px;
+        height: 100px;
+        border: 2px solid black;
+        margin: 10px;
+        padding: 15px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        display: none;
+      }
+
+      .btn3 {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 5px;
+      }
+    </style>
+
     <script>
       //1 Установите куку с именем 'name' и значением 'Иван'. Выведите содержимое этой куки на экран.
       (function () {
@@ -395,6 +426,41 @@
       })();
 
       //11 Пусть по заходу на страницу показывается определенный рекламный текст. Рядом с ним сделайте кнопку 'убрать', по нажатию на которую этот рекламный текст не показывается этому пользователю ровно один день.
+      (function () {
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let banner = document.querySelector(".banner");
+        let btn = document.querySelector(".btn3");
+        let = today = Date.now();
+        let = click = getCookie("click");
+        let = date = getCookie("date");
+
+        if (click && today - date >= 60 * 60 * 24) {
+          banner.style.display = "block";
+        }
+
+        btn.addEventListener("click", () => {
+          banner.style.display = "none";
+          click = 1;
+          date = Date.now();
+          document.cookie = `click=${click}`;
+          document.cookie = `date=${date}`;
+        });
+      })();
     </script>
   </body>
 </html>
