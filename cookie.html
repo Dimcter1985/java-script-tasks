@@ -29,7 +29,19 @@
     4
     <input type="checkbox" class="check" id="one1" />
     <input type="checkbox" class="check" id="two1" />
-    <input type="checkbox" class="check" id="three1" />
+    <input type="checkbox" class="check" id="three1" /><br /><br />
+
+    5
+    <div id="count"></div>
+    <br /><br />
+
+    6
+    <textarea name="textarea" id="textarea"></textarea><br /><br />
+
+    7
+    <button id="backward">«</button>
+    <input type="text" id="val" />
+    <button id="forward">»</button>
     <script>
       //1 Установите куку с именем 'name' и значением 'Иван'. Выведите содержимое этой куки на экран.
       (function () {
@@ -197,6 +209,192 @@
           console.log(document.cookie);
         });
       })();
+
+      //7 При заходе на страницу появляется счетчик обратного отсчета. Когда он доходит до нуля, на странице пишется - 'отсчет закончен'. При обновлении страницы счетчик не должен начинать идти заново.
+      (function () {
+        let block = document.querySelector("#count");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let count = getCookie("count");
+
+        if (!count) {
+          let countN = 5;
+          window.idInt = setInterval(() => {
+            if (countN === 0) {
+              block.textContent = "отсчёт закончен";
+              clearInterval(window.idInt);
+              document.cookie = "count = true";
+            } else {
+              block.textContent = countN--;
+            }
+          }, 1000);
+        }
+      })();
+
+      //8 Дан текcтареа. Пользователь может потянуть за его угол и изменить его размер. Сделайте так, чтобы при следующем заходе на страницу, текстареа был заданного размера.
+      (function () {
+        let area = document.querySelector("#textarea");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let width = getCookie("width");
+        let height = getCookie("height");
+
+        if (width || height) {
+          area.style.width = width;
+          area.style.height = height;
+        }
+
+        window.addEventListener("beforeunload", () => {
+          document.cookie = `width = ${area.style.width}`;
+          document.cookie = `height = ${area.style.height}`;
+        });
+      })();
+
+      //9 Дан инпут. В него можно ввести данные, затем поредактировать их, затем еще поредактировать. Пусть инпут хранит историю своих изменений (даже после перезагрузки страницы). Сверху над инпутом должны появится стрелочки, с помощью которых можно перемещаться по истории.
+      (function () {
+        let backward = document.querySelector("#backward");
+        let forward = document.querySelector("#forward");
+        let val = document.querySelector("#val");
+
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        function getActiveHistory() {
+          val.value = history[activ];
+        }
+
+        let history = getCookie("history");
+        if (history) history = history.split("#");
+        else history = [];
+        let activ = history.length;
+
+        window.addEventListener(
+          "beforeunload",
+          () => (document.cookie = `history=${history.join("#")}`)
+        );
+
+        backward.addEventListener("click", () => {
+          if (activ > 0) activ--;
+          getActiveHistory();
+        });
+
+        forward.addEventListener("click", () => {
+          if (activ < history.length - 1) activ++;
+          getActiveHistory();
+        });
+
+        val.addEventListener("change", function () {
+          if (this.value) history.push(this.value);
+          activ = history.length - 1;
+        });
+      })();
+
+      //10 Дан сайт. Пусть каждая страница для каждого посетителя хранит время последнего захода и количество заходов на нее этим посетителем. Пусть эти данные показываются при заходе в формате 'с последнего захода прошло ... вы посещали эту страницу ... раз'.
+      (function () {
+        function getCookie(cname) {
+          let name = cname + "=";
+          let decodedCookie = decodeURIComponent(document.cookie);
+          let ca = decodedCookie.split(";");
+          for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == " ") {
+              c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+          return "";
+        }
+
+        let visit = getCookie("visit");
+        let dateVisit = getCookie("dateVisit");
+        if (dateVisit) {
+          dateVisit = dateVisit.split("-");
+          dateVisit = new Date(
+            dateVisit[0],
+            dateVisit[1],
+            dateVisit[2],
+            dateVisit[3],
+            dateVisit[4],
+            dateVisit[5]
+          );
+        }
+
+        let date = new Date();
+        if (visit || dateVisit) {
+          alert(
+            "с последнего захода прошло " +
+              ((date - dateVisit) / 1000).toFixed(2) +
+              " секунд, вы посещали эту страницу " +
+              visit +
+              " раз"
+          );
+          visit++;
+        } else {
+          visit = 1;
+        }
+
+        dateVisit =
+          date.getFullYear() +
+          "-" +
+          date.getMonth() +
+          "-" +
+          date.getDate() +
+          "-" +
+          date.getHours() +
+          "-" +
+          date.getMinutes() +
+          "-" +
+          date.getSeconds();
+        document.cookie = "visit=" + visit;
+        document.cookie = "dateVisit=" + dateVisit;
+      })();
+
+      //11 Пусть по заходу на страницу показывается определенный рекламный текст. Рядом с ним сделайте кнопку 'убрать', по нажатию на которую этот рекламный текст не показывается этому пользователю ровно один день.
     </script>
   </body>
 </html>
