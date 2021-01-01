@@ -20,6 +20,76 @@
       <textarea id="txt2"></textarea>
     </div>
     <br />
+
+    3
+    <div class="parent2">
+      <form action="" class="form">
+        <div class="row">
+          <label class="wrap">
+            <span>Введите имя</span>
+            <input type="text" name="name" id="name" />
+          </label>
+        </div>
+        <div class="row">
+          <label class="wrap">
+            <span>Введите сообщение</span>
+            <textarea name="txt" id="" id="txt"></textarea>
+          </label>
+        </div>
+        <div class="row">
+          <label class="wrap">
+            <span>Выберите страну</span>
+            <select name="contries" id="contries">
+              <option value="Германия" class="contry">Германия</option>
+              <option value="Россия" class="contry">Россия</option>
+              <option value="США" class="contry">США</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <span>Выберите пол</span>
+          <label class="radio-wrap">
+            <input type="radio" name="sex" id="male" value="male" checked />
+            <span>Муж</span>
+          </label>
+          <label class="radio-wrap">
+            <input type="radio" name="sex" id="female" value="female" />
+            <span>Жен</span>
+          </label>
+        </div>
+        <div class="row">
+          <span>Согласие на обработку данных</span>
+          <label class="check-wrap">
+            <input type="checkbox" name="pass" id="yes" value="yes" />
+          </label>
+        </div>
+      </form>
+    </div>
+    <br />
+
+    <style>
+      .form {
+        width: 330px;
+        border: 2px solid gray;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        align-items: center;
+        width: 100%;
+      }
+      .radio-wrap {
+        margin-bottom: 30px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+
     <script>
       //1 Дан текстареа. В него вводится текст. Сделайте так, чтобы после захода на эту страницу через некоторое время, введенный текст остался в текстареа. Текст должен запоминаться в локальном хранилище.
       (function () {
@@ -40,14 +110,18 @@
         let buttons = document.querySelectorAll(".btn");
         let arr = [];
 
-        txt.addEventListener("change", () => {
+        function toLocalStorage() {
           arr.push(txt.value);
           localStorage.setItem("arr", JSON.stringify(arr));
-        });
+        }
 
         let arrLS = localStorage.getItem("arr");
-        let parse = JSON.parse(arrLS);
-        let active = parse.length;
+        let parse = [];
+        let active = 0;
+        if (arrLS) {
+          parse = JSON.parse(arrLS);
+          active = parse.length;
+        }
 
         function toLeft() {
           if (active > 0) {
@@ -55,12 +129,21 @@
             txt.value = parse[active];
           }
         }
+
         function toRight() {
           if (active < parse.length - 1) {
             active++;
             txt.value = parse[active];
           }
         }
+
+        function showText() {
+          if (parse[active - 1]) {
+            txt.value = parse[active - 1];
+          }
+        }
+
+        txt.addEventListener("change", toLocalStorage);
 
         buttons.forEach((el, index) => {
           el.addEventListener("click", () => {
@@ -69,9 +152,38 @@
           });
         });
 
-        window.addEventListener("DOMContentLoaded", () => {
-          txt.value = parse[active - 1];
-        });
+        window.addEventListener("DOMContentLoaded", showText);
+      })();
+
+      //3 Дана форма с инпутами, текстареа, чекбоксами, радио кнопочками, селектами и тп. Пользователь вводит какие-то данные и закрывает страницу (не факт, что он заполнил всю форму). Сделайте так, чтобы при следующем заходе на страницу введенные им ранее данные стояли на своих местах. Сделайте ваш скрипт как можно более универсальным.
+      (function () {
+        let form = document.querySelector(".form");
+        let obj = {};
+        console.log((obj.contry = form.elements.sex));
+
+        function toLocalStorage() {
+          obj.name = form.elements.name.value;
+          obj.txt = form.elements.txt.value;
+          obj.contry = form.elements.contries.selectedIndex;
+          obj.sex = form.elements.sex.value;
+          obj.pass = form.elements.pass.checked;
+          localStorage.setItem("form", JSON.stringify(obj));
+        }
+
+        function showValues() {
+          let objLS = localStorage.getItem("form");
+          let parse = JSON.parse(objLS);
+          console.log(parse);
+
+          form.elements.name.value = parse.name;
+          form.elements.txt.value = parse.txt;
+          form.elements.contries.selectedIndex = parse.contry;
+          form.elements.sex.value = parse.sex;
+          form.elements.pass.checked = parse.pass;
+        }
+
+        window.addEventListener("beforeunload", toLocalStorage);
+        window.addEventListener("DOMContentLoaded", showValues);
       })();
     </script>
   </body>
