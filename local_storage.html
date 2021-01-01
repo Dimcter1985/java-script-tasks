@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1
+    <div class="parent">
+      <textarea id="txt"></textarea>
+    </div>
+    <br />
+
+    2
+    <div class="parent2">
+      <div class="arrows">
+        <button class="btn"><<</button><button class="btn">>></button>
+      </div>
+      <textarea id="txt2"></textarea>
+    </div>
+    <br />
+    <script>
+      //1 Дан текстареа. В него вводится текст. Сделайте так, чтобы после захода на эту страницу через некоторое время, введенный текст остался в текстареа. Текст должен запоминаться в локальном хранилище.
+      (function () {
+        let txt = document.querySelector("#txt");
+
+        txt.addEventListener("change", () => {
+          localStorage.setItem("txt", txt.value);
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+          txt.value = localStorage.getItem("txt");
+        });
+      })();
+
+      //2 Дан текстареа. В него можно ввести данные, затем поредактировать их, затем еще поредактировать. Пусть текстареа хранит историю своих изменений (даже после перезагрузки страницы). Сверху над текстареа должны появится стрелочки, с помощью которых можно перемещаться по истории.
+      (function () {
+        let txt = document.querySelector("#txt2");
+        let buttons = document.querySelectorAll(".btn");
+        let arr = [];
+
+        txt.addEventListener("change", () => {
+          arr.push(txt.value);
+          localStorage.setItem("arr", JSON.stringify(arr));
+        });
+
+        let arrLS = localStorage.getItem("arr");
+        let parse = JSON.parse(arrLS);
+        let active = parse.length;
+
+        function toLeft() {
+          if (active > 0) {
+            active--;
+            txt.value = parse[active];
+          }
+        }
+        function toRight() {
+          if (active < parse.length - 1) {
+            active++;
+            txt.value = parse[active];
+          }
+        }
+
+        buttons.forEach((el, index) => {
+          el.addEventListener("click", () => {
+            if (index === 0) toLeft();
+            if (index === 1) toRight();
+          });
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+          txt.value = parse[active - 1];
+        });
+      })();
+    </script>
+  </body>
+</html>
