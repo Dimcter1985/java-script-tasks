@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <canvas id="canvas2"></canvas>
+    <script>
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas = document.querySelector("#canvas");
+      let ctx = canvas.getContext("2d");
+
+      //1
+      ctx.beginPath();
+      ctx.moveTo(10, 10);
+      ctx.lineTo(100, 10);
+      ctx.stroke();
+      //2
+      ctx.beginPath();
+      ctx.moveTo(10, 20);
+      ctx.lineTo(10, 100);
+      ctx.stroke();
+      //3
+      ctx.beginPath();
+      ctx.moveTo(10, 110);
+      ctx.lineTo(100, 110);
+      ctx.lineTo(60, 140);
+      ctx.closePath();
+      ctx.stroke();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas2 = document.querySelector("#canvas2");
+      let ctx2 = canvas2.getContext("2d");
+      //4
+      ctx2.beginPath();
+      ctx2.moveTo(10, 10);
+      ctx2.lineTo(100, 10);
+      ctx2.lineTo(50, 50);
+      ctx2.fill();
+      ctx2.stroke();
+      //5
+      ctx2.strokeRect(10, 60, 100, 75);
+      ctx2.stroke();
+    </script>
+  </body>
+</html>
