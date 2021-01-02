@@ -8,6 +8,16 @@
   <body>
     <canvas id="canvas"></canvas>
     <canvas id="canvas2"></canvas>
+    <canvas id="canvas3"></canvas>
+    <canvas id="canvas4"></canvas>
+    <canvas id="canvas5"></canvas>
+    <canvas id="canvas6"></canvas>
+    <canvas id="canvas7"></canvas>
+    <canvas id="canvas8"></canvas>
+    <canvas id="canvas9"></canvas>
+    <canvas id="canvas10"></canvas>
+    <canvas id="canvas11"></canvas>
+    <canvas id="canvas12"></canvas>
     <script>
       // Нарисуйте фигуры с помощью Canvas
       let canvas = document.querySelector("#canvas");
@@ -40,10 +50,118 @@
       ctx2.lineTo(100, 10);
       ctx2.lineTo(50, 50);
       ctx2.fill();
-      ctx2.stroke();
-      //5
+      //6
       ctx2.strokeRect(10, 60, 100, 75);
-      ctx2.stroke();
+      //7
+      ctx2.fillRect(120, 10, 100, 75);
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas3 = document.querySelector("#canvas3");
+      let ctx3 = canvas3.getContext("2d");
+      //8
+      ctx3.beginPath();
+      ctx3.moveTo(10, 10);
+      ctx3.lineTo(50, 50);
+      ctx3.moveTo(10, 50);
+      ctx3.lineTo(50, 10);
+      ctx3.stroke();
+      //9
+      ctx3.beginPath();
+      ctx3.moveTo(10, 70);
+      ctx3.lineTo(100, 70);
+      ctx3.moveTo(100, 70);
+      ctx3.lineTo(80, 50);
+      ctx3.moveTo(100, 70);
+      ctx3.lineTo(80, 90);
+      ctx3.stroke();
+      //10
+      ctx3.fillRect(120, 10, 100, 75);
+      ctx3.clearRect(130, 20, 40, 40);
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas4 = document.querySelector("#canvas4");
+      let ctx4 = canvas4.getContext("2d");
+      //11
+      function getRadians(degrees) {
+        return (Math.PI / 180) * degrees;
+      }
+      ctx4.arc(50, 50, 50, 0, getRadians(360));
+      ctx4.stroke();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas5 = document.querySelector("#canvas5");
+      let ctx5 = canvas5.getContext("2d");
+      //12
+      ctx5.arc(170, 50, 50, 0, getRadians(360));
+      ctx5.fill();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas6 = document.querySelector("#canvas6");
+      let ctx6 = canvas6.getContext("2d");
+      //13
+      ctx6.arc(50, 50, 50, 0, getRadians(180));
+      ctx6.stroke();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas7 = document.querySelector("#canvas7");
+      let ctx7 = canvas7.getContext("2d");
+      //14
+      ctx7.arc(170, 50, 50, 0, getRadians(180));
+      ctx7.closePath();
+      ctx7.stroke();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas8 = document.querySelector("#canvas8");
+      let ctx8 = canvas8.getContext("2d");
+      //15
+      ctx8.arc(50, 50, 50, 0, getRadians(180));
+      ctx8.fill();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas9 = document.querySelector("#canvas9");
+      let ctx9 = canvas9.getContext("2d");
+      //16
+      ctx9.arc(170, 50, 50, 0, getRadians(75));
+      ctx9.fill();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas10 = document.querySelector("#canvas10");
+      let ctx10 = canvas10.getContext("2d");
+      //17
+      ctx10.beginPath();
+      ctx10.moveTo(10, 10);
+      ctx10.lineTo(100, 10);
+      ctx10.strokeStyle = "red";
+      ctx10.stroke();
+      //18
+      ctx10.rect(10, 30, 100, 100);
+      ctx10.fillStyle = "green";
+      ctx10.fill();
+
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas11 = document.querySelector("#canvas11");
+      let ctx11 = canvas11.getContext("2d");
+
+      //19
+      for (let i = 0; i <= 10; i++) {
+        ctx11.moveTo(10, 10 * i);
+        ctx11.lineTo(100, 10 * i);
+      }
+      ctx11.stroke();
+      // Нарисуйте фигуры с помощью Canvas
+      let canvas12 = document.querySelector("#canvas12");
+      let ctx12 = canvas12.getContext("2d");
+
+      //20
+      for (let i = 1; i <= 10; i++) {
+        ctx12.moveTo(0, 10 * i);
+        ctx12.lineTo(110, 10 * i);
+      }
+      for (let i = 1; i <= 10; i++) {
+        ctx12.moveTo(10 * i, 0);
+        ctx12.lineTo(10 * i, 110);
+      }
+      ctx12.stroke();
     </script>
   </body>
 </html>
