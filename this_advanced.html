@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    1 <br />
+    <input id="elem" value="привет" /><br />
+
+    2 <br />
+    <input id="elem2" value="привет" /><br />
+
+    3 <br />
+    <input id="elem3" value="привет" /><br />
+
+    4 <br />
+    <input id="elem4" value="привет" /><br />
+
+    <script>
+      //1 Добавьте в последнюю строчку метод call() так, чтобы на экран вывелось value инпута, лежащего в переменной elem.
+      (function () {
+        let inp = document.querySelector("#elem");
+
+        function func() {
+          console.log(this.value);
+        }
+
+        func.call(inp); //тут должно вывести value инпута
+      })();
+
+      //2 Добавьте в последнюю строчку метод call() так, чтобы на экран вывелось 'привет Иванов Иван'. Слово 'привет' должно взяться из value инпута, а 'Иванов' и 'Иван' должны быть параметрами функциями.
+      (function () {
+        let inp = document.querySelector("#elem2");
+
+        function func(name, surname) {
+          console.log(`${this.value} ${name} ${surname}`);
+        }
+
+        func.call(inp, "Дмитрий", "Юрьевич"); //тут должно вывести value инпута
+      })();
+
+      //3  Переделайте решение предыдущей задачи так, чтобы место метода call() был метод apply().
+      (function () {
+        let inp = document.querySelector("#elem3");
+        let arr = ["Дмитрий", "Юрьевич"];
+
+        function func(name, surname) {
+          console.log(`${this.value} ${arr[0]} ${arr[1]}`);
+        }
+
+        func.apply(inp, arr); //тут должно вывести value инпута
+      })();
+
+      //4 Напишите в указанном месте конструкцию с методом bind() так, чтобы this внутри функции func всегда указывал на инпут из переменной elem.
+      (function () {
+        let inp = document.querySelector("#elem4");
+
+        let func = function (surname, name) {
+          console.log(`${this.value} ${name} ${surname}`);
+        };
+
+        func = func.bind(inp);
+        //Тут напишите конструкцию с bind()
+
+        func("Иванов", "Иван"); //тут должно вывести 'привет Иванов Иван'
+        func("Петров", "Петр"); //тут должно вывести 'привет Петров Петр'
+      })();
+    </script>
+  </body>
+</html>
