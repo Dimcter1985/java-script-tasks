@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1 Реализуйте класс Worker (Работник), который будет иметь следующие свойства: name (имя), surname (фамилия), rate (ставка за день работы), days (количество отработанных дней). Также класс должен иметь метод getSalary(), который будет выводить зарплату работника. Зарплата - это произведение (умножение) ставки rate на количество отработанных дней days.С помощью нашего класса создайте двух рабочих и найдите сумму их зарплат.
+      class Worker {
+        getSalary() {
+          return this.rate * this.days;
+        }
+      }
+
+      let worker1 = new Worker();
+      worker1.name = "Dmitriy";
+      worker1.surname = "Ribnickow";
+      worker1.rate = "10";
+      worker1.days = "31";
+
+      let worker2 = new Worker();
+      worker2.name = "Mikhail";
+      worker2.surname = "Karmanov";
+      worker2.rate = "20";
+      worker2.days = "31";
+
+      console.log(worker1.name);
+      console.log(worker1.getSalary());
+      console.log(worker1.getSalary() + worker2.getSalary());
+    </script>
+  </body>
+</html>
