@@ -9,26 +9,50 @@
     <script>
       //1 Реализуйте класс Worker (Работник), который будет иметь следующие свойства: name (имя), surname (фамилия), rate (ставка за день работы), days (количество отработанных дней). Также класс должен иметь метод getSalary(), который будет выводить зарплату работника. Зарплата - это произведение (умножение) ставки rate на количество отработанных дней days.С помощью нашего класса создайте двух рабочих и найдите сумму их зарплат.
       class Worker {
+        constructor(name, surname, rate, days) {
+          this.name = name;
+          this.surname = surname;
+          this.rate = rate;
+          this.days = days;
+        }
+
         getSalary() {
           return this.rate * this.days;
         }
       }
 
-      let worker1 = new Worker();
-      worker1.name = "Dmitriy";
-      worker1.surname = "Ribnickow";
-      worker1.rate = "10";
-      worker1.days = "31";
-
-      let worker2 = new Worker();
-      worker2.name = "Mikhail";
-      worker2.surname = "Karmanov";
-      worker2.rate = "20";
-      worker2.days = "31";
+      let worker1 = new Worker("Dmitriy", "Ribnickow", 10, 31);
+      let worker2 = new Worker("Mikhail", "Karmanov", 20, 31);
 
       console.log(worker1.name);
+      console.log(worker2.name);
       console.log(worker1.getSalary());
       console.log(worker1.getSalary() + worker2.getSalary());
+
+      //2 Модифицируйте класс User следующим образом: сделайте все его свойства приватными, а для их чтения сделайте методы-геттеры.
+      class User {
+        constructor(name1, surname1) {
+          this._name1 = name1;
+          this._surname1 = surname1;
+        }
+
+        getName() {
+          return this._name1;
+        }
+        getSurname() {
+          return this._surname1;
+        }
+
+        getFullName() {
+          return `${this._name1} ${this._surname1}`;
+        }
+      }
+
+      let user1 = new User("Dmitriy", "Ribnickow");
+
+      console.log(user1.getName());
+      console.log(user1.getSurname());
+      console.log(user1.getFullName());
     </script>
   </body>
 </html>
