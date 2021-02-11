@@ -53,6 +53,118 @@
       console.log(user1.getName());
       console.log(user1.getSurname());
       console.log(user1.getFullName());
+
+      //3  Реализуйте класс MyString, который будет иметь следующие методы: метод reverse(), который параметром принимает строку, а возвращает ее в перевернутом виде, метод ucFirst(), который параметром принимает строку, а возвращает эту же строку, сделав ее первую букву заглавной и метод ucWords, который принимает строку и делает заглавной первую букву каждого слова этой строки.
+
+      class MyString {
+        constructor(str) {
+          this.str = str;
+        }
+
+        reverse() {
+          return this.str.split("").reverse().join("");
+        }
+
+        ucFirst() {
+          return this.str[0].toUpperCase() + this.str.slice(1);
+        }
+
+        ucWords() {
+          return this.str.replace(/(^|\s)\S/g, (a) => a.toUpperCase());
+        }
+      }
+
+      let newStr = new MyString("abcde abcde");
+
+      console.log(newStr);
+      console.log(newStr.reverse());
+      console.log(newStr.ucFirst());
+      console.log(newStr.ucWords());
+
+      //4 Реализуйте класс Validator, который будет проверять строки. К примеру, у него будет метод isEmail параметром принимает строку и проверяет, является ли она корректным емейлом или нет. Если является - возвращает true, если не является - то false. Кроме того, класс будет иметь следующие методы: метод isDomain для проверки домена, метод isDate для проверки даты и метод isPhone для проверки телефона:
+      class Validator {
+        setMail(email) {
+          if (this._isEmail(email)) {
+            this._email = email;
+          }
+        }
+        setDomain(domain) {
+          if (this._isDomain(domain)) {
+            this._domain = domain;
+          }
+        }
+        setDate(date) {
+          if (this.isDate(date)) {
+            this._date = date;
+          }
+        }
+        setPhone(phone) {
+          if (this.isPhone(phone)) {
+            this._phone = phone;
+          }
+        }
+
+        getMail() {
+          return this._email;
+        }
+        getDomain() {
+          return this._domain;
+        }
+        getDate() {
+          return this._date;
+        }
+        getPhone() {
+          return this._phone;
+        }
+
+        _isEmail(email) {
+          let reg = /^[a-zA-Z-_.]+@[a-zA-Z]+\.[a-z]{2,3}$/;
+
+          if (reg.test(email)) {
+            return true;
+          } else {
+            false;
+          }
+        }
+        _isDomain(domain) {
+          let reg = /^[a-z-_.]+\.[a-z]{2,3}$/;
+
+          if (reg.test(domain)) {
+            return true;
+          } else {
+            false;
+          }
+        }
+        isDate(date) {
+          let reg = /^\d{1,2}\.\d{1,2}\.\d{4}$/;
+
+          if (reg.test(date)) {
+            return true;
+          } else {
+            false;
+          }
+        }
+        isPhone(phone) {
+          let reg = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+          if (reg.test(phone)) {
+            return true;
+          } else {
+            false;
+          }
+        }
+      }
+
+      let validator1 = new Validator();
+      validator1.setMail("my.mail@mail.ru");
+      validator1.setDomain("site.ru");
+      validator1.setDate("19.10.1985");
+      validator1.setPhone("89230962033");
+
+      console.log(validator1.getMail());
+      console.log(validator1.getDomain());
+      console.log(validator1.getDate());
+      console.log(validator1.getPhone());
     </script>
   </body>
 </html>
