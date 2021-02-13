@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="test"></div>
+    <div class="test2"></div>
+
+    <p class="test3"></p>
+    <p class="test3"></p>
+    <p class="test3"></p>
+
+    <script>
+      //1 Реализуйте класс Elem, который параметром принимает селектор одного HTML элемента и затем может выполнять с ним различные операции. Класс должен работать следующим образом:
+
+      //2 Модифицируйте класс Elem из предыдущей задачи так, чтобы он мог работать не только с одним элементом, но и одновременно с группой, как это сделано в jQuery. Кроме того: реализуйте еще и метод each, который будет работать также, как и each из jQuery.
+      class Elem {
+        constructor(selector) {
+          this.elem = document.querySelectorAll(selector);
+        }
+
+        each(func) {
+          this.elem.forEach((el) => {
+            func(el);
+          });
+        }
+
+        html(txt) {
+          this.elem.forEach((el) => {
+            el.innerHTML = txt;
+          });
+          return this;
+        }
+
+        attr(name, value) {
+          this.elem.forEach((el) => {
+            el.setAttribute(name, value);
+          });
+          return this;
+        }
+
+        append(after) {
+          this.elem.forEach((el) => {
+            el.insertAdjacentHTML("beforeend", after);
+          });
+          return this;
+        }
+
+        prepend(before) {
+          this.elem.forEach((el) => {
+            el.insertAdjacentHTML("afterbegin", before);
+          });
+          return this;
+        }
+      }
+
+      let elem = new Elem(".test3");
+      // elem.html("qwrweewrqwe");
+      // elem.attr("title", "hello");
+      // elem.append("???????");
+      // elem.prepend("!!!!!");
+
+      // let elem2 = new Elem(".test2");
+      // elem2
+      //   .html("lololololo")
+      //   .attr("title", "chao")
+      //   .append("????")
+      //   .prepend("!!!");
+
+      elem.html("2222222").attr("title", "chao").append("????").prepend("!!!");
+
+      elem.each(function (i) {
+        console.log(i.innerHTML);
+      });
+
+      //3 Реализуйте класс Rectangle. У него должны быть следующие свойства: ширина width, высота height. Также у него должны быть следующие методы: получить ширину getWidth, установить ширину setWidth, получить высоту getHeight, установить высоту setHeight.
+      class Rectangle {
+        constructor(width, height) {
+          this.rec = document.createElement("div");
+
+          this.rec.style.border = "1px solid red";
+          this.setWidth(width);
+          this.setHeight(height);
+
+          document.body.appendChild(this.rec);
+        }
+
+        setWidth(width) {
+          this.rec.style.width = width + "px";
+        }
+
+        setHeight(height) {
+          this.rec.style.height = height + "px";
+        }
+
+        getWidth() {
+          return this.rec.style.width;
+        }
+
+        getHeight() {
+          return this.rec.style.height;
+        }
+      }
+
+      let rect = new Rectangle(300, 100);
+    </script>
+  </body>
+</html>
